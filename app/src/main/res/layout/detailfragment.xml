@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/login"
+    android:background="@drawable/white_menu_btm_bg"
+    >
+
+    <ImageView
+        android:id="@+id/detail_image_left"
+        android:src="@drawable/list"
+        android:layout_width="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:background="@color/et_textColor"
+        android:layout_height="wrap_content"
+        />
+
+    <TextView
+        android:id="@+id/detail_foodtext"
+        android:textColor="@color/title"
+        android:textSize="@dimen/universal_margin1"
+        android:textStyle="bold"
+        android:text="supriya"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/login"
+        android:layout_alignTop="@+id/detail_image_left"
+        android:layout_toRightOf="@+id/detail_image_left"/>
+
+    <TextView
+        android:id="@+id/detail_foodsubtext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/year"
+        android:layout_marginLeft="@dimen/login"
+        android:textSize="@dimen/universal_margin"
+        android:layout_below="@id/detail_foodtext"
+        android:text="supriya"
+        android:layout_marginTop="@dimen/login_partial"
+        android:layout_toRightOf="@+id/detail_image_left" />
+
+
+
+    <TextView
+        android:id="@+id/detail_foodaddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/year"
+        android:layout_marginLeft="@dimen/login"
+        android:textSize="@dimen/login"
+        android:layout_below="@id/detail_foodsubtext"
+        android:text="supriya"
+        android:layout_marginTop="@dimen/login_partial"
+        android:layout_toRightOf="@+id/detail_image_left" />
+
+
+
+</RelativeLayout>

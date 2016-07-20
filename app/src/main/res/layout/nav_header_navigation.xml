@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/nav_header_height"
+    android:background="@drawable/rec1"
+    android:gravity="bottom"
+    android:orientation="vertical"
+    android:padding="@dimen/login"
+
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+    <com.rey.material.widget.TextView
+        android:id="@+id/drawerhomeName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/splash_color"
+        android:textSize="@dimen/universal_margin"
+        android:paddingLeft="@dimen/bck_padd"
+        android:text="@string/splash_text"
+        />
+
+
+    <com.rey.material.widget.TextView
+        android:id="@+id/drawerhomeEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/splash_color"
+        android:textSize="@dimen/universal_margin"
+        android:paddingLeft="@dimen/bck_padd"
+        android:text="@string/draweremail"
+
+
+        />
+
+    <!--<ImageView-->
+        <!--android:id="@+id/homeImageView"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:paddingTop="@dimen/nav_header_vertical_spacing"-->
+        <!--android:src="@drawable/login" />-->
+</LinearLayout>

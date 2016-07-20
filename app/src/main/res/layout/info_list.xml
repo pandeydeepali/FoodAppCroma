@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/info_relativeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:focusable="true"
+    android:paddingLeft="@dimen/bck_padd"
+    android:paddingRight="@dimen/bck_padd"
+    android:paddingTop="@dimen/universal_margin"
+    android:paddingBottom="@dimen/universal_margin"
+    android:clickable="true"
+
+    android:orientation="vertical"
+
+    >
+
+
+    <TextView
+        android:id="@+id/infotitle"
+        android:textColor="@color/title"
+        android:textSize="@dimen/universal_margin"
+        android:textStyle="bold"
+        android:text="supriya"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/login"
+        android:layout_alignTop="@+id/homeleftlogoImage"
+        android:layout_toRightOf="@+id/homeleftlogoImage"/>
+
+    <TextView
+        android:id="@+id/infodescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/year"
+        android:layout_marginLeft="@dimen/login"
+        android:textSize="@dimen/login"
+        android:layout_below="@id/listDescription"
+        android:text="supriya"
+        android:layout_toRightOf="@+id/homeleftlogoImage" />
+
+
+
+
+    <ImageView
+        android:id="@+id/infoImg"
+        android:src="@drawable/back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="false"
+        android:layout_alignParentRight="true"
+        />
+
+</RelativeLayout>

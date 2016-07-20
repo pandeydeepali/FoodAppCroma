@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fitsSystemWindows="true"
+    android:background="@color/major_custom"
+    >
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/reg_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/minor_custom"
+            >
+
+
+            <com.rey.material.widget.ImageView
+                android:id="@+id/regBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/bck"
+                android:paddingLeft="@dimen/bck_padd"
+
+                />
+            <com.rey.material.widget.TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/universal_margin4"
+                android:textColor="@color/splash_color"
+                android:text="@string/reg_header"
+                android:gravity="center"
+                android:padding="@dimen/login"
+                android:textSize="@dimen/universal_margin1"/>
+        </android.support.v7.widget.Toolbar>
+
+        <!--  Name Label -->
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/login_padding"
+            android:textColorHint="@color/splash_color"
+            android:padding="@dimen/login_partial"
+            >
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/regName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:hint="@string/login_user_et"
+                android:textColor="@color/splash_color"
+                android:textColorHint="@color/splash_color"
+                android:layout_marginTop="@dimen/login"
+                android:layout_marginLeft="@dimen/login"
+                android:layout_marginRight="@dimen/login"
+                android:textSize="@dimen/universal_margin"
+                />
+        </android.support.design.widget.TextInputLayout>
+
+        <!-- Email Label -->
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="@color/splash_color"
+            android:id="@+id/email_reg"
+            android:padding="@dimen/login_partial"
+            >
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/regEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/splash_color"
+                android:textColorHint="@color/splash_color"
+                android:hint="@string/forgetString"
+                android:layout_marginLeft="@dimen/login"
+                android:textSize="@dimen/universal_margin"
+                android:layout_marginRight="@dimen/login"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <!-- Password Label -->
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/login_partial"
+            android:textColorHint="@color/splash_color"
+            android:id="@+id/pass_reg"
+            >
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/regPass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:textColor="@color/splash_color"
+                android:textColorHint="@color/splash_color"
+                android:layout_marginLeft="@dimen/login"
+                android:layout_marginRight="@dimen/login"
+                android:textSize="@dimen/universal_margin"
+                android:hint="@string/passtext"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <!-- confirm Password Label -->
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="@color/splash_color"
+            android:id="@+id/cpass_reg"
+            android:padding="@dimen/login_partial">
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/regcPass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:textColor="@color/splash_color"
+                android:textColorHint="@color/splash_color"
+                android:layout_marginLeft="@dimen/login"
+                android:layout_marginRight="@dimen/login"
+                android:textSize="@dimen/universal_margin"
+                android:hint="@string/cpass"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/login_partial"
+            android:textColorHint="@color/splash_color"
+            android:id="@+id/phone_reg"
+            >
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/regPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="phone"
+                android:textColor="@color/splash_color"
+                android:textColorHint="@color/splash_color"
+                android:layout_marginLeft="@dimen/login"
+                android:layout_marginRight="@dimen/login"
+                android:textSize="@dimen/universal_margin"
+                android:hint="@string/phoneNumber"/>
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/login_partial"
+            android:textColorHint="@color/splash_color"
+            android:id="@+id/add_reg"
+            >
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/regAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:textColor="@color/splash_color"
+                android:textColorHint="@color/splash_color"
+                android:layout_marginLeft="@dimen/login"
+                android:layout_marginRight="@dimen/login"
+                android:textSize="@dimen/universal_margin"
+                android:hint="@string/multiline"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <!-- Signup Button -->
+        <com.rey.material.widget.Button
+            android:id="@+id/RegButton"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/universal_margin4"
+            android:layout_marginLeft="@dimen/login"
+            android:layout_marginRight="@dimen/login"
+            android:layout_marginTop="@dimen/login"
+            android:background="@color/minor_custom"
+            android:gravity="center"
+            android:text="@string/regbtn"
+            android:textColor="@color/splash_color"
+            android:textColorHint="@color/splash_color"
+            app:rd_enable="true"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            />
+
+
+    </LinearLayout>
+
+
+
+</ScrollView>

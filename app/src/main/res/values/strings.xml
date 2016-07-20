@@ -1,0 +1,161 @@
+<resources>
+    <string name="app_name">Foody</string>
+    <string name="action_settings">Settings</string>
+
+    <!--snackbar-->
+    <string name="internet">Network Not Available</string>
+    <string name="refresh">Refresh</string>
+
+
+    <!--splash screen text-->
+    <string name="splash_text">FOODY ANDROID APP</string>
+    <!--Login Screen-->
+    <string name="login_user_et">ENTER YOUR USER NAME</string>
+    <string name="login_user_pass">ENTER YOUR PASSWORD</string>
+    <string name="log_btn">LOG IN</string>
+    <!--forget-->
+    <string name="forget"><u>FORGET PASSWORD</u></string>
+    <!--registration-->
+    <string name="registration"><u>REGISTRATION</u></string>
+    <string name="reg_header">REGISTRATION</string>
+    <!--Alert Dialog-->
+    <string name="dialogMessage">NETWORK NOT AVAILABLE</string>
+    <!--Registration-->
+    <string name="registerText">SIGN UP</string>
+    <string name="passtext">ENTER YOUR PASSWORD</string>
+    <string name="cpass">ENTER YOUR CONFIRM PASSWORD</string>
+    <string name="phoneNumber">ENTER YOUR PHONE NUMBER</string>
+    <string name="multiline">ENTER YOUR ADDRESS</string>
+    <string name="regbtn">CREATE YOUR ACCOUNT</string>
+    <!--forget-->
+    <string name="forgetText">FORGET PASSWORD</string>
+    <string name="forgetString">ENTER YOUR EMAILADDRESS</string>
+    <string name="forget_btn">SEND EMAIL</string>
+
+    <!--Error Msg-->
+    <string name="err_msg_name">Enter your full name</string>
+    <string name="err_msg_email">Enter valid email address</string>
+    <string name="err_msg_password">Enter the password</string>
+    <string name="title_activity_demo">DemoActivity</string>
+    <string name="title_activity_navigation">CROMA FOODYAPP</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="Logout">LOGOUT</string>
+
+    <!---Fixed String-->
+    <string name="draweremail">supriyapandey91@gmail.com</string>
+    <!--Navigation Menu String-->
+    <string name="Address">Address</string>
+    <string name="Restaurant">Restaurant</string>
+    <string name="Deals">Deals</string>
+    <string name="Orders">Orders</string>
+    <string name="Account">Account</string>
+    <string name="AddressBook">Address Book</string>
+    <string name="Settings">Settings</string>
+    <string name="Info">Info</string>
+    <string name="UserName">Supriya Pandey Logged In</string>
+    <string name="deliever">Delievered in 60min</string>
+    <string name="AddressNoida">C-77,Noida Sector27</string>
+    <string name="checkboxpassword">Show Password</string>
+
+    <!--NAvigation manu-->
+    <string name="AddNav">Address</string>
+    <string name="RestNav">Restaurant</string>
+    <string name="title_activity_order">OrderActivity</string>
+    <string name="title_activity_pager">PagerActivity</string>
+    <string name="title_activity_list_item_detail">ListItemDetail</string>
+    <string name="title_activity_home_list_details">HomeListDetails</string>
+    <string name="title_activity_list_detail">ListDetailActivity</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="title_activity_info">Settings</string>
+
+    <!-- Strings related to Settings -->
+
+    <!--Info Screen-->
+    <string name="info_title">INFO</string>
+
+    <!-- Example General settings -->
+    <string name="pref_header_general">General</string>
+
+    <string name="pref_title_social_recommendations">Enable social recommendations</string>
+    <string name="pref_description_social_recommendations">Recommendations for people to contact
+        based on your message history
+    </string>
+
+    <string name="pref_title_display_name">Display name</string>
+    <string name="pref_default_display_name">John Smith</string>
+
+    <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
+    <string-array name="pref_example_list_titles">
+        <item>Always</item>
+        <item>When possible</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_example_list_values">
+        <item>1</item>
+        <item>0</item>
+        <item>-1</item>
+    </string-array>
+
+    <!-- Example settings for Data & Sync -->
+    <string name="pref_header_data_sync">Data &amp; sync</string>
+
+    <string name="pref_title_sync_frequency">Sync frequency</string>
+    <string-array name="pref_sync_frequency_titles">
+        <item>15 minutes</item>
+        <item>30 minutes</item>
+        <item>1 hour</item>
+        <item>3 hours</item>
+        <item>6 hours</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_sync_frequency_values">
+        <item>15</item>
+        <item>30</item>
+        <item>60</item>
+        <item>180</item>
+        <item>360</item>
+        <item>-1</item>
+    </string-array>
+
+    <string name="pref_title_system_sync_settings">System sync settings</string>
+
+    <!-- Example settings for Notifications -->
+    <string name="pref_header_notifications">Notifications</string>
+
+    <string name="pref_title_new_message_notifications">New message notifications</string>
+
+    <string name="pref_title_ringtone">Ringtone</string>
+    <string name="pref_ringtone_silent">Silent</string>
+
+    <string name="pref_title_vibrate">Vibrate</string>
+
+    <!--Welcome-->
+    <string name="welcome_ready">Ready To Eat?</string>
+    <string name="welcome_descrition">The Biggest Variety of Restaurant At best prices.delievered Fast to your Door</string>
+    <string name="welcome_btntext">Let Be Start?</string>
+
+
+    <!--Locate-->
+    <string name="locate_text">Your location</string>
+    <string name="locate_descrition">Tell Us Where you Want to Delievered The Food to</string>
+    <string name="locate_btntext">Locate Me</string>
+
+    <!--GPS Settings-->
+    <string name="gps_network_not_enabled">GPS ENABLE</string>
+    <string name="open_location_settings">Settings</string>
+    <string name="cancel">CANCEL</string>
+
+    <!--Account Screen-->
+    <string name="account">Account</string>
+    <string name="accountdetails">Your account Details</string>
+    <string name="ED">Edit</string>
+    <string name="UN">UserName</string>
+    <string name="EM">Email</string>
+    <string name="MO">Mobile</string>
+    <string name="updateDetails">Update</string>
+    <string name="changepassword">change password</string>
+    <string name="apply">Apply</string>
+
+
+</resources>

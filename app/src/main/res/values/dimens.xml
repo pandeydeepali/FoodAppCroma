@@ -1,0 +1,35 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <!--splash textsixe-->
+    <dimen name="splash_textview">26sp</dimen>
+    <!--Login font property-->
+    <dimen name="login_etext">24sp</dimen>
+    <dimen name="universal_height">40sp</dimen>
+    <dimen name="universal_padding">10sp</dimen>
+    <dimen name="login_padding">10sp</dimen>
+    <dimen name="login_partial">5sp</dimen>
+    <dimen name="bck_padd">2dp</dimen>
+
+    <dimen name="login">10dp</dimen>
+    <dimen name="universal_margin">12dp</dimen>
+    <dimen name="universal_margin1">18dp</dimen>
+    <dimen name="universal_margin2">28dp</dimen>
+    <dimen name="universal_margin3">38dp</dimen>
+    <dimen name="universal_margin4">48dp</dimen>
+    <dimen name="universal_margin5">58dp</dimen>
+    <dimen name="universal_margin6">68dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="nav_header_vertical_spacing">16dp</dimen>
+    <dimen name="nav_header_height">160dp</dimen>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+
+
+    <dimen name="default_text_size">16sp</dimen>
+    <dimen name="text_margin_top">72dp</dimen>
+
+</resources>

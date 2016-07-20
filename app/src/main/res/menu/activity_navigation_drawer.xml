@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group
+        android:id="@+id/group_address"
+        android:checkableBehavior="single"
+
+        >
+    <item
+        android:id="@+id/homedrawerLocation"
+        android:icon="@drawable/drawer_address"
+        android:title="@string/Address"
+        />
+    </group>
+    <group
+        android:id="@+id/group_restaurant"
+        android:checkableBehavior="single">
+
+    <item
+        android:id="@+id/homedrawerRestaurant"
+        android:icon="@drawable/drawer_rest"
+        android:title="@string/Restaurant"/>
+    </group>
+    <group
+        android:id="@+id/group_deal"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/homedrawerDeal"
+            android:icon="@drawable/draw_deal"
+            android:title="@string/Deals"/>
+    </group>
+    <group
+        android:id="@+id/group_orders"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/homedrawerOrder"
+            android:icon="@drawable/drawer_orders"
+            android:title="@string/Orders"/>
+    </group>
+    <group
+        android:id="@+id/group_account"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/homedrawerAccount"
+            android:icon="@drawable/drawer_account"
+            android:title="@string/Account"/>
+    </group>
+    <group
+        android:id="@+id/group_add"
+        android:checkableBehavior="single">
+    <item
+            android:id="@+id/homedrawerAddress"
+            android:icon="@drawable/drawer_address"
+            android:title="@string/AddressBook"/>
+    </group>
+     <group
+        android:id="@+id/group_dsettings"
+        android:checkableBehavior="single">
+
+        <item
+        android:id="@+id/homedrawerSettigs"
+        android:icon="@drawable/drawer_settings"
+        android:title="@string/Settings"/>
+    </group>
+
+    <group
+        android:id="@+id/group_infosettings"
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/homeDrawerInfo"
+            android:icon="@drawable/drawer_info"
+            android:title="@string/Info"/>
+    </group>
+</menu>

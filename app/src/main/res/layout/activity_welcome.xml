@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/parent_linear"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/splash_color"
+    android:weightSum="100">
+
+
+
+    <RelativeLayout
+        android:id="@+id/rel1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="50">
+
+        <com.rey.material.widget.ImageView
+            android:id="@+id/welcome_Image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/welcome"
+            android:layout_alignParentBottom="true"/>
+
+    </RelativeLayout>
+
+
+
+    <RelativeLayout
+        android:id="@+id/welcomeRelativeTwo"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="50"
+        android:padding="@dimen/universal_margin4"
+
+
+        >
+
+        <com.rey.material.widget.TextView
+            android:id="@+id/Ready"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/welcome_ready"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:textSize="@dimen/universal_margin2"
+            android:layout_centerInParent="true"
+            />
+
+
+        <com.rey.material.widget.TextView
+            android:id="@+id/description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/welcome_descrition"
+            android:layout_below="@+id/Ready"
+            android:textAlignment="center"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/universal_margin"
+
+            />
+
+
+        <com.rey.material.widget.Button
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/welcomeBtn"
+            app:rd_enable="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/description"
+            android:text="@string/welcome_btntext"
+            android:textColor="@color/splash_color"
+            android:background="@color/colorAccent"
+            android:layout_marginTop="@dimen/universal_margin2"
+
+            />
+    </RelativeLayout>
+
+
+    <!-- Your RelativeLayout Items -->
+
+</LinearLayout>
