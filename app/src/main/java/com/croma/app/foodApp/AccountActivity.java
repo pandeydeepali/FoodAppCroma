@@ -35,7 +35,6 @@ public class AccountActivity extends AppCompatActivity implements GlobalInterFac
         accountEmail=(EditText)findViewById(R.id.accountEmail);
         accountMobile=(EditText)findViewById(R.id.accountMobile);
         accountEdit=(TextView)findViewById(R.id.edit_text);
-        changePassword=(TextView)findViewById(R.id.changePassword);
 
 
     }

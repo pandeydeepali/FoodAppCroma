@@ -178,6 +178,7 @@ public class NavigationActivity extends AppCompatActivity implements GlobalInter
                         break;
                     }
                     case R.id.homeDrawerInfo:{
+                        ActivitySwitcher.switchActivityWithHandler(NavigationActivity.this, InfoActivity.class);
                         break;
                     }
                 }
