@@ -48,13 +48,11 @@ public class InfoAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder = null;
-
         LayoutInflater mInflater = (LayoutInflater)
                 context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
         if (convertView == null) {
             convertView = mInflater.inflate(R.layout.inforow, null);
             holder = new ViewHolder();
-
             holder.txtTitle = (TextView) convertView.findViewById(R.id.infoTextView);
             convertView.setTag(holder);
         }
@@ -63,8 +61,6 @@ public class InfoAdapter extends BaseAdapter {
         }
 
         InfoItem rowItem = (InfoItem) getItem(position);
-
-
         holder.txtTitle.setText(rowItem.getTitle());
         return convertView;
     }
