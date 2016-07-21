@@ -1,11 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/account_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/minor_custom">
+        <com.rey.material.widget.ImageView
+            android:id="@+id/infoBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/bck"
+            android:paddingLeft="@dimen/bck_padd"
 
-    tools:context="com.croma.app.foodApp.InfoActivity">
-
+            />
+        <com.rey.material.widget.TextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/universal_margin4"
+            android:textColor="@color/splash_color"
+            android:text="@string/info"
+            android:gravity="center"
+            android:padding="@dimen/login"
+            android:textSize="@dimen/universal_margin1"/>
+</android.support.v7.widget.Toolbar>
 
     <ListView
         android:id="@+id/infoList"
@@ -14,4 +33,4 @@
         android:fitsSystemWindows="true">
     </ListView>
 
-</RelativeLayout>
+</LinearLayout>

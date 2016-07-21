@@ -157,5 +157,8 @@
     <string name="changepassword">change password</string>
     <string name="apply">Apply</string>
 
+    <!--INfo Screen-->
+    <string name="info">Info</string>
+
 
 </resources>
