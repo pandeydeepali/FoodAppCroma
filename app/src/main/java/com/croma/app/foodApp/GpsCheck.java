@@ -29,7 +29,7 @@ public class GpsCheck {
             Log.e("off", "off");
             AlertDialog.Builder dialog = new AlertDialog.Builder(context);
             dialog.setIcon(R.drawable.error);
-            dialog.setMessage("GPS is Disable");
+            dialog.setMessage(" GPS is Disable from your Location Settings");
             dialog.setTitle("Warning");
           //  dialog.setMessage(context.getResources().getString(R.string.gps_network_not_enabled));
             dialog.setPositiveButton(context.getResources().getString(R.string.open_location_settings), new DialogInterface.OnClickListener() {
@@ -56,10 +56,7 @@ public class GpsCheck {
         }
 
 
-        else if(!NetworkEnable){
-            Toast.makeText(context, "Network Not Available", Toast.LENGTH_SHORT).show();
-            return false;
-        }else{
+       else{
             Log.e("on", "message");
             return true;
 

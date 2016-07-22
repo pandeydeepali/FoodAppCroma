@@ -16,7 +16,7 @@ public class AccountActivity extends AppCompatActivity implements GlobalInterFac
     private EditText accountMobile;
     private ImageView accountBack;
     private TextView accountEdit;
-    private TextView changePassword;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,7 +60,7 @@ public class AccountActivity extends AppCompatActivity implements GlobalInterFac
         accountUname.setEnabled(false);
         accountEmail.setEnabled(false);
         accountMobile.setEnabled(false);
-        changePassword.setEnabled(false);
+
     }
 
     @Override
@@ -76,7 +76,6 @@ public class AccountActivity extends AppCompatActivity implements GlobalInterFac
                     accountUname.setEnabled(true);
                     accountEmail.setEnabled(true);
                     accountMobile.setEnabled(true);
-                    changePassword.setEnabled(true);
                 }
 
                 else{
@@ -84,7 +83,7 @@ public class AccountActivity extends AppCompatActivity implements GlobalInterFac
                     accountUname.setEnabled(false);
                     accountEmail.setEnabled(false);
                     accountMobile.setEnabled(false);
-                    changePassword.setEnabled(false);
+
                 }
 
             }
