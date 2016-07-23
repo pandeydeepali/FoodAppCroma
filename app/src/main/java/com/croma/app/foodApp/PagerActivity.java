@@ -273,17 +273,6 @@ public class PagerActivity extends AppCompatActivity implements
 
         }
     }
-
-
-
-
-
-
-
-
-
-
-
     @Override
     public void onBackPressed() {
         if (mViewPager.getCurrentItem() == 0) {
