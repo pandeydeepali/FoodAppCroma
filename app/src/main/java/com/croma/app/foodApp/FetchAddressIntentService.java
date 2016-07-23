@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.ResultReceiver;
 import android.text.TextUtils;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -137,6 +138,7 @@ public class FetchAddressIntentService extends IntentService {
             // getCountryName() ("United States", for example)
             for(int i = 0; i < address.getMaxAddressLineIndex(); i++) {
                 addressFragments.add(address.getAddressLine(i));
+                Toast.makeText(FetchAddressIntentService.this, address.getAddressLine(i), Toast.LENGTH_LONG).show();
             }
             Log.i(TAG, "Address Found");
             deliverResultToReceiver(Constants.SUCCESS_RESULT,
