@@ -154,29 +154,13 @@ public class PagerActivity extends AppCompatActivity implements
      */
     @Override
     public void onConnected(Bundle connectionHint) {
-        Log.e("connection Found", "Connection");
         // Gets the best and most recent location currently available, which may be null
         // in rare cases when a location is not available.
-        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
-        }
         mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
-        Log.e("Last Location", "mLastLOcation"+mLastLocation.getLongitude());
-        Log.e("Last Location", "mLast"+mLastLocation.getLatitude());
         if (mLastLocation != null) {
-            Log.e("Geolocation Found", "Found");
-            Log.e("Last Location", "mLastLOcation"+mLastLocation.getLongitude());
-            Log.e("Last Location", "mLast"+mLastLocation.getLatitude());
             // Determine whether a Geocoder is available.
             if (!Geocoder.isPresent()) {
-                Toast.makeText(this, R.string.no_geocoder_available , Toast.LENGTH_LONG).show();
+                Toast.makeText(this, R.string.no_geocoder_available, Toast.LENGTH_LONG).show();
                 return;
             }
             // It is possible that the user presses the button to get the address before the
@@ -189,6 +173,7 @@ public class PagerActivity extends AppCompatActivity implements
             }
         }
     }
+
 
     /**
      * Creates an intent, adds location data to it as an extra, and starts the intent service for
