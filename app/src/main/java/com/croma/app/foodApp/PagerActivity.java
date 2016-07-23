@@ -109,6 +109,7 @@ public class PagerActivity extends AppCompatActivity implements
             // Check savedInstanceState to see if the address was previously requested.
             if (savedInstanceState.keySet().contains(ADDRESS_REQUESTED_KEY)) {
                 mAddressRequested = savedInstanceState.getBoolean(ADDRESS_REQUESTED_KEY);
+
             }
             // Check savedInstanceState to see if the location address string was previously found
             // and stored in the Bundle. If it was found, display the address string in the UI.
@@ -116,6 +117,7 @@ public class PagerActivity extends AppCompatActivity implements
                 mAddressOutput = savedInstanceState.getString(LOCATION_ADDRESS_KEY);
                 displayAddressOutput();
             }
+            Log.e("saved Instanced", mAddressOutput);
         }
     }
 
@@ -123,6 +125,7 @@ public class PagerActivity extends AppCompatActivity implements
      * Builds a GoogleApiClient. Uses {@code #addApi} to request the LocationServices API.
      */
     protected synchronized void buildGoogleApiClient() {
+        Log.e("Build Client", "Builder client");
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)
@@ -151,6 +154,7 @@ public class PagerActivity extends AppCompatActivity implements
      */
     @Override
     public void onConnected(Bundle connectionHint) {
+        Log.e("connection Found", "Connection");
         // Gets the best and most recent location currently available, which may be null
         // in rare cases when a location is not available.
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -164,7 +168,12 @@ public class PagerActivity extends AppCompatActivity implements
             return;
         }
         mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
+        Log.e("Last Location", "mLastLOcation"+mLastLocation.getLongitude());
+        Log.e("Last Location", "mLast"+mLastLocation.getLatitude());
         if (mLastLocation != null) {
+            Log.e("Geolocation Found", "Found");
+            Log.e("Last Location", "mLastLOcation"+mLastLocation.getLongitude());
+            Log.e("Last Location", "mLast"+mLastLocation.getLatitude());
             // Determine whether a Geocoder is available.
             if (!Geocoder.isPresent()) {
                 Toast.makeText(this, R.string.no_geocoder_available , Toast.LENGTH_LONG).show();
@@ -222,6 +231,7 @@ public class PagerActivity extends AppCompatActivity implements
      * Updates the address in the UI.
      */
     protected void displayAddressOutput() {
+        Log.e("previous stored or not", mAddressOutput);
         Log.e("Address Output", mAddressOutput);
        // mLocationAddressTextView.setText(mAddressOutput);
     }
