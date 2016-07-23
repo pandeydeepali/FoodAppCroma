@@ -161,7 +161,7 @@
     <string name="info">Info</string>
 
     <!--Pager-->
-    <string name="app_name">Getting the location address</string>
+    
     <string name="no_geocoder_available">No geocoder available</string>
 
     <string name="fetch_address">Fetch address</string>
