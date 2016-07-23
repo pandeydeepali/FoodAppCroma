@@ -8,14 +8,17 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/minor_custom">
+
         <com.rey.material.widget.ImageView
             android:id="@+id/infoBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/bck"
             android:paddingLeft="@dimen/bck_padd"
+            android:paddingRight="@dimen/bck_padd"
 
             />
+
         <com.rey.material.widget.TextView
             android:layout_width="wrap_content"
             android:layout_height="@dimen/universal_margin4"
