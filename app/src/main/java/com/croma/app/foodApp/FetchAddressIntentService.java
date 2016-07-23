@@ -92,7 +92,7 @@ public class FetchAddressIntentService extends IntentService {
             // surrounding the given latitude and longitude. The results are a best guess and are
             // not guaranteed to be accurate.
 
-           Log.e("latitude", "latitude"+location.getLatitude());
+            Log.e("latitude", "latitude"+location.getLatitude());
             Log.e("latitude", "logitude"+location.getLongitude());
             addresses = geocoder.getFromLocation(
                     location.getLatitude(),
