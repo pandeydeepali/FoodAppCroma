@@ -199,9 +199,10 @@ public class PagerActivity extends AppCompatActivity implements
      * fetching an address.
      */
     protected void startIntentService() {
+        Log.e("Intent", "Start Intent");
         // Create an intent for passing to the intent service responsible for fetching the address.
         Intent intent = new Intent(this, FetchAddressIntentService.class);
-
+        Log.e("Intent", "go to Intent");
         // Pass the result receiver as an extra to the service.
         intent.putExtra(Constants.RECEIVER, mResultReceiver);
 

@@ -61,13 +61,14 @@ public class FetchAddressIntentService extends IntentService {
 
         // Get the location passed to this service through an extra.
         Location location = intent.getParcelableExtra(Constants.LOCATION_DATA_EXTRA);
-
+        Log.e("Location", "Location");
         // Make sure that the location data was really sent over through an extra. If it wasn't,
         // send an error error message and return.
         if (location == null) {
-            errorMessage="No LOcatiob Data";
+
+            errorMessage="No Location Data";
            // errorMessage = getString("No Location Data");
-            Log.wtf(TAG, errorMessage);
+            Log.e(TAG, errorMessage);
             deliverResultToReceiver(Constants.FAILURE_RESULT, errorMessage);
             return;
         }
@@ -91,15 +92,11 @@ public class FetchAddressIntentService extends IntentService {
             // Using getFromLocation() returns an array of Addresses for the area immediately
             // surrounding the given latitude and longitude. The results are a best guess and are
             // not guaranteed to be accurate.
-
-            Log.e("latitude", "latitude"+location.getLatitude());
-            Log.e("latitude", "logitude"+location.getLongitude());
             addresses = geocoder.getFromLocation(
                     location.getLatitude(),
                     location.getLongitude(),
                     // In this sample, we get just a single address.
                     1);
-
             Log.e("Address", "addressss"+addresses);
         } catch (IOException ioException) {
             // Catch network or other I/O problems.
@@ -153,6 +150,6 @@ public class FetchAddressIntentService extends IntentService {
         Bundle bundle = new Bundle();
         bundle.putString(Constants.RESULT_DATA_KEY, message);
         mReceiver.send(resultCode, bundle);
-        Log.e("Address", "res"+resultCode);
+        Log.e("Found Address", "res"+resultCode);
     }
 }
