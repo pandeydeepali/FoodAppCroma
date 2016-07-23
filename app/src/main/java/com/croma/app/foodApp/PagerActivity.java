@@ -148,15 +148,34 @@ public class PagerActivity extends AppCompatActivity implements
         }
     }
 
+    /**
+     * Runs when user clicks the Fetch Address button. Starts the service to fetch the address if
+     * GoogleApiClient is connected.
+     */
+    public void fetchAddressButtonHandler(View view) {
+        // We only start the service to fetch the address if GoogleApiClient is connected.
+        if (mGoogleApiClient.isConnected() && mLastLocation != null) {
+            startIntentService();
+        }
+        // If GoogleApiClient isn't connected, we process the user's request by setting
+        // mAddressRequested to true. Later, when GoogleApiClient connects, we launch the service to
+        // fetch the address. As far as the user is concerned, pressing the Fetch Address button
+        // immediately kicks off the process of getting the address.
+        mAddressRequested = true;
+
+    }
+
 
     /**
      * Runs when a GoogleApiClient object successfully connects.
      */
     @Override
     public void onConnected(Bundle connectionHint) {
+        Log.e("Client Connected", "Connected");
         // Gets the best and most recent location currently available, which may be null
         // in rare cases when a location is not available.
         mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
+        Log.e("mLastLocation", "Last Location"+mLastLocation);
         if (mLastLocation != null) {
             // Determine whether a Geocoder is available.
             if (!Geocoder.isPresent()) {
