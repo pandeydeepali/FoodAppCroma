@@ -6,12 +6,6 @@ import android.content.pm.PackageManager;
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.Handler;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.os.ResultReceiver;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -57,22 +51,22 @@ public class PagerActivity extends AppCompatActivity implements
      * user's intent. If the value is true, the activity tries to fetch the address as soon as
      * GoogleApiClient connects.
      */
-    protected boolean mAddressRequested;
+    public boolean mAddressRequested;
 
     /**
      * The formatted location address.
      */
-    protected String mAddressOutput;
+    public String mAddressOutput;
 
     /**
      * Receiver registered with this activity to get the response from FetchAddressIntentService.
      */
-    private AddressResultReceiver mResultReceiver;
+    public AddressResultReceiver mResultReceiver;
 
     /**
      * Displays the location address.
      */
-    protected TextView mLocationAddressTextView;
+    //public TextView mLocationAddressTextView;
 
     /**
      * Visible while the address is being fetched.
@@ -82,7 +76,7 @@ public class PagerActivity extends AppCompatActivity implements
     /**
      * Kicks off the request to fetch an address when pressed.
      */
-    Button mFetchAddressButton;
+    //Button mFetchAddressButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,7 +98,7 @@ public class PagerActivity extends AppCompatActivity implements
     /**
      * Updates fields based on data stored in the bundle.
      */
-    private void updateValuesFromBundle(Bundle savedInstanceState) {
+    public void updateValuesFromBundle(Bundle savedInstanceState) {
         if (savedInstanceState != null) {
             // Check savedInstanceState to see if the address was previously requested.
             if (savedInstanceState.keySet().contains(ADDRESS_REQUESTED_KEY)) {
@@ -124,7 +118,7 @@ public class PagerActivity extends AppCompatActivity implements
     /**
      * Builds a GoogleApiClient. Uses {@code #addApi} to request the LocationServices API.
      */
-    protected synchronized void buildGoogleApiClient() {
+    public synchronized void buildGoogleApiClient() {
         Log.e("Build Client", "Builder client");
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addConnectionCallbacks(this)
@@ -135,13 +129,13 @@ public class PagerActivity extends AppCompatActivity implements
 
 
     @Override
-    protected void onStart() {
+    public void onStart() {
         super.onStart();
         mGoogleApiClient.connect();
     }
 
     @Override
-    protected void onStop() {
+    public void onStop() {
         super.onStop();
         if (mGoogleApiClient.isConnected()) {
             mGoogleApiClient.disconnect();
@@ -198,7 +192,7 @@ public class PagerActivity extends AppCompatActivity implements
      * Creates an intent, adds location data to it as an extra, and starts the intent service for
      * fetching an address.
      */
-    protected void startIntentService() {
+    public void startIntentService() {
         Log.e("Intent", "Start Intent");
         // Create an intent for passing to the intent service responsible for fetching the address.
         Intent intent = new Intent(this, FetchAddressIntentService.class);
@@ -235,7 +229,7 @@ public class PagerActivity extends AppCompatActivity implements
     /**
      * Updates the address in the UI.
      */
-    protected void displayAddressOutput() {
+    public void displayAddressOutput() {
         Log.e("previous stored or not", mAddressOutput);
         Log.e("Address Output", mAddressOutput);
        // mLocationAddressTextView.setText(mAddressOutput);
@@ -245,7 +239,7 @@ public class PagerActivity extends AppCompatActivity implements
     /**
      * Shows a toast with the given text.
      */
-    protected void showToast(String text) {
+    public void showToast(String text) {
         Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
     }
 
