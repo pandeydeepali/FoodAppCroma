@@ -28,7 +28,7 @@ import java.util.ArrayList;
 
 /**
  * @author supriya.pandey
- * Navigation drawer activity class
+ *         Navigation drawer activity class
  */
 public class NavigationActivity extends AppCompatActivity implements GlobalInterFace, View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
     private static final long DrawerCloseDelay = 500;
@@ -42,17 +42,16 @@ public class NavigationActivity extends AppCompatActivity implements GlobalInter
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation);
 
-        Toolbar toolbar         =       (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        navigationView          =       (NavigationView) findViewById(R.id.homeNavView);
+        navigationView = (NavigationView) findViewById(R.id.homeNavView);
         navigationView.getMenu().getItem(1).setChecked(true);
         navigationView.setNavigationItemSelectedListener(this);
 
 
-
-        mDrawerLayout           =       (DrawerLayout) findViewById(R.id.homeDrawer);
-        mDrawerToggle           =       new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.homeDrawer);
+        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
             public void onDrawerClosed(View view) {
                 super.onDrawerClosed(view);
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
@@ -65,7 +64,7 @@ public class NavigationActivity extends AppCompatActivity implements GlobalInter
         };
         mDrawerLayout.addDrawerListener(mDrawerToggle);
 
-        if (savedInstanceState == null){
+        if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.home_fragment, new ListDetailActivityFragment()).commit();
 
         }
@@ -90,9 +89,8 @@ public class NavigationActivity extends AppCompatActivity implements GlobalInter
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.homeDrawer);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        }
-        else{
-           super.onBackPressed();
+        } else {
+            super.onBackPressed();
         }
     }
 
@@ -177,7 +175,7 @@ public class NavigationActivity extends AppCompatActivity implements GlobalInter
                         ActivitySwitcher.switchActivityWithHandler(NavigationActivity.this, SettingsActivity.class);
                         break;
                     }
-                    case R.id.homeDrawerInfo:{
+                    case R.id.homeDrawerInfo: {
                         ActivitySwitcher.switchActivityWithHandler(NavigationActivity.this, InfoActivity.class);
                         break;
                     }
