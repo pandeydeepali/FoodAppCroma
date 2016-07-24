@@ -231,11 +231,6 @@ public class PagerActivity extends AppCompatActivity implements
         intent.putExtra("my_address",mAddressOutput);
         startActivity(intent);
 
-
-
-
-
-
        // mLocationAddressTextView.setText(mAddressOutput);
     }
 
