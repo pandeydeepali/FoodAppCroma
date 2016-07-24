@@ -7,11 +7,13 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class InfoActivity extends AppCompatActivity implements GlobalInterFace, AdapterView.OnItemClickListener {
     private ListView infoLView;
-    List<InfoItem> infoItems;
+    List<String> infoItems;
+    private Iterator iterator;
 
     public static final String[] titles = new String[] { "Partner with us",
             "Terms and Conditions", "Privacy Policy", "How It Works" };
@@ -22,11 +24,12 @@ public class InfoActivity extends AppCompatActivity implements GlobalInterFace, 
         setContentView(R.layout.activity_info);
         findViewById();
         setOnClickListener();
-        infoItems=new ArrayList<InfoItem>();
-        for (int i = 0; i < titles.length; i++) {
-            InfoItem item = new InfoItem( titles[i]);
-            infoItems.add(item);
-        }
+
+       // ArrayList<String>infoItems=new ArrayList<String>();
+//        for (int i = 0; i < titles.length; i++) {
+//            InfoItem item = new InfoItem( titles[i]);
+//            item.add(titles[i]);
+//        }
     }
 
     @Override

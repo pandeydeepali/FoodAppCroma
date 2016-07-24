@@ -15,10 +15,10 @@ import java.util.List;
  */
 public class InfoAdapter extends BaseAdapter {
     Context context;
-    List<InfoItem> rowItems;
+    List<String> rowItems;
 
 
-    public InfoAdapter(Context context, List<InfoItem> items) {
+    public InfoAdapter(Context context, List<String> items) {
         this.context = context;
         this.rowItems = items;
     }
