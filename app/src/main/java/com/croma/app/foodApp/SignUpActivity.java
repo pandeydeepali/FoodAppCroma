@@ -50,6 +50,7 @@ public class SignUpActivity extends AppCompatActivity implements GlobalInterFace
             } else {
                 registrationAddress= extras.getString("my_address");
                 regAddress.setText(registrationAddress);
+                regAddress.setEnabled(false);
               }
         }
     }

@@ -138,9 +138,9 @@ public class FetchAddressIntentService extends IntentService {
             // getCountryName() ("United States", for example)
             for(int i = 0; i < address.getMaxAddressLineIndex(); i++) {
                 addressFragments.add(address.getAddressLine(i));
-                Toast.makeText(FetchAddressIntentService.this, address.getAddressLine(i), Toast.LENGTH_LONG).show();
+              //  Toast.makeText(FetchAddressIntentService.this, address.getAddressLine(i), Toast.LENGTH_LONG).show();
             }
-            Log.i(TAG, "Address Found");
+
             deliverResultToReceiver(Constants.SUCCESS_RESULT,
                     TextUtils.join(System.getProperty("line.separator"), addressFragments));
         }
@@ -153,6 +153,6 @@ public class FetchAddressIntentService extends IntentService {
         Bundle bundle = new Bundle();
         bundle.putString(Constants.RESULT_DATA_KEY, message);
         mReceiver.send(resultCode, bundle);
-        Log.e("Found Address", "res"+resultCode);
+       // Log.e("Found Address", "res"+resultCode);
     }
 }

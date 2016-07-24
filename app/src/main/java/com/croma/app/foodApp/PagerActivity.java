@@ -163,8 +163,10 @@ public class PagerActivity extends AppCompatActivity implements
         Log.e("Client Connected", "Connected");
         // Gets the best and most recent location currently available, which may be null
         // in rare cases when a location is not available.
+
         mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
         Log.e("mLastLocation", "Last Location"+mLastLocation);
+
         if (mLastLocation != null) {
             // Determine whether a Geocoder is available.
             if (!Geocoder.isPresent()) {
@@ -224,9 +226,6 @@ public class PagerActivity extends AppCompatActivity implements
      * Updates the address in the UI.
      */
     public void displayAddressOutput() {
-        Log.e("previous stored or not", mAddressOutput);
-        Log.e("Address Output", mAddressOutput);
-
         progressDialog=ProgressDialog.show(this, "Please wait","Retriving Location...", true );
         final Handler handler = new Handler();
 
@@ -236,11 +235,9 @@ public class PagerActivity extends AppCompatActivity implements
                 Intent intent = new Intent(PagerActivity.this, SignUpActivity.class);
                 intent.putExtra("my_address",mAddressOutput);
                 startActivity(intent);
+                progressDialog.dismiss();
             }
-        }, 3000);
-
-
-       // mLocationAddressTextView.setText(mAddressOutput);
+        }, 5000);
     }
 
 
