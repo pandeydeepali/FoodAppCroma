@@ -24,23 +24,11 @@ public class InfoActivity extends AppCompatActivity implements GlobalInterFace, 
         setContentView(R.layout.activity_info);
         findViewById();
         setOnClickListener();
-
-       // ArrayList<String>infoItems=new ArrayList<String>();
-//        for (int i = 0; i < titles.length; i++) {
-//            InfoItem item = new InfoItem( titles[i]);
-//            item.add(titles[i]);
-//        }
     }
 
     @Override
     public void findViewById() {
         infoLView=(ListView)findViewById(R.id.infoList);
-        InfoAdapter adapter = new InfoAdapter(this, infoItems);
-        infoLView.setAdapter(adapter);
-        infoLView.setOnItemClickListener(this);
-
-
-
 
     }
 
