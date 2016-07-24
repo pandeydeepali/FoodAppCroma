@@ -10,13 +10,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class InfoActivity extends AppCompatActivity implements GlobalInterFace, AdapterView.OnItemClickListener {
+public class InfoActivity extends AppCompatActivity implements GlobalInterFace {
     private ListView infoLView;
-    List<String> infoItems;
-    private Iterator iterator;
-
-    public static final String[] titles = new String[] { "Partner with us",
-            "Terms and Conditions", "Privacy Policy", "How It Works" };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +43,4 @@ public class InfoActivity extends AppCompatActivity implements GlobalInterFace, 
     }
 
 
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-    }
 }
