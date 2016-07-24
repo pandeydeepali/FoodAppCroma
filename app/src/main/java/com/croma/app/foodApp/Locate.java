@@ -51,7 +51,7 @@ public class Locate extends Fragment implements GlobalInterFace, View.OnClickLis
     public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.locateBtn: {
-                    checkGPSProviderStatus();
+                    ((PagerActivity)getActivity()).fetchAddressButtonHandler();
                     break;
                 }
             }

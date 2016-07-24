@@ -6,7 +6,8 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
-import android.os.ResultReceiver;
+
+import android.support.v4.os.ResultReceiver;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
@@ -34,6 +35,8 @@ public class FetchAddressIntentService extends IntentService {
      * constructor with the name for a worker thread.
      */
     public FetchAddressIntentService() {
+
+
         // Use the TAG to name the worker thread.
         super(TAG);
     }

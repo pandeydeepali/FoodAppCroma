@@ -1,8 +1,6 @@
 package com.croma.app.foodApp;
 
-import android.app.Fragment;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.Handler;
@@ -12,14 +10,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
+import com.utll.global.ActivitySwitcher;
 
 
 /**
@@ -28,9 +25,9 @@ import com.google.android.gms.location.LocationServices;
  */
 public class PagerActivity extends AppCompatActivity implements
         GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
-    ViewPager mViewPager;
-    public static final String TAG = "main-activity";
 
+    public ViewPager mViewPager;
+    public static final String TAG = "main-activity";
     public static final String ADDRESS_REQUESTED_KEY = "address-request-pending";
     public static final String LOCATION_ADDRESS_KEY = "location-address";
 
@@ -92,7 +89,6 @@ public class PagerActivity extends AppCompatActivity implements
         updateValuesFromBundle(savedInstanceState);
         buildGoogleApiClient();
 
-
     }
 
     /**
@@ -146,7 +142,7 @@ public class PagerActivity extends AppCompatActivity implements
      * Runs when user clicks the Fetch Address button. Starts the service to fetch the address if
      * GoogleApiClient is connected.
      */
-    public void fetchAddressButtonHandler(View view) {
+    public void fetchAddressButtonHandler() {
         // We only start the service to fetch the address if GoogleApiClient is connected.
         if (mGoogleApiClient.isConnected() && mLastLocation != null) {
             startIntentService();
@@ -196,7 +192,6 @@ public class PagerActivity extends AppCompatActivity implements
         Log.e("Intent", "Start Intent");
         // Create an intent for passing to the intent service responsible for fetching the address.
         Intent intent = new Intent(this, FetchAddressIntentService.class);
-        Log.e("Intent", "go to Intent");
         // Pass the result receiver as an extra to the service.
         intent.putExtra(Constants.RECEIVER, mResultReceiver);
 
@@ -232,6 +227,15 @@ public class PagerActivity extends AppCompatActivity implements
     public void displayAddressOutput() {
         Log.e("previous stored or not", mAddressOutput);
         Log.e("Address Output", mAddressOutput);
+        Intent intent = new Intent(PagerActivity.this, SignUpActivity.class);
+        intent.putExtra("my_address",mAddressOutput);
+        startActivity(intent);
+
+
+
+
+
+
        // mLocationAddressTextView.setText(mAddressOutput);
     }
 
