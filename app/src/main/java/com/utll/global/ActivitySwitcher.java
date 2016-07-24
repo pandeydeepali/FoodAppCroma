@@ -23,8 +23,8 @@ public class ActivitySwitcher {
         Intent intent = new Intent(activity,activityClass);
 
         activity.startActivity(intent);
-        activity.overridePendingTransition(R.anim.slide_in_left,
-                R.anim.slide_in_right);
+//        activity.overridePendingTransition(R.anim.slide_in_left,
+//                R.anim.slide_in_right);
     }
 
     /**

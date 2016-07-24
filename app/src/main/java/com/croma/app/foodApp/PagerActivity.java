@@ -1,5 +1,6 @@
 package com.croma.app.foodApp;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.location.Geocoder;
 import android.location.Location;
@@ -16,9 +17,6 @@ import android.widget.Toast;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
-import com.utll.global.ActivitySwitcher;
-
-
 /**
  * author supriya.pandey
  *
@@ -30,6 +28,7 @@ public class PagerActivity extends AppCompatActivity implements
     public static final String TAG = "main-activity";
     public static final String ADDRESS_REQUESTED_KEY = "address-request-pending";
     public static final String LOCATION_ADDRESS_KEY = "location-address";
+    private ProgressDialog progressDialog=null;
 
     /**
      * Provides the entry point to Google Play services.
@@ -227,9 +226,19 @@ public class PagerActivity extends AppCompatActivity implements
     public void displayAddressOutput() {
         Log.e("previous stored or not", mAddressOutput);
         Log.e("Address Output", mAddressOutput);
-        Intent intent = new Intent(PagerActivity.this, SignUpActivity.class);
-        intent.putExtra("my_address",mAddressOutput);
-        startActivity(intent);
+
+        progressDialog=ProgressDialog.show(this, "Please wait","Retriving Location...", true );
+        final Handler handler = new Handler();
+
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent intent = new Intent(PagerActivity.this, SignUpActivity.class);
+                intent.putExtra("my_address",mAddressOutput);
+                startActivity(intent);
+            }
+        }, 3000);
+
 
        // mLocationAddressTextView.setText(mAddressOutput);
     }
