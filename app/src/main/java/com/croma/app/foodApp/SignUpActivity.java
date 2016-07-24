@@ -23,6 +23,7 @@ public class SignUpActivity extends AppCompatActivity implements GlobalInterFace
     private ImageView regBack;
     private EditText regName, regEmail, regPass, regcPass, regPhone, regAddress;
     private ProgressDialog progressDialog = null;
+    String registrationAddress;
 
     //-------------------------//
     private static final String TAG = SignUpActivity.class.getSimpleName();
@@ -40,7 +41,18 @@ public class SignUpActivity extends AppCompatActivity implements GlobalInterFace
         setContentView(R.layout.activity_registration);
         findViewById();
         setOnClickListener();
-     }
+
+
+        if (savedInstanceState == null) {
+            Bundle extras = getIntent().getExtras();
+            if(extras == null) {
+                registrationAddress= null;
+            } else {
+                registrationAddress= extras.getString("my_address");
+                regAddress.setText(registrationAddress);
+              }
+        }
+    }
 
 
 
