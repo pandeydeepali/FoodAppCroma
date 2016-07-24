@@ -54,8 +54,6 @@ public class SignUpActivity extends AppCompatActivity implements GlobalInterFace
         }
     }
 
-
-
     @Override
     public void findViewById() {
         regBack = (ImageView) findViewById(R.id.regBack);
