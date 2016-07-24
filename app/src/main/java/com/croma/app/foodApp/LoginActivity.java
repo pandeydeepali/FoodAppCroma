@@ -17,6 +17,13 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.utll.global.utilCommon;
 import com.utll.global.CustomControl;
 import com.utll.global.Validation;
@@ -136,6 +143,7 @@ import com.utll.global.Validation;
                             editor.putString("userPassword", loginPass.getText().toString());
                             editor.commit();
                             startActivity(intent);
+                            
                         } catch (Exception e) {
                             //Dismiss The Dialog
                             e.printStackTrace();
@@ -154,6 +162,7 @@ import com.utll.global.Validation;
 
         }
     }
+
 
     private void registerUserOnRegLink(){
                 Intent intent = new Intent(LoginActivity.this, PagerActivity.class);
