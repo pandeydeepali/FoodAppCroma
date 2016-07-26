@@ -66,11 +66,8 @@ public class NavigationActivity extends AppCompatActivity implements GlobalInter
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.home_fragment, new ListDetailActivityFragment()).commit();
-
         }
-
-    }
-
+     }
 
     @Override
     protected void onResume() {
