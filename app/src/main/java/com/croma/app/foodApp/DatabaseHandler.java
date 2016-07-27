@@ -48,7 +48,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + PhoneNumber+" TEXT ,"
                 + Address+" TEXT )";
 
-         db.execSQL(CREATE_REGISTERUSER_TABLE);
+        db.execSQL(CREATE_REGISTERUSER_TABLE);
 
     }
 
@@ -56,11 +56,5 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_REGISTERUSER_DATA);
         onCreate(db);
-
     }
-
-
-
-
-
 }
