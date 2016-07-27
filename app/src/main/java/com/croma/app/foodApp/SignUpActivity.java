@@ -31,6 +31,7 @@ public class SignUpActivity extends AppCompatActivity implements GlobalInterFace
      * The desired interval for location updates. Inexact. Updates may be more or less frequent.
      */
     public static final long UPDATE_INTERVAL_IN_MILLISECONDS = 10000;
+    private DatabaseHandler dbHandler = new DatabaseHandler(this);
 
 
     @Override
@@ -106,7 +107,8 @@ public class SignUpActivity extends AppCompatActivity implements GlobalInterFace
                         @Override
                         public void run() {
                             try {
-                             Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
+                                insertDataintoSqliteDatabase();
+                                Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
                                 CustomControl.successAlert(SignUpActivity.this, "Success", "Thank You For Registration");
                                 startActivity(intent);
                             } catch (Exception e) {
@@ -121,6 +123,15 @@ public class SignUpActivity extends AppCompatActivity implements GlobalInterFace
                 }
             }
         });
+    }
+
+    private void insertDataintoSqliteDatabase(){
+
+
+
+
+
+
     }
 
 
