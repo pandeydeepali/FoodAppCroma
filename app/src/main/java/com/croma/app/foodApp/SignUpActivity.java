@@ -114,6 +114,8 @@ public class SignUpActivity extends AppCompatActivity implements GlobalInterFace
                                // Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
                                 CustomControl.successAlert(SignUpActivity.this, "Success", "Thank You For Registration, Record Inserted Successfully");
                                 //startActivity(intent);
+
+
                             } catch (Exception e) {
                                 e.printStackTrace();
 
@@ -122,14 +124,14 @@ public class SignUpActivity extends AppCompatActivity implements GlobalInterFace
                             overridePendingTransition(R.anim.slide_in_left,
                                     R.anim.slide_out_right);
                         }
-                    }, 3000);
+                    }, 5000);
                 }
             }
         });
     }
 
     private void insertDataintoSqliteDatabase(){
-       // DatabaseHandler databaseHandler=new DatabaseHandler(this);
+        DatabaseHandler databaseHandler=new DatabaseHandler(this);
         SQLiteDatabase db = databaseHandler.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("UserName", regName.getText().toString());
