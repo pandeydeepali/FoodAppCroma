@@ -143,9 +143,6 @@ public class SignUpActivity extends AppCompatActivity implements GlobalInterFace
         // Inserting
         db.insert(DatabaseHandler.TABLE_REGISTERUSER_DATA, null, values);
         db.close(); // Closing database connection
-
-
-
     }
 
 

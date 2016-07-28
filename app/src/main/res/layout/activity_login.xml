@@ -127,6 +127,9 @@
                 android:textAlignment="center"
                 android:textColor="@color/splash_color"
                 android:textSize="@dimen/universal_margin" />
+
+
+
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

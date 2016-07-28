@@ -44,6 +44,7 @@ import com.utll.global.Validation;
     private  TextView loginRegLink;
     private  TextView loginForgetLink;
     private  CheckBox loginshowPassCB;
+
     //----progress dialog
     private ProgressDialog progressDialog=null;
 
