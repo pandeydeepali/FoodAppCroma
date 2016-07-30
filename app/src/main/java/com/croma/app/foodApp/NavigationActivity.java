@@ -22,7 +22,15 @@ import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.common.util.concurrent.FutureCallback;
+import com.google.common.util.concurrent.Futures;
+import com.google.common.util.concurrent.ListenableFuture;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.utll.global.ActivitySwitcher;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -36,6 +44,9 @@ public class NavigationActivity extends AppCompatActivity implements GlobalInter
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
     private NavigationView navigationView;
+    public static final int REQUEST_TIMEOUT_MS = 10000;
+    private ArrayList<geometry> mArrayList;
+    private static final String TAG     =       NavigationActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +85,7 @@ public class NavigationActivity extends AppCompatActivity implements GlobalInter
         super.onResume();
         double latitude=28.574473;
         double longitude=77.329135;
+        getNearestPlacesDataFromVolleyPlus();
 
 
 
@@ -191,4 +203,40 @@ public class NavigationActivity extends AppCompatActivity implements GlobalInter
     public void onClick(View v) {
 
     }
+
+
+    public void getNearestPlacesDataFromVolleyPlus(){
+        Log.e("get Apis", ServiceConfig.URL);
+        final ListenableFuture<JSONObject> getRestaurantListenable = jsonRequestWithGet(ServiceConfig.URL);
+        Futures.addCallback(getRestaurantListenable, new FutureCallback<JSONObject>() {
+            @Override
+            public void onSuccess(JSONObject result) {
+                Log.v(TAG,result.toString());
+                mArrayList = new ArrayList<geometry>();
+                try{
+                    JSONArray jsonArray = result.getJSONArray("results");
+                    for(int i = 0 ;i<jsonArray.length();i++){
+                        geometry geometry = new Gson().fromJson(jsonArray.getJSONObject(i).toString(),geometry.class);
+                        mArrayList.add(geometry);
+                    }
+                    Toast.makeText(NavigationActivity.this,"Data Geted From Service",Toast.LENGTH_SHORT).show();
+                    Log.v(TAG,jsonArray.length()+"");
+                }catch (Exception e){
+                    Toast.makeText(NavigationActivity.this,"There is some problem while getting restarorent",Toast.LENGTH_SHORT).show();
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                Log.v(TAG,t.toString());
+            }
+        });
+
+
+
+
+    }
+
+
 }
