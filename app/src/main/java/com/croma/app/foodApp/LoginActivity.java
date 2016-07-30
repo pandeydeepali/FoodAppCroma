@@ -1,9 +1,7 @@
 package com.croma.app.foodApp;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -79,8 +77,8 @@ public class LoginActivity extends AppCompatActivity implements GlobalInterFace,
     }
 
     public void displaySharedPreferenceValue() {
-        SharedPrefUtil.getString("Reg_UserName", " Foody ", LoginActivity.this);
-        SharedPrefUtil.getString("Reg_Password", " Foody ", LoginActivity.this);
+        SharedPrefUtil.getString("Reg_UserName", "  ", LoginActivity.this);
+        SharedPrefUtil.getString("Reg_Password", "  ", LoginActivity.this);
         loginUName.setText(SharedPrefUtil.getString("Reg_UserName", " Foody ", LoginActivity.this));
         loginPass.setText(SharedPrefUtil.getString("Reg_Password", " Foody ", LoginActivity.this));
     }
@@ -126,8 +124,8 @@ public class LoginActivity extends AppCompatActivity implements GlobalInterFace,
                     public void run() {
                         try {
                             if (utilCommon.isNetworkAvailable(LoginActivity.this)) {
-                                SharedPrefUtil.getString("Reg_UserName", " Foody ", LoginActivity.this);
-                                SharedPrefUtil.getString("Reg_Password", " Foody ", LoginActivity.this);
+                                SharedPrefUtil.getString("Reg_UserName", "  ", LoginActivity.this);
+                                SharedPrefUtil.getString("Reg_Password", "  ", LoginActivity.this);
                                 if (loginUName.getText().toString().equals(SharedPrefUtil.getString("Reg_UserName", "", LoginActivity.this))
                                         && loginPass.getText().toString().equals(SharedPrefUtil.getString("Reg_Password", "", LoginActivity.this))) {
                                     CustomControl.successAlert(LoginActivity.this, "Success", "LOGIN SUCCESSFUL");
