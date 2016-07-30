@@ -1,15 +1,9 @@
 package com.croma.app.foodApp;
 
-
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.NavigationView;
-import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import android.view.View;
 import android.support.v4.view.GravityCompat;
@@ -19,10 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ListView;
-import android.widget.Toast;
-
-import com.android.volley.DefaultRetryPolicy;
+import android.widget.Toast;import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.error.AuthFailureError;
@@ -33,13 +24,9 @@ import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.SettableFuture;
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
 import com.utll.global.ActivitySwitcher;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -90,16 +77,6 @@ public class NavigationActivity extends AppCompatActivity implements GlobalInter
         }
      }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        double latitude=28.574473;
-        double longitude=77.329135;
-        getNearestPlacesDataFromVolleyPlus();
-
-
-
-    }
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
@@ -116,6 +93,17 @@ public class NavigationActivity extends AppCompatActivity implements GlobalInter
         } else {
             super.onBackPressed();
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getNearestPlacesDataFromVolleyPlus();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
     }
 
     @Override
