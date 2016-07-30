@@ -74,7 +74,7 @@ public class NavigationActivity extends AppCompatActivity implements GlobalInter
         super.onResume();
         double latitude=28.574473;
         double longitude=77.329135;
-        
+
 
 
     }
