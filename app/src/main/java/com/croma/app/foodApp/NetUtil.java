@@ -69,6 +69,7 @@ public final class NetUtil {
      * @param context
      * @return
      */
+
     public static boolean isNetworkAvailable(Context context) {
         boolean netstate = false;
         ConnectivityManager connectivity = (ConnectivityManager) context
@@ -80,8 +81,7 @@ public final class NetUtil {
                 for (int i = 0; i < info.length; i++) {
 
                     if (info[i].getState() == NetworkInfo.State.CONNECTED) {
-
-                        netstate = true;
+                         netstate = true;
                         break;
                     }
                 }

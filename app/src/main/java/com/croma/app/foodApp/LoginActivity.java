@@ -29,20 +29,18 @@ import com.utll.global.Validation;
  * We are using a interface here for optimizatio of source code
  * Inteface: Declaration in interface
  * and definaition in class files
- *
  */
-    public class LoginActivity extends AppCompatActivity implements GlobalInterFace,View.OnClickListener, TextWatcher {
+public class LoginActivity extends AppCompatActivity implements GlobalInterFace, View.OnClickListener, TextWatcher {
     private static final String TAG = LoginActivity.class.getName();
-    private  EditText loginUName;
-    private  EditText loginPass;
-    private  Button loginButton;
-    private  TextView loginRegLink;
-    private  TextView loginForgetLink;
-    private  CheckBox loginshowPassCB;
+    private EditText loginUName;
+    private EditText loginPass;
+    private Button loginButton;
+    private TextView loginRegLink;
+    private TextView loginForgetLink;
+    private CheckBox loginshowPassCB;
 
     //----progress dialog
-    private ProgressDialog progressDialog=null;
-
+    private ProgressDialog progressDialog = null;
 
 
     @Override
@@ -68,7 +66,7 @@ import com.utll.global.Validation;
         super.onResume();
         displaySharedPreferenceValue();
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-        if(loginUName.getText().length()==0 && loginPass.getText().length()==0 ){
+        if (loginUName.getText().length() == 0 && loginPass.getText().length() == 0) {
             loginUName.setError("Field Can Not Be Empty");
             loginPass.setError("Field Can Not be empty");
         }
@@ -80,17 +78,16 @@ import com.utll.global.Validation;
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
     }
 
-    public void displaySharedPreferenceValue(){
-        SharedPreferences myPrefs = getSharedPreferences(GlobalsharedPreference.loginsharedPREFERENCES, MODE_PRIVATE);
-        String loginUserName=myPrefs.getString("userName", "");
-        String loginPassword=myPrefs.getString("userPassword", "");
-        loginUName.setText(loginUserName);
-        loginPass.setText(loginPassword);
+    public void displaySharedPreferenceValue() {
+        SharedPrefUtil.getString("Reg_UserName", " Foody ", LoginActivity.this);
+        SharedPrefUtil.getString("Reg_Password", " Foody ", LoginActivity.this);
+        loginUName.setText(SharedPrefUtil.getString("Reg_UserName", " Foody ", LoginActivity.this));
+        loginPass.setText(SharedPrefUtil.getString("Reg_Password", " Foody ", LoginActivity.this));
     }
 
     /**
      * Interface Method Definition and declaration in GlobalInterface Idenfied by I icon in package
-     *Method: setOnClickListener and findViewById
+     * Method: setOnClickListener and findViewById
      */
 
     @Override
@@ -100,8 +97,8 @@ import com.utll.global.Validation;
         loginPass = (EditText) findViewById(R.id.loginPass);
         loginRegLink = (TextView) findViewById(R.id.loginRegLink);
         loginForgetLink = (TextView) findViewById(R.id.loginForgetLink);
-        loginshowPassCB=(CheckBox)findViewById(R.id.loginCheckBox);
-     }
+        loginshowPassCB = (CheckBox) findViewById(R.id.loginCheckBox);
+    }
 
     @Override
     public void setOnClickListener() {
@@ -115,74 +112,74 @@ import com.utll.global.Validation;
     }
 
 
-
     private void validateUserOnLoginButton() {
         try {
             if (!Validation.hasText(loginUName) && !Validation.hasText(loginPass) || !Validation.hasText(loginUName) || !Validation.hasText(loginPass)) {
 
             } else if (!Validation.isValid(loginPass, Validation.PASSWORD_REGEX, "Password Should be alphanumeric with specialCharacter", true)) {
 
-            }else {
-                progressDialog=ProgressDialog.show(this, "Please wait","Logging...", true );
+            } else {
+                progressDialog = ProgressDialog.show(this, "Please wait", "Logging...", true);
                 getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
                 final Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
                     public void run() {
                         try {
-                            SharedPrefUtil.getString("Reg_UserName", " Foody ", LoginActivity.this);
-                            SharedPrefUtil.getString("Reg_Password", " Foody ", LoginActivity.this);
-                            if(loginUName.getText().toString().equals(SharedPrefUtil.getString("Reg_UserName", "", LoginActivity.this))
-                                 && loginPass.getText().toString().equals(SharedPrefUtil.getString("Reg_Password", "", LoginActivity.this))){
-                                 CustomControl.successAlert(LoginActivity.this, "Success", "LOGIN SUCCESSFUL");
-                                 SharedPrefUtil.putString("loggedBoolean", "1", LoginActivity.this);
-                                 ActivitySwitcher.switchActivity(LoginActivity.this, NavigationActivity.class);
-                            }else{
-                                CustomControl.alertDialogShow(LoginActivity.this, "Error", "Login Failed");
+                            if (utilCommon.isNetworkAvailable(LoginActivity.this)) {
+                                SharedPrefUtil.getString("Reg_UserName", " Foody ", LoginActivity.this);
+                                SharedPrefUtil.getString("Reg_Password", " Foody ", LoginActivity.this);
+                                if (loginUName.getText().toString().equals(SharedPrefUtil.getString("Reg_UserName", "", LoginActivity.this))
+                                        && loginPass.getText().toString().equals(SharedPrefUtil.getString("Reg_Password", "", LoginActivity.this))) {
+                                    CustomControl.successAlert(LoginActivity.this, "Success", "LOGIN SUCCESSFUL");
+                                    SharedPrefUtil.putString("loggedBoolean", "1", LoginActivity.this);
+                                    ActivitySwitcher.switchActivity(LoginActivity.this, NavigationActivity.class);
+                                } else {
+                                    CustomControl.alertDialogShow(LoginActivity.this, "Error", "Login Failed");
+                                }
                             }
+                            progressDialog.dismiss();
+                            overridePendingTransition(R.anim.slide_in_left,
+                                    R.anim.slide_out_right);
                         } catch (Exception e) {
                             //Dismiss The Dialog
                             e.printStackTrace();
                         }
-                        progressDialog.dismiss();
-                        overridePendingTransition(R.anim.slide_in_left,
-                                R.anim.slide_out_right);
+
                     }
                 }, 3000);
-                if (utilCommon.isNetworkAvailable(LoginActivity.this)) {
-                    //----hit web service from here
-                }
-              }
-        }catch (Exception e){
+
+            }
+        } catch (Exception e) {
             e.printStackTrace();
 
         }
     }
 
 
-    private void registerUserOnRegLink(){
-                Intent intent = new Intent(LoginActivity.this, PagerActivity.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.slide_in_left,
-                        R.anim.slide_out_right);
+    private void registerUserOnRegLink() {
+        Intent intent = new Intent(LoginActivity.this, PagerActivity.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_left,
+                R.anim.slide_out_right);
 
     }
 
 
-    private void sendPassOnForgetPasswordLink(){
+    private void sendPassOnForgetPasswordLink() {
         Intent intent = new Intent(LoginActivity.this, ForgetPassActivity.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.slide_in_left,
-                        R.anim.slide_out_right);
+        startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_left,
+                R.anim.slide_out_right);
     }
 
-    private void showPassword(){
-        if(!loginshowPassCB.isChecked()){
+    private void showPassword() {
+        if (!loginshowPassCB.isChecked()) {
             Log.e("err", "encrypted");
             loginPass.setInputType(129);
-        }else{
+        } else {
             Log.e("succ", "visible");
             //-----visible password alphabet charactre
-             loginPass.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
+            loginPass.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
         }
     }
 
@@ -198,27 +195,27 @@ import com.utll.global.Validation;
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.loginButton:{
+        switch (v.getId()) {
+            case R.id.loginButton: {
                 validateUserOnLoginButton();
                 break;
             }
 
-            case R.id.loginForgetLink:{
+            case R.id.loginForgetLink: {
                 sendPassOnForgetPasswordLink();
                 break;
             }
 
-            case R.id.loginRegLink:{
+            case R.id.loginRegLink: {
                 registerUserOnRegLink();
                 break;
             }
 
-            case R.id.loginCheckBox:{
+            case R.id.loginCheckBox: {
                 showPassword();
                 break;
             }
-         }
+        }
 
     }
 
@@ -230,17 +227,17 @@ import com.utll.global.Validation;
 
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int count) {
-        if(loginUName.length()>0){
+        if (loginUName.length() > 0) {
             loginUName.setError(null);
         }
-        if(loginUName.length()==0){
+        if (loginUName.length() == 0) {
             loginUName.setError("Field Can Not Be Empty");
         }
-        if(loginPass.length()>0){
+        if (loginPass.length() > 0) {
             loginPass.setError(null);
 
         }
-        if(loginPass.length()==0){
+        if (loginPass.length() == 0) {
             loginPass.setError("Field Can Not Be Empty");
         }
     }
