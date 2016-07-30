@@ -131,19 +131,7 @@ import com.utll.global.Validation;
 
             } else if (!Validation.isValid(loginPass, Validation.PASSWORD_REGEX, "Password Should be alphanumeric with specialCharacter", true)) {
 
-            }else{
-                String selectQuery = "SELECT  * FROM " + DatabaseHandler.TABLE_REGISTERUSER_DATA;
-                DatabaseHandler db=new DatabaseHandler(this);
-                SQLiteDatabase sqLiteDatabase=db.getReadableDatabase();
-                Cursor cursor=sqLiteDatabase.rawQuery(selectQuery, null);
-
-
-
-
-            }
-
-            /*********stored Data in shared preferences*******************/
-          /*  else {
+            }else {
                 getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
                 progressDialog=ProgressDialog.show(this, "Please wait","Retriving User Information...", true );
                 final Handler handler = new Handler();
@@ -172,7 +160,7 @@ import com.utll.global.Validation;
                 if (utilCommon.isNetworkAvailable(LoginActivity.this)) {
                     //----hit web service from here
                 }
-              }*/
+              }
         }catch (Exception e){
             e.printStackTrace();
 
