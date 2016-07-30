@@ -72,6 +72,11 @@ public class NavigationActivity extends AppCompatActivity implements GlobalInter
     @Override
     protected void onResume() {
         super.onResume();
+        double latitude=28.574473;
+        double longitude=77.329135;
+        
+
+
     }
 
     @Override

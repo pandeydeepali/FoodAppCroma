@@ -138,6 +138,13 @@ public class PagerActivity extends AppCompatActivity implements
         }
     }
 
+    @Override
+    public void onResume(){
+        super.onResume();
+
+    }
+
+
     /**
      * Runs when user clicks the Fetch Address button. Starts the service to fetch the address if
      * GoogleApiClient is connected.
