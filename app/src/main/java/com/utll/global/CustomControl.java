@@ -40,7 +40,7 @@ public class CustomControl {
         alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        UtilGlobalMethod.exitApplication();
+                       // UtilGlobalMethod.exitApplication();
                     }
                 });
 
