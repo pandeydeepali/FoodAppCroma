@@ -168,7 +168,11 @@ public class PagerActivity extends AppCompatActivity implements
         mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
         Log.e("mLastLocation", "Last Location"+mLastLocation.getLatitude());
         Log.e("mLastLocation", "Last Location"+mLastLocation.getLongitude());
-       // SharedPrefUtil.putString("CurrentLatitude", mLastLocation.getLatitude(), PagerActivity.this);
+        double latitude=mLastLocation.getLatitude();
+        double longitude=mLastLocation.getLongitude();
+
+        SharedPrefUtil.putLong("CurrentLatitude",Double.doubleToLongBits(mLastLocation.getLatitude()), PagerActivity.this);
+        SharedPrefUtil.putLong("CurrentLatitude",Double.doubleToLongBits(mLastLocation.getLongitude()), PagerActivity.this);
 
 
         if (mLastLocation != null) {
