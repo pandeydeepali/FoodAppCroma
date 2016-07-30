@@ -47,6 +47,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + ConfirmPassword+" TEXT, "
                 + PhoneNumber+" TEXT ,"
                 + Address+" TEXT )";
+        // Enable foreign key constraints
+        if (!db.isReadOnly()) {
+            db.execSQL("PRAGMA foreign_keys = ON;");
+        }
 
         db.execSQL(CREATE_REGISTERUSER_TABLE);
 

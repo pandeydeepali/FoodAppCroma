@@ -4,8 +4,11 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.InputType;
@@ -128,7 +131,19 @@ import com.utll.global.Validation;
 
             } else if (!Validation.isValid(loginPass, Validation.PASSWORD_REGEX, "Password Should be alphanumeric with specialCharacter", true)) {
 
-            } else {
+            }else{
+                String selectQuery = "SELECT  * FROM " + DatabaseHandler.TABLE_REGISTERUSER_DATA;
+                DatabaseHandler db=new DatabaseHandler(this);
+                SQLiteDatabase sqLiteDatabase=db.getReadableDatabase();
+                Cursor cursor=sqLiteDatabase.rawQuery(selectQuery, null);
+
+
+
+
+            }
+
+            /*********stored Data in shared preferences*******************/
+          /*  else {
                 getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
                 progressDialog=ProgressDialog.show(this, "Please wait","Retriving User Information...", true );
                 final Handler handler = new Handler();
@@ -157,7 +172,7 @@ import com.utll.global.Validation;
                 if (utilCommon.isNetworkAvailable(LoginActivity.this)) {
                     //----hit web service from here
                 }
-              }
+              }*/
         }catch (Exception e){
             e.printStackTrace();
 
