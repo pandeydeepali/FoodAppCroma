@@ -137,12 +137,12 @@ public class SignUpActivity extends AppCompatActivity implements GlobalInterFace
     }
 
     private void insertDataintoSharedPreference(){
-        SharedPrefUtil.putString("Reg_UserName", regName.getText().toString().trim(), SignUpActivity.this);
-        SharedPrefUtil.putString("Reg_Email", regEmail.getText().toString().trim(), SignUpActivity.this);
-        SharedPrefUtil.putString("Reg_Password", regPass.getText().toString().trim(), SignUpActivity.this);
-        SharedPrefUtil.putString("Reg_CPassword", regcPass.getText().toString().trim(), SignUpActivity.this);
-        SharedPrefUtil.putString("Reg_Phone", regPhone.getText().toString().trim(), SignUpActivity.this);
-        SharedPrefUtil.putString("Reg_Address", regAddress.getText().toString().trim(), SignUpActivity.this);
+        SharedPrefUtil.putString("Reg_UserName", regName.getText().toString(), SignUpActivity.this);
+        SharedPrefUtil.putString("Reg_Email", regEmail.getText().toString(), SignUpActivity.this);
+        SharedPrefUtil.putString("Reg_Password", regPass.getText().toString(), SignUpActivity.this);
+        SharedPrefUtil.putString("Reg_CPassword", regcPass.getText().toString(), SignUpActivity.this);
+        SharedPrefUtil.putString("Reg_Phone", regPhone.getText().toString(), SignUpActivity.this);
+        SharedPrefUtil.putString("Reg_Address", regAddress.getText().toString(), SignUpActivity.this);
     }
 
 

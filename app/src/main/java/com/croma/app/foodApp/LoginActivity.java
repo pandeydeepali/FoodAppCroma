@@ -17,6 +17,8 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.utll.global.ActivitySwitcher;
 import com.utll.global.utilCommon;
 import com.utll.global.CustomControl;
 import com.utll.global.Validation;
@@ -116,44 +118,27 @@ import com.utll.global.Validation;
 
     private void validateUserOnLoginButton() {
         try {
-
             if (!Validation.hasText(loginUName) && !Validation.hasText(loginPass) || !Validation.hasText(loginUName) || !Validation.hasText(loginPass)) {
 
             } else if (!Validation.isValid(loginPass, Validation.PASSWORD_REGEX, "Password Should be alphanumeric with specialCharacter", true)) {
 
             }else {
-                progressDialog=ProgressDialog.show(this, "Please wait","Retriving User Information...", true );
+                progressDialog=ProgressDialog.show(this, "Please wait","Logging...", true );
                 getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
                 final Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
                     public void run() {
                         try {
-                            SharedPrefUtil.getString("Reg_UserName", "Supriya", LoginActivity.this);
-                            SharedPrefUtil.getString("Reg_Password", "Supriya", LoginActivity.this);
-                            loginUName.setText(SharedPrefUtil.getString("Reg_UserName", "Supriya", LoginActivity.this));
-                            loginPass.setText(SharedPrefUtil.getString("Reg_Password", "Supriya", LoginActivity.this));
-                            if(loginUName.getText().toString().equals(SharedPrefUtil.getString("Reg_UserName", "Supriya", LoginActivity.this)))
-                            {
-                                if(loginPass.getText().toString().equals(SharedPrefUtil.getString("Reg_UserPass", "Supriya", LoginActivity.this))){
-                                    CustomControl.successAlert(LoginActivity.this, "Success", "LOGIN SUCCESSFUL");
-                                    Intent intent = new Intent(LoginActivity.this, NavigationActivity.class);
-                                }else{
-                                    CustomControl.alertDialogShow(LoginActivity.this, "Error", "No Value Match From SharedPreferences, Login Failed");
-                                }
+                            SharedPrefUtil.getString("Reg_UserName", " Foody ", LoginActivity.this);
+                            SharedPrefUtil.getString("Reg_Password", " Foody ", LoginActivity.this);
+                            if(loginUName.getText().toString().equals(SharedPrefUtil.getString("Reg_UserName", "", LoginActivity.this))
+                                 && loginPass.getText().toString().equals(SharedPrefUtil.getString("Reg_Password", "", LoginActivity.this))){
+                                 CustomControl.successAlert(LoginActivity.this, "Success", "LOGIN SUCCESSFUL");
+                                 SharedPrefUtil.putString("loggedBoolean", "1", LoginActivity.this);
+                                 ActivitySwitcher.switchActivity(LoginActivity.this, NavigationActivity.class);
+                            }else{
+                                CustomControl.alertDialogShow(LoginActivity.this, "Error", "Login Failed");
                             }
-
-
-
-                            //CustomProgressView.show(LoginActivity.this,"Success","LOGIN SUCCESSFUL");
-
-
-                         //   SharedPreferences.Editor editor = sharedpreferences.edit();
-                          //  editor.putString("UserId", "1");
-                           // editor.putString("userName",loginUName.getText().toString());
-                           // editor.putString("userPassword", loginPass.getText().toString());
-                           // editor.commit();
-                           // startActivity(intent);
-
                         } catch (Exception e) {
                             //Dismiss The Dialog
                             e.printStackTrace();
