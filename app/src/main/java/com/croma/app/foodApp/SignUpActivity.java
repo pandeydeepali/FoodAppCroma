@@ -110,7 +110,7 @@ public class SignUpActivity extends AppCompatActivity implements GlobalInterFace
                         @Override
                         public void run() {
                             try {
-                                insertDataintoSqliteDatabase();
+                                insertDataintoSharedPreference();
                                // Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
                                 CustomControl.successAlert(SignUpActivity.this, "Success", "Thank You For Registration, Record Inserted Successfully");
                                 regName.setText("");
@@ -136,19 +136,8 @@ public class SignUpActivity extends AppCompatActivity implements GlobalInterFace
         });
     }
 
-    private void insertDataintoSqliteDatabase(){
-        DatabaseHandler databaseHandler=new DatabaseHandler(this);
-        SQLiteDatabase db = databaseHandler.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put("UserName", regName.getText().toString());
-        values.put("EmailAddress", regEmail.getText().toString());
-        values.put("Password", regPass.getText().toString());
-        values.put("ConfirmPassword", regcPass.getText().toString());
-        values.put("PhoneNumber", regPhone.getText().toString());
-        values.put("Address", regAddress.getText().toString());
-        // Inserting
-        db.insert(DatabaseHandler.TABLE_REGISTERUSER_DATA, null, values);
-        db.close(); // Closing database connection
+    private void insertDataintoSharedPreference(){
+
     }
 
 
