@@ -22,9 +22,16 @@ import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.error.AuthFailureError;
+import com.android.volley.error.VolleyError;
+import com.android.volley.request.JsonObjectRequest;
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
+import com.google.common.util.concurrent.SettableFuture;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.utll.global.ActivitySwitcher;
@@ -32,7 +39,10 @@ import com.utll.global.ActivitySwitcher;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author supriya.pandey
@@ -218,6 +228,7 @@ public class NavigationActivity extends AppCompatActivity implements GlobalInter
                     for(int i = 0 ;i<jsonArray.length();i++){
                         geometry geometry = new Gson().fromJson(jsonArray.getJSONObject(i).toString(),geometry.class);
                         mArrayList.add(geometry);
+                        Log.e("mArrayList", ""+mArrayList);
                     }
                     Toast.makeText(NavigationActivity.this,"Data Geted From Service",Toast.LENGTH_SHORT).show();
                     Log.v(TAG,jsonArray.length()+"");
@@ -232,11 +243,40 @@ public class NavigationActivity extends AppCompatActivity implements GlobalInter
                 Log.v(TAG,t.toString());
             }
         });
-
-
-
-
     }
+
+    // json request with get
+    public static ListenableFuture<JSONObject> jsonRequestWithGet(final String url) {
+
+        final SettableFuture<JSONObject> jsonRequestGetSettable = SettableFuture.create();
+
+        JsonObjectRequest jsonObjectRequestWithGet = new JsonObjectRequest(url, null, new Response.Listener<JSONObject>() {
+
+            @Override
+            public void onResponse(JSONObject response) {
+                jsonRequestGetSettable.set(response);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                jsonRequestGetSettable.setException(error);
+                Log.v(TAG, "Exception: "+error);
+            }
+        }) {
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map headerMap = new HashMap();
+                return headerMap;
+            }
+        };
+        jsonObjectRequestWithGet.setPriority(Request.Priority.IMMEDIATE);
+        jsonObjectRequestWithGet.setShouldCache(false);
+        jsonObjectRequestWithGet.setRetryPolicy(new DefaultRetryPolicy(REQUEST_TIMEOUT_MS, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        VolleyApplication.getInstance().getRequestQueue().add(jsonObjectRequestWithGet);
+        return jsonRequestGetSettable;
+    }
+
 
 
 }
