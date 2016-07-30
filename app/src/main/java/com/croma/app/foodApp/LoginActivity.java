@@ -116,27 +116,35 @@ import com.utll.global.Validation;
 
     private void validateUserOnLoginButton() {
         try {
-            final SharedPreferences sharedpreferences = getSharedPreferences(GlobalsharedPreference.loginsharedPREFERENCES, Context.MODE_PRIVATE);
+
             if (!Validation.hasText(loginUName) && !Validation.hasText(loginPass) || !Validation.hasText(loginUName) || !Validation.hasText(loginPass)) {
 
             } else if (!Validation.isValid(loginPass, Validation.PASSWORD_REGEX, "Password Should be alphanumeric with specialCharacter", true)) {
 
             }else {
-                getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
                 progressDialog=ProgressDialog.show(this, "Please wait","Retriving User Information...", true );
+                getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
                 final Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
                     public void run() {
                         try {
+                            SharedPrefUtil.getString("Reg_UserName", "Supriya", LoginActivity.this);
+                            SharedPrefUtil.getString("Reg_Password", "Supriya", LoginActivity.this);
+                            loginUName.setText(SharedPrefUtil.getString("Reg_UserName", "Supriya", LoginActivity.this));
+                            loginUName.setText(SharedPrefUtil.getString("Reg_Password", "Supriya", LoginActivity.this));
+
+
+
                             //CustomProgressView.show(LoginActivity.this,"Success","LOGIN SUCCESSFUL");
                             CustomControl.successAlert(LoginActivity.this, "Success", "LOGIN SUCCESSFUL");
                             Intent intent = new Intent(LoginActivity.this, NavigationActivity.class);
-                            SharedPreferences.Editor editor = sharedpreferences.edit();
-                            editor.putString("UserId", "1");
-                            editor.putString("userName",loginUName.getText().toString());
-                            editor.putString("userPassword", loginPass.getText().toString());
-                            editor.commit();
-                            startActivity(intent);
+
+                         //   SharedPreferences.Editor editor = sharedpreferences.edit();
+                          //  editor.putString("UserId", "1");
+                           // editor.putString("userName",loginUName.getText().toString());
+                           // editor.putString("userPassword", loginPass.getText().toString());
+                           // editor.commit();
+                           // startActivity(intent);
 
                         } catch (Exception e) {
                             //Dismiss The Dialog

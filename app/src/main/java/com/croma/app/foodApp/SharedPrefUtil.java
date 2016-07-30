@@ -8,121 +8,13 @@ import android.content.SharedPreferences;
 public final class SharedPrefUtil {
 
 
-    public static final String MU_SOFT = "musoft_perference";
+    public static final String TCS = "TCS";
 
 
     private SharedPrefUtil(){
         throw new Error("Do n" +
                 "ot need instantiate!");
     }
-
-
-    public static void setGcmRegistrationID(String key, String defValue, Context context){
-        SharedPreferences.Editor editor = getSharedPreferences(context).edit();
-        editor.putString(key, defValue);
-        editor.commit();
-    }
-
-
-    public static String getGcmRegistrationID(String key, String defValue, Context context){
-        return getSharedPreferences(context).getString(key, defValue);
-    }
-
-
-    public static void setHubID(String key, String defValue, Context context){
-        SharedPreferences.Editor editor = getSharedPreferences(context).edit();
-        editor.putString(key, defValue);
-        editor.commit();
-    }
-
-
-    public static String getHubID(String key, String defValue, Context context){
-        return getSharedPreferences(context).getString(key, defValue);
-    }
-
-
-
-    public static void setUserId(String key, String defValue, Context context){
-        SharedPreferences.Editor editor = getSharedPreferences(context).edit();
-        editor.putString(key, defValue);
-        editor.commit();
-    }
-
-
-    public static String getUserId(String key, String defValue, Context context){
-        return getSharedPreferences(context).getString(key, defValue);
-    }
-
-
-    public static void setGroupAssigned(String key, Boolean defValue, Context context){
-        SharedPreferences.Editor editor = getSharedPreferences(context).edit();
-        editor.putBoolean(key, defValue);
-        editor.commit();
-    }
-
-    public static Boolean getGroupAssigned(String key, Boolean defValue, Context context){
-        return getSharedPreferences(context).getBoolean(key, defValue);
-    }
-
-
-    /**
-     * get Access Token
-     * @param key
-     * @param defValue
-     * @param context
-     * @return
-     */
-    public static String getAccessToken(String key, String defValue, Context context){
-        return getSharedPreferences(context).getString(key, defValue);
-    }
-
-
-    /**
-     * set Access Token
-     * @param key
-     * @param defaultValue
-     * @param context
-     */
-    public static void setAccessToken(String key, String defaultValue, Context context) {
-        SharedPreferences.Editor editor = getSharedPreferences(context).edit();
-        editor.putString(key, defaultValue);
-        editor.commit();
-    }
-
-
-    /**
-     * @param key
-     * @param defValue
-     * @param context
-     * @return
-     */
-    public static long getLong(String key, long defValue, Context context) {
-        return getSharedPreferences(context).getLong(key, defValue);
-    }
-
-    /**
-     * @param key
-     * @param defValue
-     * @param context
-     * @return
-     */
-    public static String getString(String key, String defValue, Context context) {
-        return getSharedPreferences(context).getString(key, defValue);
-    }
-
-    /**
-     *
-     * @param key
-     * @param value
-     * @param context
-     * @return
-     */
-    public static boolean getBoolean(String key, boolean defValue, Context context) {
-        return getSharedPreferences(context).getBoolean(key, defValue);
-    }
-
-
-
     /**
      * @param key
      * @param value
@@ -181,6 +73,39 @@ public final class SharedPrefUtil {
 
     /**
      * @param key
+     * @param defValue
+     * @param context
+     * @return
+     */
+    public static long getLong(String key, long defValue, Context context) {
+        return getSharedPreferences(context).getLong(key, defValue);
+    }
+
+    /**
+     * @param key
+     * @param defValue
+     * @param context
+     * @return
+     */
+    public static String getString(String key, String defValue, Context context) {
+        return getSharedPreferences(context).getString(key, defValue);
+    }
+
+    /**
+     *
+     * @param key
+     * @param value
+     * @param context
+     * @return
+     */
+    public static boolean getBoolean(String key, boolean defValue, Context context) {
+        return getSharedPreferences(context).getBoolean(key, defValue);
+    }
+
+
+
+    /**
+     * @param key
      * @param context
      */
     public static void remove(String key, Context context) {
@@ -194,7 +119,7 @@ public final class SharedPrefUtil {
      * @return
      */
     private static SharedPreferences getSharedPreferences(Context context) {
-        SharedPreferences pref = context.getSharedPreferences(SharedPrefUtil.MU_SOFT, Context.MODE_PRIVATE);
+        SharedPreferences pref = context.getSharedPreferences(SharedPrefUtil.TCS, Context.MODE_PRIVATE);
         return pref;
     }
 }
