@@ -113,8 +113,13 @@ public class SignUpActivity extends AppCompatActivity implements GlobalInterFace
                                 insertDataintoSqliteDatabase();
                                // Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
                                 CustomControl.successAlert(SignUpActivity.this, "Success", "Thank You For Registration, Record Inserted Successfully");
-                                Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
-                                startActivity(intent);
+                                regName.setText("");
+                                regEmail.setText("");
+                                regPass.setText("");
+                                regcPass.setText("");
+                                regPhone.setText("");
+                                // Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
+                                //startActivity(intent);
 
 
                             } catch (Exception e) {
