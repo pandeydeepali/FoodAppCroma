@@ -118,10 +118,7 @@ public class SignUpActivity extends AppCompatActivity implements GlobalInterFace
                                 regPass.setText("");
                                 regcPass.setText("");
                                 regPhone.setText("");
-                                // Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
-                                //startActivity(intent);
-
-
+                                ActivitySwitcher.switchActivity(SignUpActivity.this, LoginActivity.class);
                             } catch (Exception e) {
                                 e.printStackTrace();
 

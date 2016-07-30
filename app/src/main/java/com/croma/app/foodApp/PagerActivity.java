@@ -2,6 +2,7 @@ package com.croma.app.foodApp;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.Handler;
@@ -165,7 +166,10 @@ public class PagerActivity extends AppCompatActivity implements
         // in rare cases when a location is not available.
 
         mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
-        Log.e("mLastLocation", "Last Location"+mLastLocation);
+        Log.e("mLastLocation", "Last Location"+mLastLocation.getLatitude());
+        Log.e("mLastLocation", "Last Location"+mLastLocation.getLongitude());
+       // SharedPrefUtil.putString("CurrentLatitude", mLastLocation.getLatitude(), PagerActivity.this);
+
 
         if (mLastLocation != null) {
             // Determine whether a Geocoder is available.

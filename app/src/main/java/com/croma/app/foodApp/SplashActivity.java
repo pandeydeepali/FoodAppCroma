@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.os.Handler;
+
+import com.utll.global.ActivitySwitcher;
 import com.utll.global.CustomControl;
 import com.utll.global.utilCommon;
 
@@ -89,17 +91,14 @@ public class SplashActivity extends AppCompatActivity{
 
 
     private void checkUserExistenceOnLogin(){
-        SharedPreferences myPrefs = getSharedPreferences(GlobalsharedPreference.loginsharedPREFERENCES, MODE_PRIVATE);
-        String UserId=myPrefs.getString("UserId", "");
-        if(UserId!=null && UserId!="" && UserId!="undefined"){
-            Intent I=new Intent(SplashActivity.this, NavigationActivity.class);
-            startActivity(I);
+        SharedPrefUtil.getString("loggedBoolean", "", SplashActivity.this);
+        if(SharedPrefUtil.getString("loggedBoolean", "", SplashActivity.this)!=null && SharedPrefUtil.getString("loggedBoolean", "", SplashActivity.this)!="" && SharedPrefUtil.getString("loggedBoolean", "", SplashActivity.this)!="undefined"){
+            ActivitySwitcher.switchActivity(SplashActivity.this, NavigationActivity.class);
             overridePendingTransition(R.anim.slide_in_left,
                                R.anim.slide_out_right);
             finish();
         }else{
-            Intent I=new Intent(SplashActivity.this, LoginActivity.class);
-            startActivity(I);
+            ActivitySwitcher.switchActivity(SplashActivity.this, LoginActivity.class);
             overridePendingTransition(R.anim.slide_in_left,
                               R.anim.slide_out_right);
             finish();
