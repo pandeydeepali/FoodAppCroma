@@ -5,7 +5,6 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.android.volley.toolbox.StringRequest;
 
 /**
  * Created by suppi on 26/07/16.

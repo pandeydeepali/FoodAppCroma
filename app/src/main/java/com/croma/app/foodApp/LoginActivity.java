@@ -131,13 +131,21 @@ import com.utll.global.Validation;
                             SharedPrefUtil.getString("Reg_UserName", "Supriya", LoginActivity.this);
                             SharedPrefUtil.getString("Reg_Password", "Supriya", LoginActivity.this);
                             loginUName.setText(SharedPrefUtil.getString("Reg_UserName", "Supriya", LoginActivity.this));
-                            loginUName.setText(SharedPrefUtil.getString("Reg_Password", "Supriya", LoginActivity.this));
+                            loginPass.setText(SharedPrefUtil.getString("Reg_Password", "Supriya", LoginActivity.this));
+                            if(loginUName.getText().toString().equals(SharedPrefUtil.getString("Reg_UserName", "Supriya", LoginActivity.this)))
+                            {
+                                if(loginPass.getText().toString().equals(SharedPrefUtil.getString("Reg_UserPass", "Supriya", LoginActivity.this))){
+                                    CustomControl.successAlert(LoginActivity.this, "Success", "LOGIN SUCCESSFUL");
+                                    Intent intent = new Intent(LoginActivity.this, NavigationActivity.class);
+                                }else{
+                                    CustomControl.alertDialogShow(LoginActivity.this, "Error", "No Value Match From SharedPreferences, Login Failed");
+                                }
+                            }
 
 
 
                             //CustomProgressView.show(LoginActivity.this,"Success","LOGIN SUCCESSFUL");
-                            CustomControl.successAlert(LoginActivity.this, "Success", "LOGIN SUCCESSFUL");
-                            Intent intent = new Intent(LoginActivity.this, NavigationActivity.class);
+
 
                          //   SharedPreferences.Editor editor = sharedpreferences.edit();
                           //  editor.putString("UserId", "1");
