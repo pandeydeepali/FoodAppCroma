@@ -96,7 +96,6 @@ public final class SharedPrefUtil {
     /**
      *
      * @param key
-     * @param value
      * @param context
      * @return
      */
@@ -117,15 +116,12 @@ public final class SharedPrefUtil {
     }
 
 
-    /**
-     *
-     * @param context
-     */
-    public static void clear(Context context) {
-        SharedPreferences.Editor editor = getSharedPreferences(context).edit();
-        editor.clear()
+    public static void clear(Context context){
+        SharedPreferences.Editor editor=getSharedPreferences(context).edit();
+        editor.clear();
         editor.commit();
     }
+
 
 
     /**

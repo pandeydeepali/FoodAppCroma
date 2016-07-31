@@ -40,8 +40,6 @@ public class NavigationActivity extends AppCompatActivity implements GlobalInter
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
     private NavigationView navigationView;
-    public static final int REQUEST_TIMEOUT_MS = 10000;
-    private ArrayList<geometry> mArrayList;
     private static final String TAG     =       NavigationActivity.class.getSimpleName();
 
     @Override
