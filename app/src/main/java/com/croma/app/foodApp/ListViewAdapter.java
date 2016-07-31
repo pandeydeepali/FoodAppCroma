@@ -22,12 +22,12 @@ import java.util.ArrayList;
 public class ListViewAdapter extends BaseAdapter {
 
     private View.OnClickListener onClickListener;
-    private ArrayList<FoodItem > arrayList;
+    private ArrayList<geometry > arrayList;
     private Activity context;
 
 
     //-----Constructor
-    public ListViewAdapter(View.OnClickListener onClickListener, ArrayList<FoodItem> arrayList,Activity context) {
+    public ListViewAdapter(View.OnClickListener onClickListener, ArrayList<geometry> arrayList,Activity context) {
         this.onClickListener = onClickListener;
         this.arrayList = arrayList;
         this.context = context;
@@ -38,7 +38,7 @@ public class ListViewAdapter extends BaseAdapter {
 
     }
 
-    public FoodItem getItem(int position)
+    public geometry getItem(int position)
     {
          return arrayList.get(position);
     }
@@ -72,12 +72,12 @@ public class ListViewAdapter extends BaseAdapter {
             holder.delieverItemTime = (TextView) convertView.findViewById(R.id.listDeliever);
             holder.delieverAddress = (TextView) convertView.findViewById(R.id.homeRestAddress);
             holder.rlayout = (RelativeLayout) convertView.findViewById(R.id._relativeLayout);
-            holder.txtViewTitle.setText(arrayList.get(position).itemName);
-            holder.txtViewDescription.setText(arrayList.get(position).subItemName);
-            holder.listImage.setImageResource(arrayList.get(position).image);
-            holder.leftImage.setImageResource(arrayList.get(position).leftImage);
-            holder.delieverItemTime.setText(arrayList.get(position).itemdeliever);
-            holder.delieverAddress.setText(arrayList.get(position).delieverAddress);
+            holder.txtViewTitle.setText(arrayList.get(position).name);
+//            holder.txtViewDescription.setText(arrayList.get(position).subItemName);
+      //      holder.listImage.setImageResource(arrayList.get(position).image);
+//            holder.leftImage.setImageResource(arrayList.get(position).leftImage);
+//            holder.delieverItemTime.setText(arrayList.get(position).itemdeliever);
+//            holder.delieverAddress.setText(arrayList.get(position).delieverAddress);
             holder.rlayout.setOnClickListener(onClickListener);
             holder.rlayout.setTag(position);
         }

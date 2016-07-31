@@ -6,8 +6,8 @@ import java.util.ArrayList;
  * Created by muadmin on 7/29/16.
  */
 public class geometry {
-
     public location location;
+    public viewport viewport;
     public String  icon;
     public String id;
     public String name;

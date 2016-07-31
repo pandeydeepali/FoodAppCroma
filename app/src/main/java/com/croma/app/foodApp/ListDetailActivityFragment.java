@@ -13,8 +13,8 @@ import java.util.ArrayList;
  * A placeholder fragment containing a simple view.
  */
 public class ListDetailActivityFragment extends Fragment implements GlobalInterFace, View.OnClickListener {
-    private static final String TAG = ListDetailActivityFragment.class.getSimpleName();
-    public ArrayList<FoodItem> arrayList;
+    public static final String TAG = ListDetailActivityFragment.class.getSimpleName();
+    public ArrayList<geometry> fragmentArrayList;
     public ListViewAdapter listAdapter;
     private View mView;
     private ListView listView;
@@ -37,9 +37,9 @@ public class ListDetailActivityFragment extends Fragment implements GlobalInterF
     @Override
     public void findViewById() {
         listView = (ListView) mView.findViewById(R.id.detail_listView);
-        arrayList = new ArrayList<>();
+        fragmentArrayList = new ArrayList<>();
         //  listAdapter = new ListViewAdapter((((NavigationActivity)getActivity())), arrayList, ListDetailActivityFragment.this);
-        listAdapter = new ListViewAdapter(ListDetailActivityFragment.this, arrayList, (((NavigationActivity) getActivity())));
+        listAdapter = new ListViewAdapter(ListDetailActivityFragment.this, fragmentArrayList, (((NavigationActivity) getActivity())));
         listView.setAdapter(listAdapter);
         fillArrayList();
     }
@@ -60,15 +60,15 @@ public class ListDetailActivityFragment extends Fragment implements GlobalInterF
     }
 
     public void fillArrayList() {
-        arrayList.add(new FoodItem("Veg Pasta", "Order Minimum 200", R.drawable.back, R.drawable.list, "Delievered in 60min", "C-77, Noida sector 27"));
-        arrayList.add(new FoodItem("Non Veg One", "Order Minimum 200", R.drawable.back, R.drawable.img5, "Delievered in 60min", "C-78, Noida sector 27"));
-        arrayList.add(new FoodItem("Non Veg Veg", "Order Minimum 200", R.drawable.back, R.drawable.img2, "Delievered in 60min", "C-79, Noida sector 27"));
-        arrayList.add(new FoodItem("Non Veg Veg", "Order Minimum 200", R.drawable.back, R.drawable.img3, "Delievered in 60min", "C-77, Noida sector 27"));
-        arrayList.add(new FoodItem("Non Veg Veg", "Order Minimum 200", R.drawable.back, R.drawable.img4, "Delievered in 60min", "C-77, Noida sector 27"));
-        arrayList.add(new FoodItem("Non Veg Veg", "Order Minimum 200", R.drawable.back, R.drawable.img5, "Delievered in 60min", "C-77, Noida sector 27"));
-        arrayList.add(new FoodItem("Non Veg Veg", "Order Minimum 200", R.drawable.back, R.drawable.img1, "Delievered in 60min", "C-79, Noida sector 27"));
-        arrayList.add(new FoodItem("Non Veg Veg", "Order Minimum 200", R.drawable.back, R.drawable.img4, "Delievered in 60min", "C-77, Noida sector 27"));
-        arrayList.add(new FoodItem("Non Veg Veg", "Order Minimum 200", R.drawable.back, R.drawable.img3, "Delievered in 60min", "C-77, Noida sector 27"));
+//        arrayList.add(new FoodItem("Veg Pasta", "Order Minimum 200", R.drawable.back, R.drawable.list, "Delievered in 60min", "C-77, Noida sector 27"));
+//        arrayList.add(new FoodItem("Non Veg One", "Order Minimum 200", R.drawable.back, R.drawable.img5, "Delievered in 60min", "C-78, Noida sector 27"));
+//        arrayList.add(new FoodItem("Non Veg Veg", "Order Minimum 200", R.drawable.back, R.drawable.img2, "Delievered in 60min", "C-79, Noida sector 27"));
+//        arrayList.add(new FoodItem("Non Veg Veg", "Order Minimum 200", R.drawable.back, R.drawable.img3, "Delievered in 60min", "C-77, Noida sector 27"));
+//        arrayList.add(new FoodItem("Non Veg Veg", "Order Minimum 200", R.drawable.back, R.drawable.img4, "Delievered in 60min", "C-77, Noida sector 27"));
+//        arrayList.add(new FoodItem("Non Veg Veg", "Order Minimum 200", R.drawable.back, R.drawable.img5, "Delievered in 60min", "C-77, Noida sector 27"));
+//        arrayList.add(new FoodItem("Non Veg Veg", "Order Minimum 200", R.drawable.back, R.drawable.img1, "Delievered in 60min", "C-79, Noida sector 27"));
+//        arrayList.add(new FoodItem("Non Veg Veg", "Order Minimum 200", R.drawable.back, R.drawable.img4, "Delievered in 60min", "C-77, Noida sector 27"));
+//        arrayList.add(new FoodItem("Non Veg Veg", "Order Minimum 200", R.drawable.back, R.drawable.img3, "Delievered in 60min", "C-77, Noida sector 27"));
         listAdapter.notifyDataSetChanged();
     }
 
@@ -78,14 +78,14 @@ public class ListDetailActivityFragment extends Fragment implements GlobalInterF
             case R.id._relativeLayout: {
                 if (v.getTag() != null) {
                     Integer integer = Integer.parseInt(v.getTag().toString());
-                    FoodItem foodItem = arrayList.get(integer);
+                    geometry foodItem = fragmentArrayList.get(integer);
                     Bundle b = new Bundle();
                     // b.putString("");
                     // Intent intent=new Intent(getActivity(), ListDetailActivity.class);
-                    b.putString("ItemName", foodItem.itemName);
-                    b.putString("ItemSubItem", foodItem.subItemName);
-                    b.putString("ItemAddress", foodItem.delieverAddress);
-                    b.putInt("ItemImage", foodItem.leftImage);
+//                    b.putString("ItemName", foodItem.itemName);
+//                    b.putString("ItemSubItem", foodItem.subItemName);
+//                    b.putString("ItemAddress", foodItem.delieverAddress);
+//                    b.putInt("ItemImage", foodItem.leftImage);
 
                     DetailFragment detailFragment = new DetailFragment();
                     detailFragment.setArguments(b);

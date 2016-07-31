@@ -26,16 +26,7 @@ public final class SharedPrefUtil {
         editor.commit();
     }
 
-    /**
-     * @param key
-     * @param value
-     * @param context
-     */
-    public static void putFloat(String key, float value, Context context) {
-        SharedPreferences.Editor editor = getSharedPreferences(context).edit();
-        editor.putFloat(key, value);
-        editor.commit();
-    }
+
 
 
     /**
@@ -93,6 +84,8 @@ public final class SharedPrefUtil {
         return getSharedPreferences(context).getString(key, defValue);
     }
 
+
+
     /**
      *
      * @param key
@@ -104,11 +97,10 @@ public final class SharedPrefUtil {
     }
 
 
-
-    /**
-     * @param key
-     * @param context
-     */
+        /**
+         * @param key
+         * @param context
+         */
     public static void remove(String key, Context context) {
         SharedPreferences.Editor editor = getSharedPreferences(context).edit();
         editor.remove(key);

@@ -2,7 +2,6 @@ package com.croma.app.foodApp;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.Handler;
@@ -11,10 +10,8 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
@@ -173,13 +170,10 @@ public class PagerActivity extends AppCompatActivity implements
         // in rare cases when a location is not available.
 
         mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
-        Log.e("mLastLocation", "Last Location"+mLastLocation.getLatitude());
-        Log.e("mLastLocation", "Last Location"+mLastLocation.getLongitude());
-        double latitude=mLastLocation.getLatitude();
-        double longitude=mLastLocation.getLongitude();
-
-        SharedPrefUtil.putLong("CurrentLatitude",Double.doubleToLongBits(mLastLocation.getLatitude()), PagerActivity.this);
-        SharedPrefUtil.putLong("CurrentLatitude",Double.doubleToLongBits(mLastLocation.getLongitude()), PagerActivity.this);
+       // SharedPrefUtil.putFloat("CurrentLatitude", (float) mLastLocation.getLatitude(), PagerActivity.this);
+        //SharedPrefUtil.putFloat("CurrentLongitude", (float) mLastLocation.getLongitude(), PagerActivity.this);
+         SharedPrefUtil.putLong("CurrentLatitude", Double.doubleToLongBits(mLastLocation.getLatitude()), PagerActivity.this);
+         SharedPrefUtil.putLong("CurrentLongitude", Double.doubleToLongBits(mLastLocation.getLongitude()), PagerActivity.this);
 
 
         if (mLastLocation != null) {
@@ -241,9 +235,9 @@ public class PagerActivity extends AppCompatActivity implements
      * Updates the address in the UI.
      */
     public void displayAddressOutput() {
-        progressDialog=ProgressDialog.show(this, "Please wait","Retriving Location...", true );
-        final Handler handler = new Handler();
 
+        final Handler handler = new Handler();
+        progressDialog=ProgressDialog.show(this, "Please wait","Retriving Location...", true );
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {

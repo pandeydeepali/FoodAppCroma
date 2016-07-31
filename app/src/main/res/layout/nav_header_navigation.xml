@@ -6,31 +6,30 @@
     android:gravity="bottom"
     android:orientation="vertical"
     android:padding="@dimen/login"
-
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
-    <com.rey.material.widget.TextView
-        android:id="@+id/drawerhomeName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/splash_color"
-        android:textSize="@dimen/universal_margin"
-        android:paddingLeft="@dimen/bck_padd"
-        android:text="@string/splash_text"
-        />
+    <!--<com.rey.material.widget.TextView-->
+        <!--android:id="@+id/drawerhomeName"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:textColor="@color/splash_color"-->
+        <!--android:textSize="@dimen/universal_margin"-->
+        <!--android:paddingLeft="@dimen/bck_padd"-->
+        <!--android:text="@string/splash_text"-->
+        <!--/>-->
 
 
-    <com.rey.material.widget.TextView
-        android:id="@+id/drawerhomeEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/splash_color"
-        android:textSize="@dimen/universal_margin"
-        android:paddingLeft="@dimen/bck_padd"
-        android:text="@string/draweremail"
+    <!--<com.rey.material.widget.TextView-->
+        <!--android:id="@+id/drawerhomeEmail"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:textColor="@color/splash_color"-->
+        <!--android:textSize="@dimen/universal_margin"-->
+        <!--android:paddingLeft="@dimen/bck_padd"-->
+        <!--android:text="@string/draweremail"-->
 
 
-        />
+        <!--/>-->
 
     <!--<ImageView-->
         <!--android:id="@+id/homeImageView"-->

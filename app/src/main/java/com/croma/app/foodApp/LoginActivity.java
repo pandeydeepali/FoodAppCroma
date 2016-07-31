@@ -15,7 +15,6 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
-
 import com.utll.global.ActivitySwitcher;
 import com.utll.global.utilCommon;
 import com.utll.global.CustomControl;

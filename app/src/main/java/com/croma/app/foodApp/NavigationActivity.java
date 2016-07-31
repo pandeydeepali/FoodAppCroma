@@ -1,7 +1,9 @@
 package com.croma.app.foodApp;
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.View;
 import android.support.v4.view.GravityCompat;
@@ -15,19 +17,18 @@ import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.error.AuthFailureError;
 import com.android.volley.error.VolleyError;
 import com.android.volley.request.JsonObjectRequest;
-import com.google.common.util.concurrent.FutureCallback;
-import com.google.common.util.concurrent.Futures;
-import com.google.common.util.concurrent.ListenableFuture;
-import com.google.common.util.concurrent.SettableFuture;
+import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.utll.global.ActivitySwitcher;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -43,7 +44,11 @@ public class NavigationActivity extends AppCompatActivity implements GlobalInter
     private NavigationView navigationView;
     private static final String TAG     =       NavigationActivity.class.getSimpleName();
     public static final int REQUEST_TIMEOUT_MS = 10000;
-    private ArrayList<geometry> mArrayList;
+    public ArrayList<geometry> mArrayList;
+    //----progress dialog
+    private ProgressDialog progressDialog = null;
+
+
 
 
     @Override
@@ -74,7 +79,7 @@ public class NavigationActivity extends AppCompatActivity implements GlobalInter
         mDrawerLayout.addDrawerListener(mDrawerToggle);
 
         if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.home_fragment, new ListDetailActivityFragment()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.home_fragment, new ListDetailActivityFragment(),ListDetailActivityFragment.TAG).commit();
         }
      }
 
@@ -92,16 +97,19 @@ public class NavigationActivity extends AppCompatActivity implements GlobalInter
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
+            jsonRequestWithGet();
             super.onBackPressed();
         }
+
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        displayLocationDataFromWebServices();
+        jsonRequestWithGet();
 
     }
+
 
     @Override
     protected void onStop() {
@@ -201,48 +209,49 @@ public class NavigationActivity extends AppCompatActivity implements GlobalInter
 
     }
 
-
-    public void displayLocationDataFromWebServices(){
-        final ListenableFuture<JSONObject> getRestaurantListenable = jsonRequestWithGet(ServiceConfig.URL);
-        Futures.addCallback(getRestaurantListenable, new FutureCallback<JSONObject>() {
+    // json request with get
+    public  void jsonRequestWithGet() {
+        //String latitude =  SharedPrefUtil.getString("CurrentLatitude","", NavigationActivity.this);
+        //String longitude  = SharedPrefUtil.getString("CurrentLongitude","", NavigationActivity.this);
+        progressDialog = ProgressDialog.show(this, "Please wait", "Fetching Nearest Restaurant...", true);
+        double latitude = Double.longBitsToDouble(SharedPrefUtil.getLong("CurrentLatitude", 1L, NavigationActivity.this));
+        double longitude = Double.longBitsToDouble(SharedPrefUtil.getLong("CurrentLongitude", 1L, NavigationActivity.this));
+        // String my_url   =   ServiceConfig.URL + "&location= +SharedPrefUtil.getFloat("CurrentLatitude", "", NavigationActivity.this)," + "77.329119" + "&type=restaurant";
+        String my_url   =   ServiceConfig.URL + "&location="+ latitude +"," +  longitude + "&type=restaurant";
+        JsonObjectRequest jsonObjectRequestWithGet = new JsonObjectRequest(my_url, null, new Response.Listener<JSONObject>() {
             @Override
-            public void onSuccess(JSONObject result) {
-                Log.v(TAG,result.toString());
+            public void onResponse(JSONObject response) {
                 mArrayList = new ArrayList<geometry>();
                 try{
-                    JSONArray jsonArray = result.getJSONArray("results");
+                    JSONArray jsonArray = response.getJSONArray("results");
                     for(int i = 0 ;i<jsonArray.length();i++){
-                        geometry geometry = new Gson().fromJson(jsonArray.getJSONObject(i).toString(),geometry.class);
+                        geometry geometry = new Gson().fromJson(jsonArray.getJSONObject(i).toString(), com.croma.app.foodApp.geometry.class);
                         mArrayList.add(geometry);
                     }
-                    Toast.makeText(NavigationActivity.this,"Data Geted From Service",Toast.LENGTH_SHORT).show();
-                    Log.v(TAG,jsonArray.length()+"");
+                    final ListDetailActivityFragment fragment = (ListDetailActivityFragment)getSupportFragmentManager().findFragmentByTag(ListDetailActivityFragment.TAG);
+                    if(fragment!=null) {
+                            runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                fragment.fragmentArrayList.clear();
+                                fragment.fragmentArrayList.addAll(mArrayList);
+                                fragment.listAdapter.notifyDataSetChanged();
+                            }
+                        });
+                    }
+                    Toast.makeText(NavigationActivity.this,"Data Get-ed From Service",Toast.LENGTH_SHORT).show();
+
                 }catch (Exception e){
                     Toast.makeText(NavigationActivity.this,"There is some problem while getting restarorent",Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
                 }
-            }
 
-            @Override
-            public void onFailure(Throwable t) {
-                Log.v(TAG,t.toString());
-            }
-        });
-    }
-
-    // json request with get
-    public static ListenableFuture<JSONObject> jsonRequestWithGet(final String url) {
-        final SettableFuture<JSONObject> jsonRequestGetSettable = SettableFuture.create();
-        JsonObjectRequest jsonObjectRequestWithGet = new JsonObjectRequest(url, null, new Response.Listener<JSONObject>() {
-
-            @Override
-            public void onResponse(JSONObject response) {
-                jsonRequestGetSettable.set(response);
+                progressDialog.dismiss();
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                jsonRequestGetSettable.setException(error);
+
                 Log.v(TAG, "Exception: "+error);
             }
         }) {
@@ -256,7 +265,8 @@ public class NavigationActivity extends AppCompatActivity implements GlobalInter
         jsonObjectRequestWithGet.setPriority(Request.Priority.IMMEDIATE);
         jsonObjectRequestWithGet.setShouldCache(false);
         jsonObjectRequestWithGet.setRetryPolicy(new DefaultRetryPolicy(REQUEST_TIMEOUT_MS, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        VolleyApplication.getInstance().getRequestQueue().add(jsonObjectRequestWithGet);
-        return jsonRequestGetSettable;
+        RequestQueue mRequestQueue  = Volley.newRequestQueue(getApplicationContext());
+        mRequestQueue.add(jsonObjectRequestWithGet);
+
     }
 }
