@@ -116,10 +116,7 @@ public class NavigationActivity extends AppCompatActivity implements GlobalInter
         int id = item.getItemId();
         switch (item.getItemId()) {
             case R.id.action_logout: {
-                SharedPreferences preferences = getSharedPreferences(GlobalsharedPreference.loginsharedPREFERENCES, getApplicationContext().MODE_PRIVATE);
-                SharedPreferences.Editor editor = preferences.edit();
-                editor.clear();
-                editor.commit();
+                SharedPrefUtil.clear(NavigationActivity.this);
                 ActivitySwitcher.switchActivityWithHandler(NavigationActivity.this, LoginActivity.class);
                 break;
             }
