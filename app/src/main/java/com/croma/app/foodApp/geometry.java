@@ -7,7 +7,6 @@ import java.util.ArrayList;
  */
 public class geometry {
     public location location;
-    public viewport viewport;
     public String  icon;
     public String id;
     public String name;
