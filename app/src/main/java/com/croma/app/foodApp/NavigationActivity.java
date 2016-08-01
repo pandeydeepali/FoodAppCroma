@@ -214,7 +214,8 @@ public class NavigationActivity extends AppCompatActivity implements View.OnClic
                 try{
                     JSONArray jsonArray = response.getJSONArray("results");
                     for(int i = 0 ;i<jsonArray.length();i++){
-                        geometry geometry = new Gson().fromJson(jsonArray.getJSONObject(i).toString(), com.croma.app.foodApp.geometry.class);
+                        geometry geometry = new Gson().fromJson(jsonArray.getJSONObject(i).toString(),geometry.class);
+                       // geometry geometry = new Gson().fromJson(jsonArray.getJSONObject(i).toString(), com.croma.app.foodApp.geometry.class);
                         mArrayList.add(geometry);
                     }
                     final ListDetailActivityFragment fragment = (ListDetailActivityFragment)getSupportFragmentManager().findFragmentByTag(ListDetailActivityFragment.TAG);
