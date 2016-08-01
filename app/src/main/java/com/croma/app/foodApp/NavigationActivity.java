@@ -37,7 +37,7 @@ import java.util.Map;
  * @author supriya.pandey
  *         Navigation drawer activity class
  */
-public class NavigationActivity extends AppCompatActivity implements GlobalInterFace, View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
+public class NavigationActivity extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
     private static final long DrawerCloseDelay = 500;
     private final Handler mDrawerActionHandler = new Handler();
     private DrawerLayout mDrawerLayout;
@@ -63,6 +63,8 @@ public class NavigationActivity extends AppCompatActivity implements GlobalInter
         NavigationEmail=(TextView)findViewById(R.id.drawerhomeEmail);
         navigationView.getMenu().getItem(1).setChecked(true);
         navigationView.setNavigationItemSelectedListener(this);
+        NavigationName.setText(SharedPrefUtil.getString("Reg_UserName", " ", NavigationActivity.this));
+        NavigationEmail.setText(SharedPrefUtil.getString("Reg_Email", " ", NavigationActivity.this));
 
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.homeDrawer);
@@ -75,7 +77,9 @@ public class NavigationActivity extends AppCompatActivity implements GlobalInter
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
-                
+                Log.e("uname", SharedPrefUtil.getString("Reg_UserName", "SuppuPande", NavigationActivity.this));
+                Log.e("email", SharedPrefUtil.getString("Reg_Email", "suprpand91@gmail.com", NavigationActivity.this));
+
 
             }
         };
@@ -138,25 +142,6 @@ public class NavigationActivity extends AppCompatActivity implements GlobalInter
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void findViewById() {
-
-    }
-
-    @Override
-    public void setOnClickListener() {
-
-    }
-
-    @Override
-    public void applyFont() {
-
-    }
-
-    @Override
-    public void OnitemSelect() {
-
-    }
 
     @Override
     protected void onDestroy() {

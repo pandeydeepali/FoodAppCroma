@@ -1,5 +1,6 @@
 package com.croma.app.foodApp;
 
+import android.app.ProgressDialog;
 import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ public class AccountActivity extends AppCompatActivity implements GlobalInterFac
     private ImageView accountBack;
     private TextView accountEdit;
     private Button accountSettingsBtn;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +50,7 @@ public class AccountActivity extends AppCompatActivity implements GlobalInterFac
         super.onResume();
         accountUname.setText(SharedPrefUtil.getString("Reg_UserName","", AccountActivity.this ));
         accountEmail.setText(SharedPrefUtil.getString("Reg_Email","", AccountActivity.this ));
-        accountEmail.setText(SharedPrefUtil.getString("Reg_Phone","", AccountActivity.this ));
+        accountMobile.setText(SharedPrefUtil.getString("Reg_Phone","", AccountActivity.this ));
 
     }
 
@@ -112,9 +114,16 @@ public class AccountActivity extends AppCompatActivity implements GlobalInterFac
             }
 
             case R.id.accountButton:{
+                progressDialog = ProgressDialog.show(
+                        AccountActivity.this, "Please Wait...",
+                        "Data Saving...", true);
                 SharedPrefUtil.putString("Reg_UserName", accountUname.getText().toString(), AccountActivity.this);
                 SharedPrefUtil.putString("Reg_Email", accountEmail.getText().toString(), AccountActivity.this);
                 SharedPrefUtil.putString("Reg_Reg_Phone", accountEmail.getText().toString(), AccountActivity.this);
+                accountUname.setText(SharedPrefUtil.getString("Reg_UserName","", AccountActivity.this ));
+                accountEmail.setText(SharedPrefUtil.getString("Reg_Email","", AccountActivity.this ));
+                accountMobile.setText(SharedPrefUtil.getString("Reg_Phone","", AccountActivity.this ));
+                progressDialog.dismiss();
             }
         }
     }
