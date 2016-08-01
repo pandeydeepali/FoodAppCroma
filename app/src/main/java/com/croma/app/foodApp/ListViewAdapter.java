@@ -73,9 +73,9 @@ public class ListViewAdapter extends BaseAdapter {
             holder.delieverAddress = (TextView) convertView.findViewById(R.id.homeRestAddress);
             holder.rlayout = (RelativeLayout) convertView.findViewById(R.id._relativeLayout);
             holder.txtViewTitle.setText(arrayList.get(position).name);
-//            holder.txtViewDescription.setText(arrayList.get(position).subItemName);
-      //      holder.listImage.setImageResource(arrayList.get(position).image);
-//            holder.leftImage.setImageResource(arrayList.get(position).leftImage);
+            holder.txtViewDescription.setText(arrayList.get(position).vicinity);
+       //     holder.listImage.setImageResource(arrayList.get(position).image);
+        //     holder.leftImage.setImageResource(arrayList.get(position).opening_hours);
 //            holder.delieverItemTime.setText(arrayList.get(position).itemdeliever);
 //            holder.delieverAddress.setText(arrayList.get(position).delieverAddress);
             holder.rlayout.setOnClickListener(onClickListener);
