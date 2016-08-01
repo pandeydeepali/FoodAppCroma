@@ -18,5 +18,6 @@ public class geometry {
     public String scope;
     public String[] types;
     public String vicinity;
+    public viewport viewport;
 
 }
