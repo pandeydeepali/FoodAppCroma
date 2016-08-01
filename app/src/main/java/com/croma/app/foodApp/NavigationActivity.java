@@ -63,8 +63,9 @@ public class NavigationActivity extends AppCompatActivity implements View.OnClic
         NavigationEmail=(TextView)findViewById(R.id.drawerhomeEmail);
         navigationView.getMenu().getItem(1).setChecked(true);
         navigationView.setNavigationItemSelectedListener(this);
-        NavigationName.setText(SharedPrefUtil.getString("Reg_UserName", " ", NavigationActivity.this));
-        NavigationEmail.setText(SharedPrefUtil.getString("Reg_Email", " ", NavigationActivity.this));
+       // NavigationName.setText(SharedPrefUtil.getString("Reg_UserName", " ", NavigationActivity.this));
+       // NavigationEmail.setText(SharedPrefUtil.getString("Reg_Email", " ", NavigationActivity.this));
+
 
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.homeDrawer);

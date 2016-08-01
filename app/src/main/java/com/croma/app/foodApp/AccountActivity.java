@@ -57,10 +57,7 @@ public class AccountActivity extends AppCompatActivity implements GlobalInterFac
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        accountEdit.setText(R.string.ED);
-        accountUname.setEnabled(false);
-        accountEmail.setEnabled(false);
-        accountMobile.setEnabled(false);
+
 
     }
 
