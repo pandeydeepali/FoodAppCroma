@@ -97,7 +97,6 @@ public class NavigationActivity extends AppCompatActivity implements GlobalInter
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            jsonRequestWithGet();
             super.onBackPressed();
         }
 
