@@ -40,6 +40,15 @@ public class AccountActivity extends AppCompatActivity implements GlobalInterFac
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        accountUname.setText(SharedPrefUtil.getString("Reg_UserName","", AccountActivity.this ));
+        accountEmail.setText(SharedPrefUtil.getString("Reg_Email","", AccountActivity.this ));
+        accountEmail.setText(SharedPrefUtil.getString("Reg_Phone","", AccountActivity.this ));
+
+    }
+
+    @Override
     public void setOnClickListener() {
         accountBack.setOnClickListener(this);
         accountEdit.setOnClickListener(this);
