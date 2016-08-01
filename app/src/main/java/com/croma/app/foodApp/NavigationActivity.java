@@ -109,6 +109,9 @@ public class NavigationActivity extends AppCompatActivity implements GlobalInter
     protected void onResume() {
         super.onResume();
         jsonRequestWithGet();
+        RegisterEmail.setText(SharedPrefUtil.getString("Reg_Email", "", NavigationActivity.this));
+        RegisterName.setText(SharedPrefUtil.getString("Reg_UserName", "", NavigationActivity.this));
+
 
     }
 
