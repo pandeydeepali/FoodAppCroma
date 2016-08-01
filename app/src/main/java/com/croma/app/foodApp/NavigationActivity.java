@@ -48,11 +48,7 @@ public class NavigationActivity extends AppCompatActivity implements GlobalInter
     public ArrayList<geometry> mArrayList;
     //----progress dialog
     private ProgressDialog progressDialog = null;
-    private TextView RegisterName;
-    private TextView RegisterEmail;
-
-
-
+    private TextView NavigationName, NavigationEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +59,8 @@ public class NavigationActivity extends AppCompatActivity implements GlobalInter
         setSupportActionBar(toolbar);
 
         navigationView = (NavigationView) findViewById(R.id.homeNavView);
+        NavigationName=(TextView)findViewById(R.id.drawerhomeName);
+        NavigationEmail=(TextView)findViewById(R.id.drawerhomeEmail);
         navigationView.getMenu().getItem(1).setChecked(true);
         navigationView.setNavigationItemSelectedListener(this);
 
@@ -77,6 +75,8 @@ public class NavigationActivity extends AppCompatActivity implements GlobalInter
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
+                
+
             }
         };
         mDrawerLayout.addDrawerListener(mDrawerToggle);
@@ -109,8 +109,6 @@ public class NavigationActivity extends AppCompatActivity implements GlobalInter
     protected void onResume() {
         super.onResume();
         jsonRequestWithGet();
-        RegisterEmail.setText(SharedPrefUtil.getString("Reg_Email", "", NavigationActivity.this));
-        RegisterName.setText(SharedPrefUtil.getString("Reg_UserName", "", NavigationActivity.this));
 
 
     }
@@ -142,8 +140,7 @@ public class NavigationActivity extends AppCompatActivity implements GlobalInter
 
     @Override
     public void findViewById() {
-        RegisterName=(TextView)findViewById(R.id.drawerhomeName);
-        RegisterEmail=(TextView)findViewById(R.id.drawerhomeEmail);
+
     }
 
     @Override
