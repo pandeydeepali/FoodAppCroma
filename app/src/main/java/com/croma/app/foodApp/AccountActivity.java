@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -16,6 +17,7 @@ public class AccountActivity extends AppCompatActivity implements GlobalInterFac
     private EditText accountMobile;
     private ImageView accountBack;
     private TextView accountEdit;
+    private Button accountSettingsBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,8 @@ public class AccountActivity extends AppCompatActivity implements GlobalInterFac
         accountEmail=(EditText)findViewById(R.id.accountEmail);
         accountMobile=(EditText)findViewById(R.id.accountMobile);
         accountEdit=(TextView)findViewById(R.id.edit_text);
+        accountSettingsBtn=(Button)findViewById(R.id.accountButton);
+        accountSettingsBtn.setOnClickListener(this);
 
 
     }
@@ -45,6 +49,16 @@ public class AccountActivity extends AppCompatActivity implements GlobalInterFac
         accountUname.setText(SharedPrefUtil.getString("Reg_UserName","", AccountActivity.this ));
         accountEmail.setText(SharedPrefUtil.getString("Reg_Email","", AccountActivity.this ));
         accountEmail.setText(SharedPrefUtil.getString("Reg_Phone","", AccountActivity.this ));
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        accountEdit.setText(R.string.ED);
+        accountUname.setEnabled(false);
+        accountEmail.setEnabled(false);
+        accountMobile.setEnabled(false);
 
     }
 
@@ -95,6 +109,12 @@ public class AccountActivity extends AppCompatActivity implements GlobalInterFac
 
                 }
 
+            }
+
+            case R.id.accountButton:{
+                SharedPrefUtil.putString("Reg_UserName", accountUname.getText().toString(), AccountActivity.this);
+                SharedPrefUtil.putString("Reg_Email", accountEmail.getText().toString(), AccountActivity.this);
+                SharedPrefUtil.putString("Reg_Reg_Phone", accountEmail.getText().toString(), AccountActivity.this);
             }
         }
     }

@@ -143,6 +143,26 @@
         </android.support.design.widget.TextInputLayout>
 
 
+        <com.rey.material.widget.Button
+            android:id="@+id/accountButton"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/universal_margin4"
+            android:textColorHint="@color/splash_color"
+            android:layout_marginLeft="@dimen/login"
+            android:layout_marginRight="@dimen/login"
+            android:background="@color/minor_custom"
+            android:textColor="@color/splash_color"
+            android:text="@string/savesettings"
+            android:enabled="true"
+            android:gravity="center"
+            android:padding="@dimen/universal_padding"
+            android:layout_marginTop="@dimen/login"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            app:rd_enable="true"
+
+
+            />
+
 
 </LinearLayout>
 
