@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -47,6 +48,8 @@ public class NavigationActivity extends AppCompatActivity implements GlobalInter
     public ArrayList<geometry> mArrayList;
     //----progress dialog
     private ProgressDialog progressDialog = null;
+    private TextView RegisterName;
+    private TextView RegisterEmail;
 
 
 
@@ -136,7 +139,8 @@ public class NavigationActivity extends AppCompatActivity implements GlobalInter
 
     @Override
     public void findViewById() {
-
+        RegisterName=(TextView)findViewById(R.id.drawerhomeName);
+        RegisterEmail=(TextView)findViewById(R.id.drawerhomeEmail);
     }
 
     @Override
