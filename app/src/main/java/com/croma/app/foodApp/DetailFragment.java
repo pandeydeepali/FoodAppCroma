@@ -55,6 +55,7 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
         foodaddress.setText(b.getString("ItemAddress"));
 
 
+
     }
 
     @Override
