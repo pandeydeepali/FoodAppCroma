@@ -7,6 +7,6 @@ import com.croma.app.foodApp.SharedPrefUtil;
  */
 public class ServiceConfig {
 
-    public static final String URL  = "https://maps.googleapis.com/maps/api/place/search/json?radius=500&sensor=false&key=AIzaSyBj5jPKrBdVNm72tRWbWsqO4UwThdlXTAo";
+    public static final String URL  = "https://maps.googleapis.com/maps/api/place/search/json?radius=1000&sensor=false&key=AIzaSyBj5jPKrBdVNm72tRWbWsqO4UwThdlXTAo";
 
 }

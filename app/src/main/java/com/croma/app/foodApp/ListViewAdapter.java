@@ -65,7 +65,7 @@ public class ListViewAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
         LayoutInflater inflater = context.getLayoutInflater();
-       
+
             convertView = inflater.inflate(R.layout.activity_list, null);
             holder = new ViewHolder();
             holder.txtViewTitle = (TextView) convertView.findViewById(R.id.listDescription);
