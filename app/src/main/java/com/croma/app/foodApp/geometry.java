@@ -14,7 +14,7 @@ public class geometry {
     public opening_hours opening_hours;
     public ArrayList<photos> photos;
     public String place_id;
-  //  public String rating;
+    public float rating;
     public String reference;
     public String scope;
     public String[] types;

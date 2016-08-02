@@ -82,7 +82,11 @@ public class ListViewAdapter extends BaseAdapter {
             holder.txtViewTitle.setText(arrayList.get(position).name);
             holder.txtViewDescription.setText(arrayList.get(position).vicinity);
             holder.listImage.setImageResource(R.drawable.back);
-            holder.leftImage.setImageURI(Uri.parse(arrayList.get(position).icon));
+            holder.leftImage.setImageResource(R.drawable.fo);
+            //holder.ratingBarRestaurant.setRating(Float.parseFloat("3.6"));
+
+           holder.ratingBarRestaurant.setRating(arrayList.get(position).rating);
+//
 //            holder.delieverItemTime.setText(arrayList.get(position).itemdeliever);
 //            holder.delieverAddress.setText(arrayList.get(position).delieverAddress);
             holder.rlayout.setOnClickListener(onClickListener);
