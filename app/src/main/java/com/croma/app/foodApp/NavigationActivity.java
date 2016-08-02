@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,12 +44,14 @@ public class NavigationActivity extends AppCompatActivity implements View.OnClic
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
     private NavigationView navigationView;
+
     private static final String TAG     =       NavigationActivity.class.getSimpleName();
     public static final int REQUEST_TIMEOUT_MS = 10000;
     public ArrayList<geometry> mArrayList;
     //----progress dialog
     private ProgressDialog progressDialog = null;
     private TextView NavigationName, NavigationEmail;
+    private RatingBar ratingBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +64,7 @@ public class NavigationActivity extends AppCompatActivity implements View.OnClic
         navigationView = (NavigationView) findViewById(R.id.homeNavView);
         NavigationName=(TextView)findViewById(R.id.drawerhomeName);
         NavigationEmail=(TextView)findViewById(R.id.drawerhomeEmail);
+        ratingBar=(RatingBar)findViewById(R.id.ratingBar);
         navigationView.getMenu().getItem(1).setChecked(true);
         navigationView.setNavigationItemSelectedListener(this);
        // NavigationName.setText(SharedPrefUtil.getString("Reg_UserName", " ", NavigationActivity.this));

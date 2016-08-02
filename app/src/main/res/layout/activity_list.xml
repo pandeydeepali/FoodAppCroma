@@ -50,12 +50,12 @@
 
 
     <RatingBar
-        android:theme="@style/RatingBar"
-
+        style="@style/Base.Widget.AppCompat.RatingBar.Small"
+        android:id="@+id/ratingBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/listTitle"
-
+        android:layout_marginLeft="@dimen/login"
         android:layout_toRightOf="@+id/homeleftlogoImage"/>
 
 

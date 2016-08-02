@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -57,6 +58,7 @@ public class ListViewAdapter extends BaseAdapter {
         ImageView listImage;
         ImageView leftImage;
         TextView delieverItemTime;
+        RatingBar ratingBarRestaurant;
 //        TextView delieverAddress;
         RelativeLayout rlayout;
     }
@@ -73,10 +75,12 @@ public class ListViewAdapter extends BaseAdapter {
             holder.listImage = (ImageView) convertView.findViewById(R.id.listImage);
             holder.leftImage = (ImageView) convertView.findViewById(R.id.homeleftlogoImage);
             holder.delieverItemTime = (TextView) convertView.findViewById(R.id.listDeliever);
+            holder.ratingBarRestaurant=(RatingBar)convertView.findViewById(R.id.ratingBar);
           //  holder.delieverAddress = (TextView) convertView.findViewById(R.id.homeRestAddress);
             holder.rlayout = (RelativeLayout) convertView.findViewById(R.id._relativeLayout);
             holder.txtViewTitle.setText(arrayList.get(position).name);
             holder.txtViewDescription.setText(arrayList.get(position).vicinity);
+            holder.ratingBarRestaurant.setNumStars(arrayList.get(position).rating);
 
             holder.listImage.setImageResource(R.drawable.back);
         //    holder.leftImage.setImageResource(arrayList.get(position).icon);
