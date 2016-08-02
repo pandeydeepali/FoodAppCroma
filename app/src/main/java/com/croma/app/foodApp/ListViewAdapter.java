@@ -3,6 +3,7 @@ package com.croma.app.foodApp;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -80,10 +81,8 @@ public class ListViewAdapter extends BaseAdapter {
             holder.rlayout = (RelativeLayout) convertView.findViewById(R.id._relativeLayout);
             holder.txtViewTitle.setText(arrayList.get(position).name);
             holder.txtViewDescription.setText(arrayList.get(position).vicinity);
-            holder.ratingBarRestaurant.setNumStars(arrayList.get(position).rating);
-
             holder.listImage.setImageResource(R.drawable.back);
-        //    holder.leftImage.setImageResource(arrayList.get(position).icon);
+            holder.leftImage.setImageURI(Uri.parse(arrayList.get(position).icon));
 //            holder.delieverItemTime.setText(arrayList.get(position).itemdeliever);
 //            holder.delieverAddress.setText(arrayList.get(position).delieverAddress);
             holder.rlayout.setOnClickListener(onClickListener);

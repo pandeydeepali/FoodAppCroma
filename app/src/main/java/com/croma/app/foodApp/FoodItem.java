@@ -10,12 +10,12 @@ public class FoodItem {
 
     public String itemName;
     public String subItemName;
-    public int image;
+    public String image;
     public String leftImage;
     public String itemdeliever;
     public String delieverAddress;
     //-----CONSTRAUCTOR DEFINE OF CLASS FOOTITEM----//
-    FoodItem(String itemName, String subItemName, int image, String leftImage, String itemdeliever, String delieverAddress){
+    FoodItem(String itemName, String subItemName, String image, String leftImage, String itemdeliever, String delieverAddress){
 
         this.itemName = itemName;
         this.subItemName = subItemName;
