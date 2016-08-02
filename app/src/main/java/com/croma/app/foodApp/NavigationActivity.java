@@ -1,8 +1,10 @@
 package com.croma.app.foodApp;
 import android.app.ProgressDialog;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.View;
@@ -38,6 +40,7 @@ import java.util.Map;
  *         Navigation drawer activity class
  */
 public class NavigationActivity extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
+
     private static final long DrawerCloseDelay = 500;
     private final Handler mDrawerActionHandler = new Handler();
     private DrawerLayout mDrawerLayout;
@@ -206,18 +209,21 @@ public class NavigationActivity extends AppCompatActivity implements View.OnClic
         double latitude = Double.longBitsToDouble(SharedPrefUtil.getLong("CurrentLatitude", 1L, NavigationActivity.this));
         double longitude = Double.longBitsToDouble(SharedPrefUtil.getLong("CurrentLongitude", 1L, NavigationActivity.this));
         // String my_url   =   ServiceConfig.URL + "&location= +SharedPrefUtil.getFloat("CurrentLatitude", "", NavigationActivity.this)," + "77.329119" + "&type=restaurant";
-        String my_url   =   ServiceConfig.URL + "&location="+ latitude +"," +  longitude + "&type=restaurant";
+//        String my_url   =   ServiceConfig.URL + "&location="+ latitude +"," +  longitude + "&type=restaurant";
+        String my_url   =   "https://maps.googleapis.com/maps/api/place/search/json?radius=1000&sensor=false&key=AIzaSyBj5jPKrBdVNm72tRWbWsqO4UwThdlXTAo&location=28.574489,77.329119&type=restaurant";
         JsonObjectRequest jsonObjectRequestWithGet = new JsonObjectRequest(my_url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 mArrayList = new ArrayList<geometry>();
                 try{
                     JSONArray jsonArray = response.getJSONArray("results");
+                    Log.v(TAG,"Json Array Size"+jsonArray.length());
                     for(int i = 0 ;i<jsonArray.length();i++){
                         geometry geometry = new Gson().fromJson(jsonArray.getJSONObject(i).toString(),geometry.class);
                        // geometry geometry = new Gson().fromJson(jsonArray.getJSONObject(i).toString(), com.croma.app.foodApp.geometry.class);
                         mArrayList.add(geometry);
                     }
+                    Log.v(TAG,"Array List Size" + mArrayList.size());
                     final ListDetailActivityFragment fragment = (ListDetailActivityFragment)getSupportFragmentManager().findFragmentByTag(ListDetailActivityFragment.TAG);
                     if(fragment!=null) {
                             runOnUiThread(new Runnable() {

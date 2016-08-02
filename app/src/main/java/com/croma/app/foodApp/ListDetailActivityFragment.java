@@ -6,13 +6,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-
 import java.util.ArrayList;
 
 /**
  * A placeholder fragment containing a simple view.
  */
 public class ListDetailActivityFragment extends Fragment implements GlobalInterFace, View.OnClickListener {
+
     public static final String TAG = ListDetailActivityFragment.class.getSimpleName();
     public ArrayList<geometry> fragmentArrayList;
     public ListViewAdapter listAdapter;
