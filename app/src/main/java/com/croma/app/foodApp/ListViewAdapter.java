@@ -65,7 +65,7 @@ public class ListViewAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
         LayoutInflater inflater = context.getLayoutInflater();
-        if (convertView == null) {
+       
             convertView = inflater.inflate(R.layout.activity_list, null);
             holder = new ViewHolder();
             holder.txtViewTitle = (TextView) convertView.findViewById(R.id.listDescription);
@@ -83,7 +83,7 @@ public class ListViewAdapter extends BaseAdapter {
 //            holder.delieverAddress.setText(arrayList.get(position).delieverAddress);
             holder.rlayout.setOnClickListener(onClickListener);
             holder.rlayout.setTag(position);
-        }
+
 
         return convertView;
     }
