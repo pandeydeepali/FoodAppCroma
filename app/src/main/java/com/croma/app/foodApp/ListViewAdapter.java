@@ -57,7 +57,7 @@ public class ListViewAdapter extends BaseAdapter {
         ImageView listImage;
         ImageView leftImage;
         TextView delieverItemTime;
-        TextView delieverAddress;
+//        TextView delieverAddress;
         RelativeLayout rlayout;
     }
 
@@ -73,10 +73,11 @@ public class ListViewAdapter extends BaseAdapter {
             holder.listImage = (ImageView) convertView.findViewById(R.id.listImage);
             holder.leftImage = (ImageView) convertView.findViewById(R.id.homeleftlogoImage);
             holder.delieverItemTime = (TextView) convertView.findViewById(R.id.listDeliever);
-            holder.delieverAddress = (TextView) convertView.findViewById(R.id.homeRestAddress);
+          //  holder.delieverAddress = (TextView) convertView.findViewById(R.id.homeRestAddress);
             holder.rlayout = (RelativeLayout) convertView.findViewById(R.id._relativeLayout);
             holder.txtViewTitle.setText(arrayList.get(position).name);
             holder.txtViewDescription.setText(arrayList.get(position).vicinity);
+
             holder.listImage.setImageResource(R.drawable.back);
         //    holder.leftImage.setImageResource(arrayList.get(position).icon);
 //            holder.delieverItemTime.setText(arrayList.get(position).itemdeliever);

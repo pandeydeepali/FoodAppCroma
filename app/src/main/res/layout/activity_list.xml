@@ -3,77 +3,88 @@
     android:id="@+id/_relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:clickable="true"
     android:focusable="true"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/universal_margin"
     android:paddingLeft="@dimen/bck_padd"
     android:paddingRight="@dimen/bck_padd"
+
     android:paddingTop="@dimen/universal_margin"
-    android:paddingBottom="@dimen/universal_margin"
-    android:clickable="true"
 
-    android:orientation="vertical"
-
-   >
+    >
 
     <ImageView
         android:id="@+id/homeleftlogoImage"
-        android:src="@drawable/list"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:background="@color/et_textColor"
-        android:layout_height="wrap_content"
+        android:src="@drawable/list"
 
         />
 
     <TextView
         android:id="@+id/listDescription"
-        android:textColor="@color/title"
-        android:textSize="@dimen/universal_margin"
-        android:textStyle="bold"
-        android:text="supriya"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/login"
         android:layout_alignTop="@+id/homeleftlogoImage"
-        android:layout_toRightOf="@+id/homeleftlogoImage"/>
+        android:layout_marginLeft="@dimen/login"
+        android:layout_toRightOf="@+id/homeleftlogoImage"
+        android:text="supriya"
+        android:textColor="@color/title"
+        android:textSize="@dimen/universal_margin"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/listTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/year"
-        android:layout_marginLeft="@dimen/login"
-        android:textSize="@dimen/login"
         android:layout_below="@id/listDescription"
+        android:layout_marginLeft="@dimen/login"
+        android:layout_toRightOf="@+id/homeleftlogoImage"
+        android:maxWidth="@dimen/locationWidth"
         android:text="supriya"
-        android:layout_toRightOf="@+id/homeleftlogoImage" />
+        android:textColor="@color/year"
+        android:textSize="@dimen/login" />
 
 
-    <TextView
-        android:id="@+id/homeRestAddress"
+    <RatingBar
+        android:theme="@style/RatingBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/AddressNoida"
-        android:layout_below="@id/listTitle"
-        android:layout_toRightOf="@+id/homeleftlogoImage"
-        android:layout_marginLeft="@dimen/login"
-        android:layout_alignParentRight="true"/>
+        android:layout_below="@+id/listTitle"
+        android:maxWidth="@dimen/locationWidth"
+        android:layout_toRightOf="@+id/homeleftlogoImage"/>
+
+
+    <!--<TextView-->
+    <!--android:id="@+id/homeRestAddress"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="@string/AddressNoida"-->
+    <!--android:layout_below="@id/listTitle"-->
+    <!--android:layout_toRightOf="@+id/homeleftlogoImage"-->
+    <!--android:layout_marginLeft="@dimen/login"-->
+    <!--android:layout_alignParentRight="true"/>-->
+
+
+    <ImageView
+        android:id="@+id/listImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="false"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/back" />
 
     <TextView
         android:id="@+id/listDeliever"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/deliever"
-        android:layout_below="@id/homeRestAddress"
-        android:layout_marginLeft="@dimen/login"
-        android:layout_alignParentRight="true"/>
-
-    <ImageView
-        android:id="@+id/listImage"
-        android:src="@drawable/back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="false"
         android:layout_alignParentRight="true"
-       />
+        android:layout_alignParentBottom="true"
+        android:layout_below="@id/listImage"
+        android:layout_marginLeft="@dimen/login"
+        android:text="@string/deliever" />
 
 </RelativeLayout>
