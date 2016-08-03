@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -50,8 +51,9 @@ public class NavigationActivity extends AppCompatActivity implements View.OnClic
     public ArrayList<geometry> mArrayList;
     //----progress dialog
     private ProgressDialog progressDialog = null;
-    private TextView NavigationName, NavigationEmail;
+    //private TextView NavigationName, NavigationEmail;
     private RatingBar ratingBar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,16 +64,16 @@ public class NavigationActivity extends AppCompatActivity implements View.OnClic
         setSupportActionBar(toolbar);
 
         navigationView = (NavigationView) findViewById(R.id.homeNavView);
-        NavigationName=(TextView)findViewById(R.id.drawerhomeName);
-        NavigationEmail=(TextView)findViewById(R.id.drawerhomeEmail);
+
+
         ratingBar=(RatingBar)findViewById(R.id.ratingBar);
         navigationView.getMenu().getItem(1).setChecked(true);
         navigationView.setNavigationItemSelectedListener(this);
-       // NavigationName.setText(SharedPrefUtil.getString("Reg_UserName", " ", NavigationActivity.this));
-       // NavigationEmail.setText(SharedPrefUtil.getString("Reg_Email", " ", NavigationActivity.this));
-
-
-
+        View headerView = navigationView.inflateHeaderView(R.layout.nav_header_navigation);
+        TextView NavigationName = (TextView)headerView.findViewById(R.id.drawerhomeName);
+        NavigationName.setText(SharedPrefUtil.getString("Reg_UserName", " ", NavigationActivity.this));
+        TextView NavigationEmail = (TextView)headerView.findViewById(R.id.drawerhomeEmail);
+        NavigationEmail.setText(SharedPrefUtil.getString("Reg_Email", " ", NavigationActivity.this));
         mDrawerLayout = (DrawerLayout) findViewById(R.id.homeDrawer);
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
             public void onDrawerClosed(View view) {
@@ -84,7 +86,6 @@ public class NavigationActivity extends AppCompatActivity implements View.OnClic
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
                 Log.e("uname", SharedPrefUtil.getString("Reg_UserName", "SuppuPande", NavigationActivity.this));
                 Log.e("email", SharedPrefUtil.getString("Reg_Email", "suprpand91@gmail.com", NavigationActivity.this));
-
 
             }
         };
@@ -115,8 +116,16 @@ public class NavigationActivity extends AppCompatActivity implements View.OnClic
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+
+
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
+
         jsonRequestWithGet();
 
 
