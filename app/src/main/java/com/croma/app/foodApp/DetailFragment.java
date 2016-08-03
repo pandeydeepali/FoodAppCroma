@@ -50,7 +50,7 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
         b.getString("ItemSubItem");
         b.getInt("ItemImage");
         b.getString("ItemAddress");
-        foodtitle.setText(geometry.class.getName());
+        foodtitle.setText(b.getString("ItemName"));
         foodsubtitle.setText(b.getString("ItemSubItem"));
         foodresImage.setImageResource(b.getInt("ItemImage"));
         foodaddress.setText(b.getString("ItemAddress"));

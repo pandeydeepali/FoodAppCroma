@@ -5,7 +5,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ListView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -80,12 +83,13 @@ public class ListDetailActivityFragment extends Fragment implements GlobalInterF
                     Integer integer = Integer.parseInt(v.getTag().toString());
                     geometry foodItem = fragmentArrayList.get(integer);
                     Bundle b = new Bundle();
+                    b.putString("ItemName", foodItem.name);
                     // b.putString("");
                     // Intent intent=new Intent(getActivity(), ListDetailActivity.class);
-//                    b.putString("ItemName", foodItem.itemName);
-//                    b.putString("ItemSubItem", foodItem.subItemName);
-//                    b.putString("ItemAddress", foodItem.delieverAddress);
-//                    b.putInt("ItemImage", foodItem.leftImage);
+
+                    b.putString("ItemSubItem", foodItem.name);
+                    b.putString("ItemAddress", foodItem.vicinity);
+                  //  b.putInt("ItemImage", Picasso.with(getContext()).load(foodItem.icon).into(ImageView ););
 
                     DetailFragment detailFragment = new DetailFragment();
                     detailFragment.setArguments(b);
