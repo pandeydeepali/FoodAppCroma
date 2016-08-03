@@ -1,15 +1,6 @@
 package com.croma.app.foodApp;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.media.Image;
-import android.net.Uri;
-import android.os.Build;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,20 +9,8 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.android.volley.Response;
-import com.android.volley.cache.plus.ImageLoader;
-import com.android.volley.cache.plus.ImageRequest;
-import com.android.volley.error.VolleyError;
 import com.squareup.picasso.Picasso;
-
-import java.io.IOException;
-import java.io.Serializable;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
-
 /**
  * Created by suppi on 03/07/16.
  */
