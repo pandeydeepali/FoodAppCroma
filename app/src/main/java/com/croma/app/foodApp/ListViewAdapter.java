@@ -24,6 +24,7 @@ import com.android.volley.Response;
 import com.android.volley.cache.plus.ImageLoader;
 import com.android.volley.cache.plus.ImageRequest;
 import com.android.volley.error.VolleyError;
+import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.io.Serializable;
@@ -88,13 +89,11 @@ public class ListViewAdapter extends BaseAdapter {
             holder.leftImage = (ImageView) convertView.findViewById(R.id.homeleftlogoImage);
             holder.delieverItemTime = (TextView) convertView.findViewById(R.id.listDeliever);
             holder.ratingBarRestaurant=(RatingBar)convertView.findViewById(R.id.ratingBar);
-          //  holder.delieverAddress = (TextView) convertView.findViewById(R.id.homeRestAddress);
             holder.rlayout = (RelativeLayout) convertView.findViewById(R.id._relativeLayout);
             holder.txtViewTitle.setText(arrayList.get(position).name);
             holder.txtViewDescription.setText(arrayList.get(position).vicinity);
             holder.listImage.setImageResource(R.drawable.back);
-            //holder.leftImage.setImageURI(Uri.parse(arrayList.get(position).icon));
-            //((int)holder.leftImage.setImageResource(arrayList.get(position).icon));
+            Picasso.with(this.context).load(arrayList.get(position).icon).into(holder.leftImage);
             holder.ratingBarRestaurant.setRating(arrayList.get(position).rating);
             holder.rlayout.setOnClickListener(onClickListener);
             holder.rlayout.setTag(position);
