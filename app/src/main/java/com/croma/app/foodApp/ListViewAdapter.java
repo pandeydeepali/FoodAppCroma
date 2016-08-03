@@ -3,6 +3,9 @@ package com.croma.app.foodApp;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -17,7 +20,15 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Response;
+import com.android.volley.cache.plus.ImageLoader;
+import com.android.volley.cache.plus.ImageRequest;
+import com.android.volley.error.VolleyError;
+
+import java.io.IOException;
 import java.io.Serializable;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 
 /**
@@ -66,7 +77,7 @@ public class ListViewAdapter extends BaseAdapter {
 
 
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder holder;
+        final ViewHolder holder;
         LayoutInflater inflater = context.getLayoutInflater();
 
             convertView = inflater.inflate(R.layout.activity_list, null);
@@ -82,13 +93,9 @@ public class ListViewAdapter extends BaseAdapter {
             holder.txtViewTitle.setText(arrayList.get(position).name);
             holder.txtViewDescription.setText(arrayList.get(position).vicinity);
             holder.listImage.setImageResource(R.drawable.back);
-            holder.leftImage.setImageResource(R.drawable.fo);
-            //holder.ratingBarRestaurant.setRating(Float.parseFloat("3.6"));
-
+           holder.leftImage.setImageURI(Uri.parse(arrayList.get(position).icon));
            holder.ratingBarRestaurant.setRating(arrayList.get(position).rating);
-//
-//            holder.delieverItemTime.setText(arrayList.get(position).itemdeliever);
-//            holder.delieverAddress.setText(arrayList.get(position).delieverAddress);
+
             holder.rlayout.setOnClickListener(onClickListener);
             holder.rlayout.setTag(position);
 
