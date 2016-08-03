@@ -11,11 +11,11 @@ public class FoodItem {
     public String itemName;
     public String subItemName;
     public String image;
-    public int leftImage;
+    public String  leftImage;
     public String itemdeliever;
     public String delieverAddress;
     //-----CONSTRAUCTOR DEFINE OF CLASS FOOTITEM----//
-    FoodItem(String itemName, String subItemName, String image, int leftImage, String itemdeliever, String delieverAddress){
+    FoodItem(String itemName, String subItemName, String image, String leftImage, String itemdeliever, String delieverAddress){
 
         this.itemName = itemName;
         this.subItemName = subItemName;

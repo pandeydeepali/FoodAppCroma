@@ -94,7 +94,7 @@ public class ListViewAdapter extends BaseAdapter {
             holder.txtViewDescription.setText(arrayList.get(position).vicinity);
             holder.listImage.setImageResource(R.drawable.back);
             //holder.leftImage.setImageURI(Uri.parse(arrayList.get(position).icon));
-            holder.leftImage.setImageResource(Integer.parseInt(arrayList.get(position).icon));
+            //((int)holder.leftImage.setImageResource(arrayList.get(position).icon));
             holder.ratingBarRestaurant.setRating(arrayList.get(position).rating);
             holder.rlayout.setOnClickListener(onClickListener);
             holder.rlayout.setTag(position);
