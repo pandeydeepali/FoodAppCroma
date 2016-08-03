@@ -3,6 +3,7 @@ package com.croma.app.foodApp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,15 +45,15 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
         foodresImage=(ImageView)mView.findViewById(R.id.detail_image_left);
         foodaddress=(TextView) mView.findViewById(R.id.detail_foodaddress);
 
-       /* Bundle b=getArguments();
+        Bundle b=getArguments();
         b.getString("ItemName");
         b.getString("ItemSubItem");
         b.getInt("ItemImage");
         b.getString("ItemAddress");
-        foodtitle.setText(b.getString("ItemName"));
+        foodtitle.setText(geometry.class.getName());
         foodsubtitle.setText(b.getString("ItemSubItem"));
         foodresImage.setImageResource(b.getInt("ItemImage"));
-        foodaddress.setText(b.getString("ItemAddress"));*/
+        foodaddress.setText(b.getString("ItemAddress"));
 
 
 

@@ -230,6 +230,7 @@ public class NavigationActivity extends AppCompatActivity implements View.OnClic
                         geometry geometry = new Gson().fromJson(jsonArray.getJSONObject(i).toString(),geometry.class);
                        // geometry geometry = new Gson().fromJson(jsonArray.getJSONObject(i).toString(), com.croma.app.foodApp.geometry.class);
                         mArrayList.add(geometry);
+                       // SharedPrefUtil.putString("PlaceId", geometry.place_id, NavigationActivity.this);
                     }
                     final ListDetailActivityFragment fragment = (ListDetailActivityFragment)getSupportFragmentManager().findFragmentByTag(ListDetailActivityFragment.TAG);
                     if(fragment!=null) {
