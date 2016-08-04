@@ -1,7 +1,10 @@
 package com.croma.app.foodApp;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -23,6 +26,7 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
     private TextView foodtitle, foodsubtitle, foodaddress;
     private ImageView foodresImage;
     private ListView lView;
+    SharedPreferences prefs;
 
     public DetailFragment() {
 
@@ -48,11 +52,13 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
         Bundle b=getArguments();
         b.getString("ItemName");
         b.getString("ItemSubItem");
-        b.getInt("ItemImage");
+        b.getString("ItemImage");
         b.getString("ItemAddress");
+      //  b.getString("ItemImage");
         foodtitle.setText(b.getString("ItemName"));
         foodsubtitle.setText(b.getString("ItemSubItem"));
-        foodresImage.setImageResource(b.getInt("ItemImage"));
+        foodresImage.setImageResource(Integer.valueOf(b.getString("ItemImage")));
+        //foodresImage.setImageResource(b.getInt("ItemImage"));
         foodaddress.setText(b.getString("ItemAddress"));
 
 

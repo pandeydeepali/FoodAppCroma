@@ -1,6 +1,8 @@
 package com.croma.app.foodApp;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +23,7 @@ public class ListDetailActivityFragment extends Fragment implements GlobalInterF
     public ListViewAdapter listAdapter;
     private View mView;
     private ListView listView;
+    SharedPreferences prefs;
 
 
     public ListDetailActivityFragment() {
@@ -89,8 +92,7 @@ public class ListDetailActivityFragment extends Fragment implements GlobalInterF
 
                     b.putString("ItemSubItem", foodItem.name);
                     b.putString("ItemAddress", foodItem.vicinity);
-                  //  b.putInt("ItemImage", Picasso.with(getContext()).load(foodItem.icon).into(ImageView ););
-
+                    b.putString("ItemImage", foodItem.icon);
                     DetailFragment detailFragment = new DetailFragment();
                     detailFragment.setArguments(b);
                     getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.home_fragment, detailFragment).addToBackStack(null).commit();
