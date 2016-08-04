@@ -23,8 +23,6 @@ public class ListDetailActivityFragment extends Fragment implements GlobalInterF
     public ListViewAdapter listAdapter;
     private View mView;
     private ListView listView;
-    SharedPreferences prefs;
-
 
     public ListDetailActivityFragment() {
 
@@ -92,7 +90,7 @@ public class ListDetailActivityFragment extends Fragment implements GlobalInterF
 
                     b.putString("ItemSubItem", foodItem.name);
                     b.putString("ItemAddress", foodItem.vicinity);
-                    b.putInt("ItemImage", Integer.valueOf(foodItem.icon));
+                    b.putString("ItemImage", foodItem.icon);
                     DetailFragment detailFragment = new DetailFragment();
                     detailFragment.setArguments(b);
                     getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.home_fragment, detailFragment).addToBackStack(null).commit();

@@ -14,6 +14,8 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -57,6 +59,7 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
         foodtitle.setText(b.getString("ItemName"));
         foodsubtitle.setText(b.getString("ItemSubItem"));
         foodresImage.setImageResource(b.getInt("ItemImage"));
+        Picasso.with(getContext()).load(b.getString("ItemImage")).into(foodresImage);
         //foodresImage.setImageResource(b.getInt("ItemImage"));
         foodaddress.setText(b.getString("ItemAddress"));
 
