@@ -12,6 +12,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.utll.global.ActivitySwitcher;
+
 public class AccountActivity extends AppCompatActivity implements GlobalInterFace, View.OnClickListener {
     private EditText accountUname;
     private EditText accountEmail;
@@ -89,6 +91,7 @@ public class AccountActivity extends AppCompatActivity implements GlobalInterFac
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.accountBack:{
+                ActivitySwitcher.switchActivity(this, NavigationActivity.class);
                 finish();
             }
 
@@ -120,9 +123,12 @@ public class AccountActivity extends AppCompatActivity implements GlobalInterFac
                 accountUname.setText(SharedPrefUtil.getString("Reg_UserName","", AccountActivity.this ));
                 accountEmail.setText(SharedPrefUtil.getString("Reg_Email","", AccountActivity.this ));
                 accountMobile.setText(SharedPrefUtil.getString("Reg_Phone","", AccountActivity.this ));
-                progressDialog.dismiss();
+
             }
         }
+        progressDialog.dismiss();
     }
+
+
 
 }

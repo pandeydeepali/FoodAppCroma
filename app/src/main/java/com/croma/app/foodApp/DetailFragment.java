@@ -44,6 +44,8 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
         return mView;
     }
 
+
+
     @Override
     public void findViewById() {
         foodtitle=(TextView)mView.findViewById(R.id.detail_foodtext);

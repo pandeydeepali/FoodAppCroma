@@ -125,7 +125,7 @@ public class NavigationActivity extends AppCompatActivity implements View.OnClic
     @Override
     protected void onResume() {
         super.onResume();
-
+        progressDialog = ProgressDialog.show(this, "Please wait", "Fetching Nearest Restaurant...", true);
         jsonRequestWithGet();
 
 
@@ -215,7 +215,7 @@ public class NavigationActivity extends AppCompatActivity implements View.OnClic
     public  void jsonRequestWithGet() {
         //String latitude =  SharedPrefUtil.getString("CurrentLatitude","", NavigationActivity.this);
         //String longitude  = SharedPrefUtil.getString("CurrentLongitude","", NavigationActivity.this);
-        progressDialog = ProgressDialog.show(this, "Please wait", "Fetching Nearest Restaurant...", true);
+
         double latitude = Double.longBitsToDouble(SharedPrefUtil.getLong("CurrentLatitude", 1L, NavigationActivity.this));
         double longitude = Double.longBitsToDouble(SharedPrefUtil.getLong("CurrentLongitude", 1L, NavigationActivity.this));
         // String my_url   =   ServiceConfig.URL + "&location= +SharedPrefUtil.getFloat("CurrentLatitude", "", NavigationActivity.this)," + "77.329119" + "&type=restaurant";
@@ -228,9 +228,7 @@ public class NavigationActivity extends AppCompatActivity implements View.OnClic
                     JSONArray jsonArray = response.getJSONArray("results");
                     for(int i = 0 ;i<jsonArray.length();i++){
                         geometry geometry = new Gson().fromJson(jsonArray.getJSONObject(i).toString(),geometry.class);
-                       // geometry geometry = new Gson().fromJson(jsonArray.getJSONObject(i).toString(), com.croma.app.foodApp.geometry.class);
                         mArrayList.add(geometry);
-                       // SharedPrefUtil.putString("PlaceId", geometry.place_id, NavigationActivity.this);
                     }
                     final ListDetailActivityFragment fragment = (ListDetailActivityFragment)getSupportFragmentManager().findFragmentByTag(ListDetailActivityFragment.TAG);
                     if(fragment!=null) {
