@@ -48,16 +48,15 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
         foodsubtitle=(TextView)mView.findViewById(R.id.detail_foodsubtext);
         foodresImage=(ImageView)mView.findViewById(R.id.detail_image_left);
         foodaddress=(TextView) mView.findViewById(R.id.detail_foodaddress);
-
         Bundle b=getArguments();
         b.getString("ItemName");
         b.getString("ItemSubItem");
-        b.getString("ItemImage");
+      //  b.getString("ItemImage");
         b.getString("ItemAddress");
       //  b.getString("ItemImage");
         foodtitle.setText(b.getString("ItemName"));
         foodsubtitle.setText(b.getString("ItemSubItem"));
-        foodresImage.setImageResource(Integer.valueOf(b.getString("ItemImage")));
+        foodresImage.setImageResource(b.getInt("ItemImage"));
         //foodresImage.setImageResource(b.getInt("ItemImage"));
         foodaddress.setText(b.getString("ItemAddress"));
 
