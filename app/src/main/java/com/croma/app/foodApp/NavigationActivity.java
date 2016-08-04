@@ -64,8 +64,6 @@ public class NavigationActivity extends AppCompatActivity implements View.OnClic
         setSupportActionBar(toolbar);
 
         navigationView = (NavigationView) findViewById(R.id.homeNavView);
-
-
         ratingBar=(RatingBar)findViewById(R.id.ratingBar);
         navigationView.getMenu().getItem(1).setChecked(true);
         navigationView.setNavigationItemSelectedListener(this);
@@ -112,7 +110,6 @@ public class NavigationActivity extends AppCompatActivity implements View.OnClic
         } else {
             super.onBackPressed();
         }
-
     }
 
     @Override
@@ -127,8 +124,6 @@ public class NavigationActivity extends AppCompatActivity implements View.OnClic
         super.onResume();
         progressDialog = ProgressDialog.show(this, "Please wait", "Fetching Nearest Restaurant...", true);
         jsonRequestWithGet();
-
-
     }
 
 
@@ -213,12 +208,8 @@ public class NavigationActivity extends AppCompatActivity implements View.OnClic
 
     // json request with get
     public  void jsonRequestWithGet() {
-        //String latitude =  SharedPrefUtil.getString("CurrentLatitude","", NavigationActivity.this);
-        //String longitude  = SharedPrefUtil.getString("CurrentLongitude","", NavigationActivity.this);
-
         double latitude = Double.longBitsToDouble(SharedPrefUtil.getLong("CurrentLatitude", 1L, NavigationActivity.this));
         double longitude = Double.longBitsToDouble(SharedPrefUtil.getLong("CurrentLongitude", 1L, NavigationActivity.this));
-        // String my_url   =   ServiceConfig.URL + "&location= +SharedPrefUtil.getFloat("CurrentLatitude", "", NavigationActivity.this)," + "77.329119" + "&type=restaurant";
         String my_url   =   ServiceConfig.URL + "&location="+ latitude +"," +  longitude + "&type=restaurant";
         JsonObjectRequest jsonObjectRequestWithGet = new JsonObjectRequest(my_url, null, new Response.Listener<JSONObject>() {
             @Override

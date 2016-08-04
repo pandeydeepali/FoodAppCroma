@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -68,6 +69,15 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
 
 
     }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+    }
+
+
 
     @Override
     public void setOnClickListener() {

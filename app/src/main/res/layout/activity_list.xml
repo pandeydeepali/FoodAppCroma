@@ -56,7 +56,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/listTitle"
         android:layout_marginLeft="@dimen/login"
-        android:layout_toRightOf="@+id/homeleftlogoImage"/>
+        android:layout_toRightOf="@+id/homeleftlogoImage"
+        />
 
 
     <!--<TextView-->
