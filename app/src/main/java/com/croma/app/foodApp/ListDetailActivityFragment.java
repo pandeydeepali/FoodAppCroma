@@ -1,5 +1,6 @@
 package com.croma.app.foodApp;
 
+import android.app.ProgressDialog;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -43,6 +44,7 @@ public class ListDetailActivityFragment extends Fragment implements GlobalInterF
     private View mView;
     private ListView listView;
     public ArrayList<geometry> mArrayList;
+    ProgressDialog progressDialog=null;
 
     //-----from navigationActivity-----//
 
@@ -89,7 +91,9 @@ public class ListDetailActivityFragment extends Fragment implements GlobalInterF
     public void onResume() {
         Log.e("OnResume", "OnResue");
         super.onResume();
+
         jsonRequestWithGet();
+
     }
 
     public void fillArrayList() {
@@ -121,6 +125,8 @@ public class ListDetailActivityFragment extends Fragment implements GlobalInterF
 
     // json request with get
     public  void jsonRequestWithGet() {
+        progressDialog = ProgressDialog.show(this.getContext(), "Please wait", "Fetching Restaurant Data...", true);
+
         double latitude = Double.longBitsToDouble(SharedPrefUtil.getLong("CurrentLatitude", 1L, getActivity()));
         double longitude = Double.longBitsToDouble(SharedPrefUtil.getLong("CurrentLongitude", 1L, getActivity()));
         String my_url   =   ServiceConfig.URL + "&location="+ latitude +"," +  longitude + "&type=restaurant";
@@ -141,6 +147,7 @@ public class ListDetailActivityFragment extends Fragment implements GlobalInterF
                                 fragmentArrayList.clear();
                                 fragmentArrayList.addAll(mArrayList);
                                 listAdapter.notifyDataSetChanged();
+
                             }
                         });
 
@@ -148,6 +155,8 @@ public class ListDetailActivityFragment extends Fragment implements GlobalInterF
                     Toast.makeText(getActivity(),"There is some problem while getting restarorent",Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
                 }
+                progressDialog.dismiss();
+
                 Toast.makeText( getActivity(),"Data Get-ed From Service",Toast.LENGTH_SHORT).show();
 
             }
@@ -170,6 +179,7 @@ public class ListDetailActivityFragment extends Fragment implements GlobalInterF
         jsonObjectRequestWithGet.setRetryPolicy(new DefaultRetryPolicy(REQUEST_TIMEOUT_MS, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         RequestQueue mRequestQueue  = Volley.newRequestQueue(getActivity().getApplicationContext());
         mRequestQueue.add(jsonObjectRequestWithGet);
+
 
     }
 
