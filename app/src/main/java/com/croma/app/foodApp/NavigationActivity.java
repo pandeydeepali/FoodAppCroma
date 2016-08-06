@@ -220,6 +220,7 @@ public class NavigationActivity extends AppCompatActivity implements View.OnClic
                     for(int i = 0 ;i<jsonArray.length();i++){
                         geometry geometry = new Gson().fromJson(jsonArray.getJSONObject(i).toString(),geometry.class);
                         mArrayList.add(geometry);
+
                     }
                     final ListDetailActivityFragment fragment = (ListDetailActivityFragment)getSupportFragmentManager().findFragmentByTag(ListDetailActivityFragment.TAG);
                     if(fragment!=null) {
@@ -232,12 +233,12 @@ public class NavigationActivity extends AppCompatActivity implements View.OnClic
                             }
                         });
                     }
-                    Toast.makeText(NavigationActivity.this,"Data Get-ed From Service",Toast.LENGTH_SHORT).show();
 
                 }catch (Exception e){
                     Toast.makeText(NavigationActivity.this,"There is some problem while getting restarorent",Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
                 }
+                Toast.makeText(NavigationActivity.this,"Data Get-ed From Service",Toast.LENGTH_SHORT).show();
 
                 progressDialog.dismiss();
             }

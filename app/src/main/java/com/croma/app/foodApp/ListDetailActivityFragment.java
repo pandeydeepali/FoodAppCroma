@@ -90,6 +90,7 @@ public class ListDetailActivityFragment extends Fragment implements GlobalInterF
                     b.putString("ItemSubItem", foodItem.name);
                     b.putString("ItemAddress", foodItem.vicinity);
                     b.putString("ItemImage", foodItem.icon);
+                    b.putString("PlaceItemID", foodItem.place_id);
                     DetailFragment detailFragment = new DetailFragment();
                     detailFragment.setArguments(b);
                     getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.home_fragment, detailFragment).addToBackStack(null).commit();
