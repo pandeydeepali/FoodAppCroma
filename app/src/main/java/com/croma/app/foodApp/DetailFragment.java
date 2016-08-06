@@ -24,6 +24,11 @@ import com.android.volley.Response;
 import com.android.volley.error.VolleyError;
 import com.android.volley.request.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
 import com.google.gson.JsonArray;
 import com.squareup.picasso.Picasso;
 
@@ -42,7 +47,8 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
     public static final String placeid = "placeId";
     private static final String TAG = DetailFragment.class.getSimpleName();
     private View mView;
-    private TextView foodtitle, foodsubtitle, foodaddress;
+    private TextView foodtitle, foodsubtitle, phoneNumber;
+    private MapFragment mMap;
     private ImageView foodresImage;
     private ListView lView;
 
@@ -79,31 +85,14 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
         foodtitle=(TextView)mView.findViewById(R.id.detail_foodtext);
         foodsubtitle=(TextView)mView.findViewById(R.id.detail_foodsubtext);
         foodresImage=(ImageView)mView.findViewById(R.id.detail_image_left);
-        foodaddress=(TextView) mView.findViewById(R.id.detail_foodaddress);
-      //  Bundle b=getArguments();
-      //  b.getString("ItemName");
-       // b.getString("ItemSubItem");
-      //  b.getString("ItemImage");
-      //  b.getString("ItemAddress");
-       // b.getString("PlaceItemID");
+        phoneNumber=(TextView) mView.findViewById(R.id.contact);
+
         getRestaurantDetails();
-
-      //  b.getString("ItemImage");
-       /* foodtitle.setText(b.getString("ItemName"));
-        foodsubtitle.setText(b.getString("ItemSubItem"));
-        foodresImage.setImageResource(b.getInt("ItemImage"));
-        Picasso.with(getContext()).load(b.getString("ItemImage")).into(foodresImage);
-        //foodresImage.setImageResource(b.getInt("ItemImage"));
-        foodaddress.setText(b.getString("ItemAddress"));*/
-
-
-
     }
 
 
     public void getRestaurantDetails(){
         progressDialog = ProgressDialog.show(this.getContext(), "Please wait", "Fetching Restaurant Details...", true);
-
         final Bundle b=getArguments();
         final String placeId=b.getString("PlaceItemID");
         String PlaceDetailUrl   =   ServiceConfig.PlaceDetailUrl + "&placeid="+ placeId;
@@ -117,21 +106,31 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
                             String placeAddress=jsonObject.getString("formatted_address");
                             String placeContact=jsonObject.getString("formatted_phone_number");
                             String locationIcon=jsonObject.getString("icon");
-                            String iphone=jsonObject.getString("international_phone_number");
+                            final String iphone=jsonObject.getString("international_phone_number");
                             String name=jsonObject.getString("name");
                             double placeLatitude=jsonObject1.getDouble("lat");
                             double placelongitude=jsonObject1.getDouble("lng");
                             foodtitle.setText(name);
                             foodsubtitle.setText(placeAddress);
                             Picasso.with(getContext()).load(locationIcon).into(foodresImage);
-                            foodaddress.setText(iphone);
+                            phoneNumber.setText(iphone);
+                            phoneNumber.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    Intent callIntent = new Intent(Intent.ACTION_CALL);
+                                    callIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                    callIntent.setData(Uri.parse("tel:"+iphone));
+                                    startActivity(callIntent);
+                                }
+                            });
+
+
+
                         }catch (Exception e){
                             Log.e("Exception", "Exception");
-
                         }
-
+                        progressDialog.dismiss();
                     }
-                   
                 },
                 new Response.ErrorListener() {
                     @Override
@@ -148,13 +147,6 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
 
 
     }
-
-
-
-
-
-
-
     @Override
     public void setOnClickListener() {
 

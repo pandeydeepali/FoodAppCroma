@@ -34,6 +34,9 @@
     <dimen name="text_margin_top">72dp</dimen>
     <dimen name="locationWidth">190dp</dimen>
     <dimen name="ratingWidth">170dp</dimen>
+    <dimen name="mapmargin">120dp</dimen>
+
+    <dimen name="mapHeight">170dp</dimen>
 
 
 </resources>
