@@ -47,8 +47,8 @@ public class NavigationActivity extends AppCompatActivity implements View.OnClic
     private NavigationView navigationView;
 
     private static final String TAG     =       NavigationActivity.class.getSimpleName();
-    public static final int REQUEST_TIMEOUT_MS = 10000;
-    public ArrayList<geometry> mArrayList;
+
+
     //----progress dialog
     private ProgressDialog progressDialog = null;
     //private TextView NavigationName, NavigationEmail;
@@ -122,8 +122,6 @@ public class NavigationActivity extends AppCompatActivity implements View.OnClic
     @Override
     protected void onResume() {
         super.onResume();
-        progressDialog = ProgressDialog.show(this, "Please wait", "Fetching Nearest Restaurant...", true);
-        jsonRequestWithGet();
     }
 
 
@@ -206,61 +204,4 @@ public class NavigationActivity extends AppCompatActivity implements View.OnClic
 
     }
 
-    // json request with get
-    public  void jsonRequestWithGet() {
-        double latitude = Double.longBitsToDouble(SharedPrefUtil.getLong("CurrentLatitude", 1L, NavigationActivity.this));
-        double longitude = Double.longBitsToDouble(SharedPrefUtil.getLong("CurrentLongitude", 1L, NavigationActivity.this));
-        String my_url   =   ServiceConfig.URL + "&location="+ latitude +"," +  longitude + "&type=restaurant";
-        JsonObjectRequest jsonObjectRequestWithGet = new JsonObjectRequest(my_url, null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                mArrayList = new ArrayList<geometry>();
-                try{
-                    JSONArray jsonArray = response.getJSONArray("results");
-                    for(int i = 0 ;i<jsonArray.length();i++){
-                        geometry geometry = new Gson().fromJson(jsonArray.getJSONObject(i).toString(),geometry.class);
-                        mArrayList.add(geometry);
-
-                    }
-                    final ListDetailActivityFragment fragment = (ListDetailActivityFragment)getSupportFragmentManager().findFragmentByTag(ListDetailActivityFragment.TAG);
-                    if(fragment!=null) {
-                            runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                fragment.fragmentArrayList.clear();
-                                fragment.fragmentArrayList.addAll(mArrayList);
-                                fragment.listAdapter.notifyDataSetChanged();
-                            }
-                        });
-                    }
-
-                }catch (Exception e){
-                    Toast.makeText(NavigationActivity.this,"There is some problem while getting restarorent",Toast.LENGTH_SHORT).show();
-                    e.printStackTrace();
-                }
-                Toast.makeText(NavigationActivity.this,"Data Get-ed From Service",Toast.LENGTH_SHORT).show();
-
-                progressDialog.dismiss();
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-                Log.v(TAG, "Exception: "+error);
-            }
-        }) {
-
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                Map headerMap = new HashMap();
-                return headerMap;
-            }
-        };
-        jsonObjectRequestWithGet.setPriority(Request.Priority.IMMEDIATE);
-        jsonObjectRequestWithGet.setShouldCache(false);
-        jsonObjectRequestWithGet.setRetryPolicy(new DefaultRetryPolicy(REQUEST_TIMEOUT_MS, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        RequestQueue mRequestQueue  = Volley.newRequestQueue(getApplicationContext());
-        mRequestQueue.add(jsonObjectRequestWithGet);
-
     }
-}

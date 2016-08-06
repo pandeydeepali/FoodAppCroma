@@ -94,8 +94,7 @@ public class DetailFragment extends Fragment implements GlobalInterFace, OnMapRe
                             foodsubtitle.setText(placeAddress);
                             Picasso.with(getContext()).load(locationIcon).into(foodresImage);
                             phoneNumber.setText(iphone);
-                            initializeMap();
-                            phoneNumber.setOnClickListener(new View.OnClickListener() {
+                             phoneNumber.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
                                     Intent callIntent = new Intent(Intent.ACTION_CALL);
@@ -129,12 +128,7 @@ public class DetailFragment extends Fragment implements GlobalInterFace, OnMapRe
 
     }
 
-    private void initializeMap(){
 
-
-
-
-    }
     @Override
     public void setOnClickListener() {
 
