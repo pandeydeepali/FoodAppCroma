@@ -111,8 +111,6 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        //Toast.makeText(this,response,Toast.LENGTH_LONG).show();
-                      //  Log.e("success",response);
                         try{
                             JSONObject jsonObject=new JSONObject(response).getJSONObject("result");
                             JSONObject jsonObject1=new JSONObject(response).getJSONObject("result").getJSONObject("geometry").getJSONObject("location");
@@ -133,6 +131,7 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
                         }
 
                     }
+                   
                 },
                 new Response.ErrorListener() {
                     @Override
