@@ -29,6 +29,8 @@ import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.gson.JsonArray;
 import com.squareup.picasso.Picasso;
 
@@ -51,7 +53,7 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
     private MapFragment mMap;
     private ImageView foodresImage;
     private ListView lView;
-
+    private GoogleMap mMapgoogle;
     SharedPreferences prefs;
     ProgressDialog progressDialog=null;
 
