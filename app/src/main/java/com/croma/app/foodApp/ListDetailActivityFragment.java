@@ -1,16 +1,16 @@
 package com.croma.app.foodApp;
 
 import android.app.ProgressDialog;
-import android.content.SharedPreferences;
+
 import android.os.Bundle;
-import android.preference.PreferenceManager;
+
 import android.support.v4.app.Fragment;
 import android.util.Log;
-import android.view.KeyEvent;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -23,7 +23,6 @@ import com.android.volley.error.VolleyError;
 import com.android.volley.request.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
-import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -116,7 +115,7 @@ public class ListDetailActivityFragment extends Fragment implements GlobalInterF
                     DetailFragment detailFragment = new DetailFragment();
                     detailFragment.setArguments(b);
                     getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.home_fragment, detailFragment).addToBackStack(null).commit();
-                    // startActivity(b);
+
                     break;
                 }
             }
