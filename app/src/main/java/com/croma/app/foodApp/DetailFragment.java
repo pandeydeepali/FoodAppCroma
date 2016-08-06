@@ -50,10 +50,9 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
     private static final String TAG = DetailFragment.class.getSimpleName();
     private View mView;
     private TextView foodtitle, foodsubtitle, phoneNumber;
-    private MapFragment mMap;
     private ImageView foodresImage;
     private ListView lView;
-    private GoogleMap mMapgoogle;
+    private GoogleMap googleMap;
     SharedPreferences prefs;
     ProgressDialog progressDialog=null;
 
@@ -64,7 +63,6 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mView=inflater.inflate(R.layout.detailfragment, container, false);
-
         setOnClickListener();
         applyFont();
         OnitemSelect();
@@ -88,7 +86,6 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
         foodsubtitle=(TextView)mView.findViewById(R.id.detail_foodsubtext);
         foodresImage=(ImageView)mView.findViewById(R.id.detail_image_left);
         phoneNumber=(TextView) mView.findViewById(R.id.contact);
-
         getRestaurantDetails();
     }
 
@@ -116,6 +113,7 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
                             foodsubtitle.setText(placeAddress);
                             Picasso.with(getContext()).load(locationIcon).into(foodresImage);
                             phoneNumber.setText(iphone);
+                            initializeMap();
                             phoneNumber.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
@@ -146,6 +144,11 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
 
         RequestQueue requestQueue = Volley.newRequestQueue(this.getContext());
         requestQueue.add(stringRequest);
+
+
+    }
+
+    private void initializeMap(){
 
 
     }
