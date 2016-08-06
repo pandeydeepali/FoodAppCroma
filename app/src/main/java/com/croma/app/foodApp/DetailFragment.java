@@ -27,7 +27,7 @@ import org.json.JSONObject;
 /**
  * A placeholder fragment containing a simple view.
  */
-public class DetailFragment extends Fragment implements GlobalInterFace, OnMapReadyCallback {
+public class DetailFragment extends Fragment implements GlobalInterFace {
     public static final String placeid = "placeId";
     private static final String TAG = DetailFragment.class.getSimpleName();
     private View mView;
@@ -65,8 +65,7 @@ public class DetailFragment extends Fragment implements GlobalInterFace, OnMapRe
         foodsubtitle=(TextView)mView.findViewById(R.id.detail_foodsubtext);
         foodresImage=(ImageView)mView.findViewById(R.id.detail_image_left);
         phoneNumber=(TextView) mView.findViewById(R.id.contact);
-       // SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-         //       .findFragmentById(R.id.map);
+        lView=(ListView)mView.findViewById(R.id.detail_listView);
         getRestaurantDetails();
     }
 
@@ -124,9 +123,7 @@ public class DetailFragment extends Fragment implements GlobalInterFace, OnMapRe
 
         RequestQueue requestQueue = Volley.newRequestQueue(this.getContext());
         requestQueue.add(stringRequest);
-
-
-    }
+     }
 
 
     @Override
@@ -145,8 +142,5 @@ public class DetailFragment extends Fragment implements GlobalInterFace, OnMapRe
     }
 
 
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
 
-    }
 }
