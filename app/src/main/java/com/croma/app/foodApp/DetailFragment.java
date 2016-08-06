@@ -1,23 +1,17 @@
 package com.croma.app.foodApp;
-
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -25,35 +19,23 @@ import com.android.volley.error.VolleyError;
 import com.android.volley.request.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapFragment;
-import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.gson.JsonArray;
 import com.squareup.picasso.Picasso;
-
-import org.json.JSONArray;
 import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * A placeholder fragment containing a simple view.
  */
-public class DetailFragment extends Fragment implements GlobalInterFace {
+public class DetailFragment extends Fragment implements GlobalInterFace, OnMapReadyCallback {
     public static final String placeid = "placeId";
     private static final String TAG = DetailFragment.class.getSimpleName();
     private View mView;
     private TextView foodtitle, foodsubtitle, phoneNumber;
     private ImageView foodresImage;
     private ListView lView;
-    private GoogleMap googleMap;
     SharedPreferences prefs;
+    private GoogleMap mMap;
     ProgressDialog progressDialog=null;
 
     public DetailFragment() {
@@ -70,9 +52,6 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
 
     }
 
-
-
-
     @Override
     public void onResume() {
         super.onResume();
@@ -86,6 +65,8 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
         foodsubtitle=(TextView)mView.findViewById(R.id.detail_foodsubtext);
         foodresImage=(ImageView)mView.findViewById(R.id.detail_image_left);
         phoneNumber=(TextView) mView.findViewById(R.id.contact);
+       // SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+         //       .findFragmentById(R.id.map);
         getRestaurantDetails();
     }
 
@@ -170,5 +151,8 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
     }
 
 
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
 
+    }
 }
