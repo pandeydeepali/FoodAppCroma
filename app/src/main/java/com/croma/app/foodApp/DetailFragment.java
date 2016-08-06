@@ -151,6 +151,8 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
     private void initializeMap(){
 
 
+
+
     }
     @Override
     public void setOnClickListener() {
