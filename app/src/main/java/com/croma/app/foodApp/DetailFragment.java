@@ -24,6 +24,8 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.squareup.picasso.Picasso;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 /**
  * A placeholder fragment containing a simple view.
  */
@@ -36,6 +38,8 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
     private ListView lView;
     SharedPreferences prefs;
     private GoogleMap mMap;
+    private ListViewAdapter listViewAdapter;
+    public ArrayList<Fooddetail> restaurantListArrayList;
     ProgressDialog progressDialog=null;
 
     public DetailFragment() {
@@ -65,7 +69,7 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
         foodsubtitle=(TextView)mView.findViewById(R.id.detail_foodsubtext);
         foodresImage=(ImageView)mView.findViewById(R.id.detail_image_left);
         phoneNumber=(TextView) mView.findViewById(R.id.contact);
-        lView=(ListView)mView.findViewById(R.id.detail_listView);
+        lView=(ListView)mView.findViewById(R.id.detail_listView_restaurant);
         getRestaurantDetails();
     }
 
@@ -102,10 +106,7 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
                                     startActivity(callIntent);
                                 }
                             });
-
-
-
-                        }catch (Exception e){
+                             }catch (Exception e){
                             Log.e("Exception", "Exception");
                         }
                         progressDialog.dismiss();
@@ -124,6 +125,13 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
         RequestQueue requestQueue = Volley.newRequestQueue(this.getContext());
         requestQueue.add(stringRequest);
      }
+
+
+
+
+
+
+
 
 
     @Override
