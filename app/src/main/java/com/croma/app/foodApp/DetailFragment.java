@@ -1,5 +1,6 @@
 package com.croma.app.foodApp;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -41,8 +42,10 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
     ProgressDialog progressDialog=null;
     public ArrayList<Fooddetail> foodDetailArrayList;
     public DetailAdapter foodDetailAdapter;
+    private Context context;
 
     public DetailFragment() {
+        this.context=context;
 
     }
 
@@ -142,7 +145,8 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
         lView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ActivitySwitcher.switchActivity(this.getClass(), FoodAmountList.class)
+                Intent i1 = new Intent (context, FoodAmountList.class);
+                context.startActivity(i1);
             }
         });
 
