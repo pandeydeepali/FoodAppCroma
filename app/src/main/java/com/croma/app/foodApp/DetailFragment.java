@@ -19,8 +19,6 @@ import com.android.volley.error.VolleyError;
 import com.android.volley.request.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
 import com.squareup.picasso.Picasso;
 import org.json.JSONObject;
 
@@ -119,7 +117,6 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
 
                     }
                 }){
-
         };
 
         RequestQueue requestQueue = Volley.newRequestQueue(this.getContext());
