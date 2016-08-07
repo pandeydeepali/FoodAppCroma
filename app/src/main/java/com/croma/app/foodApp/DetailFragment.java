@@ -63,14 +63,18 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
 
     @Override
     public void findViewById() {
+
         foodtitle=(TextView)mView.findViewById(R.id.detail_foodtext);
         foodsubtitle=(TextView)mView.findViewById(R.id.detail_foodsubtext);
         foodresImage=(ImageView)mView.findViewById(R.id.detail_image_left);
         phoneNumber=(TextView) mView.findViewById(R.id.contact);
-        lView=(ListView)mView.findViewById(R.id.detail_listView_restaurant);
-        foodDetailAdapter = new DetailAdapter(DetailFragment.this, foodDetailArrayList, (((NavigationActivity) getActivity())));
-        lView.setAdapter(foodDetailAdapter);
         getRestaurantDetails();
+        lView=(ListView)mView.findViewById(R.id.detail_listView_restaurant);
+        getListViewofFoodDetail();
+        foodDetailAdapter = new DetailAdapter(foodDetailArrayList,((NavigationActivity)getActivity()));
+
+
+
 
     }
 
@@ -110,8 +114,8 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
                              }catch (Exception e){
                             Log.e("Exception", "Exception");
                         }
-                        getListViewofFoodDetail();
-                        progressDialog.dismiss();
+
+
                     }
                 },
                 new Response.ErrorListener() {
@@ -130,12 +134,15 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
 
 
     public void getListViewofFoodDetail(){
+        foodDetailArrayList = new ArrayList<>();
         foodDetailArrayList.add(new Fooddetail("Soups",  R.drawable.back));
         foodDetailArrayList.add(new Fooddetail("Salads",  R.drawable.back));
         foodDetailArrayList.add(new Fooddetail("Snacks",  R.drawable.back));
         foodDetailArrayList.add(new Fooddetail("Pasta",  R.drawable.back));
         foodDetailArrayList.add(new Fooddetail("Noodles",  R.drawable.back));
+        lView.setAdapter(foodDetailAdapter);
         foodDetailAdapter.notifyDataSetChanged();
+        progressDialog.dismiss();
     }
 
 
