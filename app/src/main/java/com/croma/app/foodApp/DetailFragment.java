@@ -20,6 +20,8 @@ import com.android.volley.request.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.gms.maps.GoogleMap;
 import com.squareup.picasso.Picasso;
+import com.utll.global.ActivitySwitcher;
+
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -66,7 +68,7 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
         getRestaurantDetails();
         lView=(ListView)mView.findViewById(R.id.detail_listView_restaurant);
         getListViewofFoodDetail();
-        progressDialog.dismiss();
+//
 
     }
 
@@ -126,14 +128,24 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
 
 
     public void getListViewofFoodDetail(){
+        progressDialog.dismiss();
         foodDetailArrayList = new ArrayList<>();
         foodDetailArrayList.add(new Fooddetail("Soups",  R.drawable.back));
         foodDetailArrayList.add(new Fooddetail("Salads",  R.drawable.back));
         foodDetailArrayList.add(new Fooddetail("Snacks",  R.drawable.back));
         foodDetailArrayList.add(new Fooddetail("Pasta",  R.drawable.back));
         foodDetailArrayList.add(new Fooddetail("Noodles",  R.drawable.back));
+        foodDetailArrayList.add(new Fooddetail("Beverages",  R.drawable.back));
+        foodDetailArrayList.add(new Fooddetail("Snacks",  R.drawable.back));
         foodDetailAdapter = new DetailAdapter(foodDetailArrayList, ((NavigationActivity)getActivity()));
         lView.setAdapter(foodDetailAdapter);
+        lView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ActivitySwitcher.switchActivity(this.getClass(), FoodAmountList.class)
+            }
+        });
+
 
 
     }

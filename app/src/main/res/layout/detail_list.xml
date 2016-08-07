@@ -17,7 +17,7 @@
     <TextView
         android:id="@+id/detailTitle"
         android:textColor="@color/title"
-        android:textSize="@dimen/universal_margin"
+        android:textSize="@dimen/universal_margin1"
         android:textStyle="bold"
         android:text="supriya"
         android:layout_width="wrap_content"
