@@ -48,17 +48,12 @@ public class DetailAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
         LayoutInflater inflater = context.getLayoutInflater();
-        if (convertView == null) {
             convertView = inflater.inflate(R.layout.detail_list, null);
             holder = new ViewHolder();
             holder.foodName = (TextView) convertView.findViewById(R.id.detailTitle);
             holder.forwardImage = (ImageView) convertView.findViewById(R.id.detailImg);
             holder.foodName.setText(detailList.get(position).foodName);
             holder.forwardImage.setImageResource(detailList.get(position).forwardImg);
-
-
-            return convertView;
-        }
         return convertView;
     }
 

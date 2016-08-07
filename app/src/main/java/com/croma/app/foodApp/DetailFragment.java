@@ -47,6 +47,7 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mView=inflater.inflate(R.layout.detailfragment, container, false);
+        findViewById();
         setOnClickListener();
         applyFont();
         OnitemSelect();
@@ -54,16 +55,10 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
 
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        findViewById();
-    }
-
 
     @Override
     public void findViewById() {
-
+        progressDialog = ProgressDialog.show(this.getContext(), "Please wait", "Fetching Restaurant Details...", true);
         foodtitle=(TextView)mView.findViewById(R.id.detail_foodtext);
         foodsubtitle=(TextView)mView.findViewById(R.id.detail_foodsubtext);
         foodresImage=(ImageView)mView.findViewById(R.id.detail_image_left);
@@ -72,15 +67,12 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
         lView=(ListView)mView.findViewById(R.id.detail_listView_restaurant);
         getListViewofFoodDetail();
         foodDetailAdapter = new DetailAdapter(foodDetailArrayList,((NavigationActivity)getActivity()));
-
-
-
-
+        lView.setAdapter(foodDetailAdapter);
     }
 
 
+
     public void getRestaurantDetails(){
-        progressDialog = ProgressDialog.show(this.getContext(), "Please wait", "Fetching Restaurant Details...", true);
         final Bundle b=getArguments();
         final String placeId=b.getString("PlaceItemID");
         String PlaceDetailUrl   =   ServiceConfig.PlaceDetailUrl + "&placeid="+ placeId;
@@ -134,15 +126,15 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
 
 
     public void getListViewofFoodDetail(){
+
         foodDetailArrayList = new ArrayList<>();
         foodDetailArrayList.add(new Fooddetail("Soups",  R.drawable.back));
         foodDetailArrayList.add(new Fooddetail("Salads",  R.drawable.back));
         foodDetailArrayList.add(new Fooddetail("Snacks",  R.drawable.back));
         foodDetailArrayList.add(new Fooddetail("Pasta",  R.drawable.back));
         foodDetailArrayList.add(new Fooddetail("Noodles",  R.drawable.back));
-        lView.setAdapter(foodDetailAdapter);
-        foodDetailAdapter.notifyDataSetChanged();
         progressDialog.dismiss();
+
     }
 
 
