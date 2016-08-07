@@ -38,7 +38,7 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
     private ListView lView;
     SharedPreferences prefs;
     private GoogleMap mMap;
-    private ListViewAdapter listViewAdapter;
+    private ListViewAdapter listdetailAdapter;
     public ArrayList<Fooddetail> restaurantListArrayList;
     ProgressDialog progressDialog=null;
 
@@ -71,6 +71,8 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
         phoneNumber=(TextView) mView.findViewById(R.id.contact);
         lView=(ListView)mView.findViewById(R.id.detail_listView_restaurant);
         getRestaurantDetails();
+        fillFoodDetailinList();
+
     }
 
 
@@ -127,6 +129,15 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
      }
 
 
+    public void fillFoodDetailinList(){
+        Log.e("Call Detail", "details");
+
+
+
+
+
+
+    }
 
 
 
