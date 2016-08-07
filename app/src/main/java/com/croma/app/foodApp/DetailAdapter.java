@@ -17,11 +17,11 @@ import java.util.ArrayList;
  * Created by suppi on 07/08/16.
  */
 public class DetailAdapter extends BaseAdapter {
-    private ArrayList<String> detailList;
-    private Activity context;
+    public ArrayList<Fooddetail> detailList;
+    public Activity context;
 
 
-    private DetailAdapter(ArrayList<String> detailList, Activity context){
+    public DetailAdapter(DetailFragment detailFragment, ArrayList<Fooddetail> detailList, Activity context){
         this.detailList=detailList;
         this.context=context;
     }
@@ -52,8 +52,15 @@ public class DetailAdapter extends BaseAdapter {
         ViewHolder holder;
         LayoutInflater inflater = context.getLayoutInflater();
         convertView = inflater.inflate(R.layout.detail_list, null);
+        holder=new ViewHolder();
+        holder.foodName = (TextView) convertView.findViewById(R.id.detailTitle);
+        holder.forwardImage = (ImageView) convertView.findViewById(R.id.detailImg);
+        holder.foodName.setText(detailList.get(position).foodName);
+        holder.forwardImage.setImageResource(detailList.get(position).forwardImg);
 
-        return null;
+
+
+        return convertView;
     }
 
 

@@ -5,10 +5,10 @@ package com.croma.app.foodApp;
  */
 public class Fooddetail {
     public String foodName;
-    public String forwardImg;
+    public int forwardImg;
 
 
-    Fooddetail(String foodName, String forwardImg){
+    Fooddetail(String foodName, int forwardImg){
         this.foodName=foodName;
         this.forwardImg=forwardImg;
 

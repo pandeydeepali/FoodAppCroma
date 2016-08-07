@@ -37,6 +37,8 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
     SharedPreferences prefs;
     private GoogleMap mMap;
     ProgressDialog progressDialog=null;
+    public ArrayList<Fooddetail> foodDetailArrayList;
+    public DetailAdapter foodDetailAdapter;
 
     public DetailFragment() {
 
@@ -66,7 +68,10 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
         foodresImage=(ImageView)mView.findViewById(R.id.detail_image_left);
         phoneNumber=(TextView) mView.findViewById(R.id.contact);
         lView=(ListView)mView.findViewById(R.id.detail_listView_restaurant);
+        foodDetailAdapter = new DetailAdapter(DetailFragment.this, foodDetailArrayList, (((NavigationActivity) getActivity())));
+        lView.setAdapter(foodDetailAdapter);
         getRestaurantDetails();
+
     }
 
 
@@ -125,12 +130,12 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
 
 
     public void getListViewofFoodDetail(){
-
-
-
-
-
-
+        foodDetailArrayList.add(new Fooddetail("Soups",  R.drawable.back));
+        foodDetailArrayList.add(new Fooddetail("Salads",  R.drawable.back));
+        foodDetailArrayList.add(new Fooddetail("Snacks",  R.drawable.back));
+        foodDetailArrayList.add(new Fooddetail("Pasta",  R.drawable.back));
+        foodDetailArrayList.add(new Fooddetail("Noodles",  R.drawable.back));
+        foodDetailAdapter.notifyDataSetChanged();
     }
 
 
