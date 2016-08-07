@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -69,6 +70,7 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
         foodresImage=(ImageView)mView.findViewById(R.id.detail_image_left);
         phoneNumber=(TextView) mView.findViewById(R.id.contact);
         getRestaurantDetails();
+        progressDialog.dismiss();
         lView=(ListView)mView.findViewById(R.id.detail_listView_restaurant);
         getListViewofFoodDetail();
 //
@@ -131,7 +133,7 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
 
 
     public void getListViewofFoodDetail(){
-        progressDialog.dismiss();
+
         foodDetailArrayList = new ArrayList<>();
         foodDetailArrayList.add(new Fooddetail("Soups",  R.drawable.back));
         foodDetailArrayList.add(new Fooddetail("Salads",  R.drawable.back));
@@ -142,16 +144,6 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
         foodDetailArrayList.add(new Fooddetail("Snacks",  R.drawable.back));
         foodDetailAdapter = new DetailAdapter(foodDetailArrayList, ((NavigationActivity)getActivity()));
         lView.setAdapter(foodDetailAdapter);
-        lView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i1 = new Intent (context, FoodAmountList.class);
-                context.startActivity(i1);
-            }
-        });
-
-
-
     }
 
 
@@ -169,7 +161,6 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
     public void OnitemSelect() {
 
     }
-
 
 
 }
