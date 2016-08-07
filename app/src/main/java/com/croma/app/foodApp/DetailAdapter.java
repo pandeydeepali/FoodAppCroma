@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -42,6 +43,7 @@ public class DetailAdapter extends BaseAdapter {
     private class ViewHolder {
         TextView foodName;
         ImageView forwardImage;
+        RelativeLayout detailrelative;
 
     }
 
@@ -53,8 +55,10 @@ public class DetailAdapter extends BaseAdapter {
             holder = new ViewHolder();
             holder.foodName = (TextView) convertView.findViewById(R.id.detailTitle);
             holder.forwardImage = (ImageView) convertView.findViewById(R.id.detailImg);
+            holder.detailrelative=(RelativeLayout)convertView.findViewById(R.id.detail_relativeLayout);
             holder.foodName.setText(detailList.get(position).foodName);
             holder.forwardImage.setImageResource(detailList.get(position).forwardImg);
+          
         return convertView;
     }
 
