@@ -132,8 +132,6 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
         foodDetailArrayList.add(new Fooddetail("Snacks",  R.drawable.back));
         foodDetailArrayList.add(new Fooddetail("Pasta",  R.drawable.back));
         foodDetailArrayList.add(new Fooddetail("Noodles",  R.drawable.back));
-
-      //  foodDetailAdapter = new DetailAdapter(foodDetailArrayList,((NavigationActivity)getActivity()));
         foodDetailAdapter = new DetailAdapter(foodDetailArrayList, ((NavigationActivity)getActivity()));
         lView.setAdapter(foodDetailAdapter);
 
