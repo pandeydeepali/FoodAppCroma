@@ -66,8 +66,7 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
         getRestaurantDetails();
         lView=(ListView)mView.findViewById(R.id.detail_listView_restaurant);
         getListViewofFoodDetail();
-        foodDetailAdapter = new DetailAdapter(foodDetailArrayList,((NavigationActivity)getActivity()));
-        lView.setAdapter(foodDetailAdapter);
+
     }
 
 
@@ -126,13 +125,18 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
 
 
     public void getListViewofFoodDetail(){
-
+        Log.e("first conroo", "first control");
         foodDetailArrayList = new ArrayList<>();
         foodDetailArrayList.add(new Fooddetail("Soups",  R.drawable.back));
         foodDetailArrayList.add(new Fooddetail("Salads",  R.drawable.back));
         foodDetailArrayList.add(new Fooddetail("Snacks",  R.drawable.back));
         foodDetailArrayList.add(new Fooddetail("Pasta",  R.drawable.back));
         foodDetailArrayList.add(new Fooddetail("Noodles",  R.drawable.back));
+
+      //  foodDetailAdapter = new DetailAdapter(foodDetailArrayList,((NavigationActivity)getActivity()));
+        foodDetailAdapter = new DetailAdapter(foodDetailArrayList, ((NavigationActivity)getActivity()));
+        Log.e("till conroo", "control");
+        lView.setAdapter(foodDetailAdapter);
         progressDialog.dismiss();
 
     }

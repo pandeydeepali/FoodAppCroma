@@ -25,7 +25,8 @@ public class DetailAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return 0;
+        return detailList.size();
+       // return 0;
     }
 
     @Override
