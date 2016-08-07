@@ -128,7 +128,9 @@ public class ListDetailActivityFragment extends Fragment implements GlobalInterF
 
         double latitude = Double.longBitsToDouble(SharedPrefUtil.getLong("CurrentLatitude", 1L, getActivity()));
         double longitude = Double.longBitsToDouble(SharedPrefUtil.getLong("CurrentLongitude", 1L, getActivity()));
+
         String my_url   =   ServiceConfig.URL + "&location="+ latitude +"," +  longitude + "&type=restaurant";
+
         JsonObjectRequest jsonObjectRequestWithGet = new JsonObjectRequest(my_url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
