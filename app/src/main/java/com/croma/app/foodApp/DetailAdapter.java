@@ -58,7 +58,7 @@ public class DetailAdapter extends BaseAdapter {
             holder.detailrelative=(RelativeLayout)convertView.findViewById(R.id.detail_relativeLayout);
             holder.foodName.setText(detailList.get(position).foodName);
             holder.forwardImage.setImageResource(detailList.get(position).forwardImg);
-          
+
         return convertView;
     }
 
