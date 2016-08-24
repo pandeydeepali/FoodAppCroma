@@ -52,6 +52,7 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
         mView=inflater.inflate(R.layout.detailfragment, container, false);
         findViewById();
         setOnClickListener();
@@ -64,15 +65,16 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
 
     @Override
     public void findViewById() {
-        progressDialog = ProgressDialog.show(this.getContext(), "Please wait", "Fetching Restaurant Details...", true);
+
         foodtitle=(TextView)mView.findViewById(R.id.detail_foodtext);
         foodsubtitle=(TextView)mView.findViewById(R.id.detail_foodsubtext);
         foodresImage=(ImageView)mView.findViewById(R.id.detail_image_left);
         phoneNumber=(TextView) mView.findViewById(R.id.contact);
+
         getRestaurantDetails();
-        progressDialog.dismiss();
-        lView=(ListView)mView.findViewById(R.id.detail_listView_restaurant);
+         lView=(ListView)mView.findViewById(R.id.detail_listView_restaurant);
         getListViewofFoodDetail();
+
 //
 
     }
@@ -80,6 +82,7 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
 
 
     public void getRestaurantDetails(){
+        progressDialog = ProgressDialog.show(this.getContext(), "Please wait", "Fetching Restaurant Details...", true);
         final Bundle b=getArguments();
         final String placeId=b.getString("PlaceItemID");
         String PlaceDetailUrl   =   ServiceConfig.PlaceDetailUrl + "&placeid="+ placeId;
@@ -113,6 +116,8 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
                              }catch (Exception e){
                             Log.e("Exception", "Exception");
                         }
+
+                        progressDialog.dismiss();
 
 
                     }
