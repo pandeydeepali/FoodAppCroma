@@ -44,7 +44,7 @@
             android:name=".SignUpActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ForgetPassActivity"
             android:label="@string/app_name"
@@ -95,23 +95,24 @@
             android:name=".PagerActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".AccountActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".InfoActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <service
             android:name=".FetchAddressIntentService"
             android:exported="false" />
 
-        <activity android:name=".FoodAmountDetail"></activity>
+        <activity android:name=".FoodAmountDetail" />
+        <activity android:name=".MenuwithPriceList"></activity>
     </application>
 
 </manifest>

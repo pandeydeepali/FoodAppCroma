@@ -52,7 +52,6 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         mView=inflater.inflate(R.layout.detailfragment, container, false);
         findViewById();
         setOnClickListener();
@@ -65,7 +64,6 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
 
     @Override
     public void findViewById() {
-
         foodtitle=(TextView)mView.findViewById(R.id.detail_foodtext);
         foodsubtitle=(TextView)mView.findViewById(R.id.detail_foodsubtext);
         foodresImage=(ImageView)mView.findViewById(R.id.detail_image_left);
@@ -101,7 +99,7 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
                             foodsubtitle.setText(placeAddress);
                             Picasso.with(getContext()).load(locationIcon).into(foodresImage);
                             phoneNumber.setText(iphone);
-                             phoneNumber.setOnClickListener(new View.OnClickListener() {
+                            phoneNumber.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
                                     Intent callIntent = new Intent(Intent.ACTION_CALL);
@@ -113,9 +111,6 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
                              }catch (Exception e){
                             Log.e("Exception", "Exception");
                         }
-
-
-
                     }
                 },
                 new Response.ErrorListener() {
@@ -134,7 +129,6 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
 
 
     public void getListViewofFoodDetail(){
-
         foodDetailArrayList = new ArrayList<>();
         foodDetailArrayList.add(new Fooddetail("Soups",  R.drawable.back));
         foodDetailArrayList.add(new Fooddetail("Salads",  R.drawable.back));

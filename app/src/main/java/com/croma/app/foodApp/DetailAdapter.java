@@ -1,5 +1,7 @@
 package com.croma.app.foodApp;
 import android.app.Activity;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +10,8 @@ import android.widget.ImageView;
 
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.utll.global.ActivitySwitcher;
 
 import java.util.ArrayList;
 
@@ -58,6 +62,13 @@ public class DetailAdapter extends BaseAdapter {
             holder.detailrelative=(RelativeLayout)convertView.findViewById(R.id.detail_relativeLayout);
             holder.foodName.setText(detailList.get(position).foodName);
             holder.forwardImage.setImageResource(detailList.get(position).forwardImg);
+            holder.detailrelative.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.e("click", "click");
+
+                }
+            });
 
         return convertView;
     }
