@@ -70,13 +70,10 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
         foodsubtitle=(TextView)mView.findViewById(R.id.detail_foodsubtext);
         foodresImage=(ImageView)mView.findViewById(R.id.detail_image_left);
         phoneNumber=(TextView) mView.findViewById(R.id.contact);
-
         getRestaurantDetails();
-         lView=(ListView)mView.findViewById(R.id.detail_listView_restaurant);
+        lView=(ListView)mView.findViewById(R.id.detail_listView_restaurant);
         getListViewofFoodDetail();
-
-//
-
+        progressDialog.dismiss();
     }
 
 
@@ -117,7 +114,6 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
                             Log.e("Exception", "Exception");
                         }
 
-                        progressDialog.dismiss();
 
 
                     }
