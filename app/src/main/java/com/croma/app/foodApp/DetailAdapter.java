@@ -67,6 +67,7 @@ public class DetailAdapter extends BaseAdapter {
                 public void onClick(View v) {
                     Log.e("click", "click");
 
+
                 }
             });
 
