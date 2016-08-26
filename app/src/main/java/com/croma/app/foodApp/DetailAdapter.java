@@ -61,9 +61,6 @@ public class DetailAdapter extends BaseAdapter {
                 public void onClick(View v) {
                     Log.e("click", "click");
 
-                    Intent intent = new Intent(context,MenuwithPriceList.class);
-
-
 
                 }
             });
