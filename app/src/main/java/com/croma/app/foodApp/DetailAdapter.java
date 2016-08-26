@@ -1,5 +1,6 @@
 package com.croma.app.foodApp;
 import android.app.Activity;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,8 +17,6 @@ import java.util.ArrayList;
 public class DetailAdapter extends BaseAdapter {
     public ArrayList<Fooddetail> detailList;
     public Activity context;
-
-
     public DetailAdapter(ArrayList<Fooddetail> detailList, Activity context){
         this.detailList=detailList;
         this.context=context;
@@ -48,8 +47,8 @@ public class DetailAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder holder;
-        LayoutInflater inflater = context.getLayoutInflater();
+            ViewHolder holder;
+            LayoutInflater inflater = context.getLayoutInflater();
             convertView = inflater.inflate(R.layout.detail_list, null);
             holder = new ViewHolder();
             holder.foodName = (TextView) convertView.findViewById(R.id.detailTitle);
@@ -61,6 +60,9 @@ public class DetailAdapter extends BaseAdapter {
                 @Override
                 public void onClick(View v) {
                     Log.e("click", "click");
+
+                    Intent intent = new Intent(context,MenuwithPriceList.class);
+
 
 
                 }
