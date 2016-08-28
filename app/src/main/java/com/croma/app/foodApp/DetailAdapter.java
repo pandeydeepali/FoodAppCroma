@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import com.utll.global.ActivitySwitcher;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 /**
@@ -43,6 +45,7 @@ public class DetailAdapter extends BaseAdapter {
 
     private class ViewHolder {
         TextView foodName;
+        TextView food
         ImageView forwardImage;
         RelativeLayout detailrelative;
 
@@ -56,14 +59,18 @@ public class DetailAdapter extends BaseAdapter {
             holder = new ViewHolder();
             holder.foodName = (TextView) convertView.findViewById(R.id.detailTitle);
             holder.forwardImage = (ImageView) convertView.findViewById(R.id.detailImg);
+          // holder.
             holder.detailrelative=(RelativeLayout)convertView.findViewById(R.id.detail_relativeLayout);
             holder.foodName.setText(detailList.get(position).foodName);
             holder.forwardImage.setImageResource(detailList.get(position).forwardImg);
+
             holder.detailrelative.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Log.e("click", "click");
 
+                    Intent intent = new Intent(context, MenuwithPriceList.class);
+                    context.startActivity(intent);
 
                 }
             });
