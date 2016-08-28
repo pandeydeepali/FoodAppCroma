@@ -68,7 +68,7 @@ public class DetailAdapter extends BaseAdapter {
                     Intent intent = new Intent(context, MenuwithPriceList.class);
                    // Bundle b=new Bundle();
                     intent.putExtra("listFoodName",  detailList.get(position).foodName);
-                //    intent.putExtra("listFoodPrice",  detailList.get(position).foodPrice);
+                    intent.putExtra("listFoodPrice",  detailList.get(position).foodPrice);
                    // b.putString("listFoodName", detailList.get(position).foodName);
                    // b.putInt("listFoodPrice", detailList.get(position).foodPrice);
                     context.startActivity(intent);

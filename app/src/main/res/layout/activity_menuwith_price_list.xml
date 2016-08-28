@@ -34,6 +34,38 @@
 
     </android.support.v7.widget.Toolbar>
 
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="@dimen/universal_padding">
+
+        <com.rey.material.widget.TextView
+            android:id="@+id/MenufoodName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="soups"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/universal_margin" />
+
+        <com.rey.material.widget.TextView
+            android:id="@+id/Menufoodprice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="72Rs"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/universal_margin" />
+
+
+
+    </LinearLayout>
 </LinearLayout>
 
 
