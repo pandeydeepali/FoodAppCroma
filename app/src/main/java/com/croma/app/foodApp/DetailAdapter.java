@@ -48,7 +48,7 @@ public class DetailAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
             final ViewHolder holder;
             LayoutInflater inflater = context.getLayoutInflater();
             convertView = inflater.inflate(R.layout.detail_list, null);
@@ -66,7 +66,9 @@ public class DetailAdapter extends BaseAdapter {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(context, MenuwithPriceList.class);
-                    
+                    Bundle b=new Bundle();
+                    b.putString("fName", detailList.get(position).foodName);
+                    b.putInt("fprice", detailList.get(position).foodPrice);
                     context.startActivity(intent);
 
                 }
