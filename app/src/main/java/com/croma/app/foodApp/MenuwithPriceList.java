@@ -1,7 +1,9 @@
 package com.croma.app.foodApp;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 public class MenuwithPriceList extends AppCompatActivity implements GlobalInterFace {
@@ -22,8 +24,10 @@ public class MenuwithPriceList extends AppCompatActivity implements GlobalInterF
     @Override
     public void findViewById() {
         headText=(TextView)findViewById(R.id.menuheaderrext);
-        Bundle b=new Bundle();
-        headText.setText(b.getString("fName"));
+        Intent intent = getIntent();
+        String nameVal = intent.getStringExtra("listFoodName");
+       // String lName = intent.getStringExtra("lname");
+        headText.setText(nameVal);
 
     }
 

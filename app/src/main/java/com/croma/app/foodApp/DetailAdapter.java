@@ -66,9 +66,11 @@ public class DetailAdapter extends BaseAdapter {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(context, MenuwithPriceList.class);
-                    Bundle b=new Bundle();
-                    b.putString("fName", detailList.get(position).foodName);
-                    b.putInt("fprice", detailList.get(position).foodPrice);
+                   // Bundle b=new Bundle();
+                    intent.putExtra("listFoodName",  detailList.get(position).foodName);
+                //    intent.putExtra("listFoodPrice",  detailList.get(position).foodPrice);
+                   // b.putString("listFoodName", detailList.get(position).foodName);
+                   // b.putInt("listFoodPrice", detailList.get(position).foodPrice);
                     context.startActivity(intent);
 
                 }
