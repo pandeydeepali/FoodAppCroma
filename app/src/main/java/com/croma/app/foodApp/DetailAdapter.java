@@ -45,7 +45,7 @@ public class DetailAdapter extends BaseAdapter {
 
     private class ViewHolder {
         TextView foodName;
-        TextView food
+        TextView foodPrice;
         ImageView forwardImage;
         RelativeLayout detailrelative;
 
@@ -59,9 +59,10 @@ public class DetailAdapter extends BaseAdapter {
             holder = new ViewHolder();
             holder.foodName = (TextView) convertView.findViewById(R.id.detailTitle);
             holder.forwardImage = (ImageView) convertView.findViewById(R.id.detailImg);
-          // holder.
+            holder.foodPrice=(TextView)convertView.findViewById(R.id.detailPrice);
             holder.detailrelative=(RelativeLayout)convertView.findViewById(R.id.detail_relativeLayout);
             holder.foodName.setText(detailList.get(position).foodName);
+            holder.foodPrice.setText(detailList.get(position).foodPrice);
             holder.forwardImage.setImageResource(detailList.get(position).forwardImg);
 
             holder.detailrelative.setOnClickListener(new View.OnClickListener() {
