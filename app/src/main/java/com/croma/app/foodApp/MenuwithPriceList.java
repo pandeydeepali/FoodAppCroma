@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -23,9 +22,6 @@ public class MenuwithPriceList extends AppCompatActivity implements GlobalInterF
         findViewById();
         setOnClickListener();
         applyFont();
-
-
-
     }
 
     @Override
@@ -65,8 +61,11 @@ public class MenuwithPriceList extends AppCompatActivity implements GlobalInterF
 
     @Override
     public void onClick(View v) {
-
-        
-
+        switch (v.getId()) {
+            case R.id.menupriceBack: {
+                finish();
+                break;
+            }
+        }
     }
 }
