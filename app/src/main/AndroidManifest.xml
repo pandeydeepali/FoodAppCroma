@@ -116,9 +116,6 @@
             android:name=".MenuwithPriceList"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-
-
-
     </application>
 
 </manifest>

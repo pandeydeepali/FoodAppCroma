@@ -67,7 +67,7 @@
    <com.rey.material.widget.TextView
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
-       android:text="@string/quantity"
+       android:text="Quantity"
        android:padding="@dimen/universal_margin"
        android:textAllCaps="true"
        android:textSize="@dimen/default_text_size" />
@@ -97,13 +97,31 @@
            android:padding="@dimen/default_text_size"/>
 
          <com.rey.material.widget.Button
-            android:id="@+id/plus"
+            android:id="@+id/plusQuan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/plus"
             android:background="@color/colorPrimary"
             android:textColor="@color/splash_color"/>
   </LinearLayout>
+
+
+    <com.rey.material.widget.Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/Addbasket"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/colorAccent"
+        android:textColor="@color/splash_color"
+        android:paddingLeft="@dimen/bck_padd"/>
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@android:drawable/ic_dialog_email" />
 
 
 </LinearLayout>
