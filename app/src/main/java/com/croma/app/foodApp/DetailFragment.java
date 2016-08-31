@@ -58,8 +58,11 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
     }
 
 
+
+
     @Override
     public void findViewById() {
+        progressDialog = ProgressDialog.show(this.getContext(), "Please wait", "Fetching Restaurant Details...", true);
         foodtitle=(TextView)mView.findViewById(R.id.detail_foodtext);
         foodsubtitle=(TextView)mView.findViewById(R.id.detail_foodsubtext);
         foodresImage=(ImageView)mView.findViewById(R.id.detail_image_left);
@@ -73,7 +76,7 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
 
 
     public void getRestaurantDetails(){
-        progressDialog = ProgressDialog.show(this.getContext(), "Please wait", "Fetching Restaurant Details...", true);
+
         final Bundle b=getArguments();
         final String placeId=b.getString("PlaceItemID");
         String PlaceDetailUrl   =   ServiceConfig.PlaceDetailUrl + "&placeid="+ placeId;

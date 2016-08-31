@@ -10,8 +10,7 @@
         android:id="@+id/reg_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/minor_custom"
-        >
+        android:background="@color/minor_custom">
 
 
         <com.rey.material.widget.ImageView
@@ -62,10 +61,46 @@
             android:textAlignment="center"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="@dimen/universal_margin" />
+ </LinearLayout>
 
+
+   <com.rey.material.widget.TextView
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="@string/quantity"
+       android:padding="@dimen/universal_margin"
+       android:textAllCaps="true"
+       android:textSize="@dimen/default_text_size" />
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+       <com.rey.material.widget.Button
+           android:id="@+id/minusQuan"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="@string/minus"/>
+
+
+       <com.rey.material.widget.TextView
+           android:text=""
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content" />
+
+
+        <com.rey.material.widget.Button
+            android:id="@+id/plus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/plus"/>
 
 
     </LinearLayout>
+
+
 </LinearLayout>
 
 
