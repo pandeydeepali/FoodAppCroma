@@ -35,7 +35,7 @@ public class MenuwithPriceList extends AppCompatActivity implements GlobalInterF
         minusBtn=(Button)findViewById(R.id.minusQuan);
         plusBtn=(Button)findViewById(R.id.plusQuan);
         QuantityText=(TextView)findViewById(R.id.quantity);
-        AddBasketBtn=(Button)findViewById(R.id.basketBtn);
+        AddBasketBtn=(Button)findViewById(R.id.mybasket);
         AddBasketBtn.setOnClickListener(this);
         minusBtn.setOnClickListener(this);
         plusBtn.setOnClickListener(this);
@@ -101,7 +101,7 @@ public class MenuwithPriceList extends AppCompatActivity implements GlobalInterF
     public void decreaseQuan(){
         Log.e("increase count", "DecreseCount");
 
-    }
+}
 
 
 
