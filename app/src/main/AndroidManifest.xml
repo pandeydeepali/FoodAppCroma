@@ -116,6 +116,10 @@
             android:name=".MenuwithPriceList"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MainActivitysample"
+            android:label="@string/title_activity_main_activitysample"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
