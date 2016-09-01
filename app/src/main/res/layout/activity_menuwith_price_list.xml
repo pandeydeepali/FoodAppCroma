@@ -113,7 +113,8 @@
         android:layout_gravity="center_horizontal"
         android:background="@color/colorAccent"
         android:textColor="@color/splash_color"
-        android:padding="@dimen/"/>
+        android:layout_marginLeft="@dimen/bck_padd"
+        android:layout_marginRight="@dimen/bck_padd"/>
 
 
 
@@ -129,20 +130,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="soups"
+            android:text="Total"
             android:textAlignment="center"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="@dimen/universal_margin" />
+            android:textSize="@dimen/universal_margin1" />
 
         <com.rey.material.widget.TextView
             android:id="@+id/MENUPRICE"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="72Rs"
+            android:text="72"
             android:textAlignment="center"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="@dimen/universal_margin" />
+            android:textSize="@dimen/universal_margin1" />
     </LinearLayout>
 
 

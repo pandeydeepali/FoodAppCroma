@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 public class MenuwithPriceList extends AppCompatActivity implements GlobalInterFace, View.OnClickListener {
     int quantity=1;
-    private TextView headText, horizontalFoodPrice, horizontalFoodText, QuantityText, AddBasketBtn;
+    private TextView headText, horizontalFoodPrice, horizontalFoodText, QuantityText;
     private ImageView backbtn;
     private Button minusBtn, plusBtn;
 
@@ -35,8 +35,7 @@ public class MenuwithPriceList extends AppCompatActivity implements GlobalInterF
         minusBtn=(Button)findViewById(R.id.minusQuan);
         plusBtn=(Button)findViewById(R.id.plusQuan);
         QuantityText=(TextView)findViewById(R.id.quantity);
-        AddBasketBtn=(Button)findViewById(R.id.mybasket);
-        AddBasketBtn.setOnClickListener(this);
+
         minusBtn.setOnClickListener(this);
         plusBtn.setOnClickListener(this);
         backbtn.setOnClickListener(this);
