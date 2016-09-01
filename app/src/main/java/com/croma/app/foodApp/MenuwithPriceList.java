@@ -5,14 +5,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MenuwithPriceList extends AppCompatActivity implements GlobalInterFace, View.OnClickListener {
-    private TextView headText;
-    private TextView horizontalFoodText;
-    private TextView horizontalFoodPrice;
+    int quantity=1;
+    private TextView headText, horizontalFoodPrice, horizontalFoodText, QuantityText, AddBasketBtn;
     private ImageView backbtn;
+    private Button minusBtn, plusBtn;
+
 
 
     @Override
@@ -30,6 +32,13 @@ public class MenuwithPriceList extends AppCompatActivity implements GlobalInterF
         horizontalFoodText=(TextView)findViewById(R.id.MenufoodName);
         horizontalFoodPrice=(TextView)findViewById(R.id.Menufoodprice);
         backbtn=(ImageView) findViewById(R.id.menupriceBack);
+        minusBtn=(Button)findViewById(R.id.minusQuan);
+        plusBtn=(Button)findViewById(R.id.plusQuan);
+        QuantityText=(TextView)findViewById(R.id.quantity);
+        AddBasketBtn=(Button)findViewById(R.id.basketBtn);
+        AddBasketBtn.setOnClickListener(this);
+        minusBtn.setOnClickListener(this);
+        plusBtn.setOnClickListener(this);
         backbtn.setOnClickListener(this);
         Intent intent = getIntent();
         String nameVal = intent.getStringExtra("listFoodName");
@@ -66,6 +75,37 @@ public class MenuwithPriceList extends AppCompatActivity implements GlobalInterF
                 finish();
                 break;
             }
+
+            case R.id.plusQuan: {
+                increaseQuan();
+                break;
+            }
+
+
+            case R.id.minusQuan: {
+                decreaseQuan();
+                break;
+            }
+
+
         }
     }
+
+
+    public void increaseQuan(){
+        Log.e("increase count", "IncreaseCount");
+
+    }
+
+
+    public void decreaseQuan(){
+        Log.e("increase count", "DecreseCount");
+
+    }
+
+
+
 }
+
+
+

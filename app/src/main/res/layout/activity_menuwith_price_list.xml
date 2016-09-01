@@ -92,7 +92,7 @@
            android:id="@+id/quantity"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
-           android:text="2"
+           android:text="1"
            android:textColor="@color/colorPrimary"
            android:padding="@dimen/default_text_size"/>
 
