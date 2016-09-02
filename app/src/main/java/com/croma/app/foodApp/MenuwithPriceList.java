@@ -1,5 +1,4 @@
 package com.croma.app.foodApp;
-
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,13 +7,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.common.api.GoogleApiClient;
 
 public class MenuwithPriceList extends AppCompatActivity implements GlobalInterFace, View.OnClickListener {
-    int quantity=1;
-    private TextView headText, horizontalFoodPrice, horizontalFoodText, QuantityText;
+    public int quantity = 1;
+    private TextView headText, horizontalFoodPrice, horizontalFoodText, QuantityText, totalquan;
     private ImageView backbtn;
     private Button minusBtn, plusBtn;
-
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+    private GoogleApiClient client;
 
 
     @Override
@@ -24,17 +29,22 @@ public class MenuwithPriceList extends AppCompatActivity implements GlobalInterF
         findViewById();
         setOnClickListener();
         applyFont();
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
     @Override
     public void findViewById() {
-        headText=(TextView)findViewById(R.id.menuheaderrext);
-        horizontalFoodText=(TextView)findViewById(R.id.MenufoodName);
-        horizontalFoodPrice=(TextView)findViewById(R.id.Menufoodprice);
-        backbtn=(ImageView) findViewById(R.id.menupriceBack);
-        minusBtn=(Button)findViewById(R.id.minusQuan);
-        plusBtn=(Button)findViewById(R.id.plusQuan);
-        QuantityText=(TextView)findViewById(R.id.quantity);
+        headText = (TextView) findViewById(R.id.menuheaderrext);
+        horizontalFoodText = (TextView) findViewById(R.id.MenufoodName);
+        horizontalFoodPrice = (TextView) findViewById(R.id.Menufoodprice);
+        totalquan = (TextView) findViewById(R.id.MENUPRICE);
+
+        backbtn = (ImageView) findViewById(R.id.menupriceBack);
+        minusBtn = (Button) findViewById(R.id.minusQuan);
+        plusBtn = (Button) findViewById(R.id.plusQuan);
+        QuantityText = (TextView) findViewById(R.id.quantity);
 
         minusBtn.setOnClickListener(this);
         plusBtn.setOnClickListener(this);
@@ -42,17 +52,19 @@ public class MenuwithPriceList extends AppCompatActivity implements GlobalInterF
         Intent intent = getIntent();
         String nameVal = intent.getStringExtra("listFoodName");
         int price = intent.getIntExtra("listFoodPrice", 0);
-        Log.e("priiii", ""+price);
+        Log.e("priiii", "" + price);
         headText.setText(nameVal);
         horizontalFoodText.setText(nameVal);
         horizontalFoodPrice.setText(String.valueOf(price));
         horizontalFoodPrice.append(" Rs.");
+        totalquan.setText(String.valueOf(price));
+        totalquan.append(" Rs.");
+
 
     }
 
     @Override
     public void setOnClickListener() {
-
 
 
     }
@@ -91,17 +103,28 @@ public class MenuwithPriceList extends AppCompatActivity implements GlobalInterF
     }
 
 
-    public void increaseQuan(){
-        Log.e("increase count", "IncreaseCount");
+    public void increaseQuan() {
+        quantity++;
+        if (quantity <= 0) {
+
+        } else {
+            QuantityText.setText("" + quantity);
+           // String.valueOf(horizontalFoodPrice) * String.valueOf(quantity)=totalquan;
+        }
 
     }
 
 
-    public void decreaseQuan(){
-        Log.e("increase count", "DecreseCount");
+    public void decreaseQuan() {
+        quantity--;
+        if (quantity <= 0) {
 
-}
+        } else {
+            QuantityText.setText("" + quantity);
+           // String.valueOf(horizontalFoodPrice) * Integer.parseInt(""quantity)=totalquan;
 
+        }
+    }
 
 
 }
