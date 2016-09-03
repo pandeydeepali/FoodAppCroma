@@ -181,6 +181,8 @@ public class MakePaymentActivity extends AppCompatActivity implements View.OnCli
     }
 
     private void navigateToBaseActivity(){
+        Intent intent = getIntent();
+        String nameVal = intent.getStringExtra("listFoodPrice");
         intent = new Intent(this, PayUBaseActivity.class);
         LinearLayout rowContainerLayout = (LinearLayout) findViewById(R.id.linear_layout_row_container);
         mPaymentParams = new PaymentParams();
@@ -197,7 +199,7 @@ public class MakePaymentActivity extends AppCompatActivity implements View.OnCli
                     key = inputData;
                     break;
                 case PayuConstants.AMOUNT:
-                    mPaymentParams.setAmount(inputData);
+                    mPaymentParams.setAmount(nameVal);
                     break;
                 case PayuConstants.PRODUCT_INFO:
                     mPaymentParams.setProductInfo(inputData);
