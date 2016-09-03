@@ -1,35 +1,12 @@
 package com.croma.app.foodApp;
 
-import android.app.ProgressDialog;
-
 import android.os.Bundle;
-
 import android.support.v4.app.Fragment;
-import android.util.Log;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import android.widget.ListView;
-import android.widget.Toast;
-
-import com.android.volley.DefaultRetryPolicy;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.error.AuthFailureError;
-import com.android.volley.error.VolleyError;
-import com.android.volley.request.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
-import com.google.gson.Gson;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -37,15 +14,11 @@ import java.util.Map;
 public class ListDetailActivityFragment extends Fragment implements GlobalInterFace, View.OnClickListener {
 
     public static final String TAG = ListDetailActivityFragment.class.getSimpleName();
-    public static final int REQUEST_TIMEOUT_MS = 10000;
     public ArrayList<geometry> fragmentArrayList;
     public ListViewAdapter listAdapter;
     private View mView;
     private ListView listView;
-    public ArrayList<geometry> mArrayList;
-    ProgressDialog progressDialog=null;
 
-    //-----from navigationActivity-----//
 
     public ListDetailActivityFragment() {
 
@@ -86,16 +59,16 @@ public class ListDetailActivityFragment extends Fragment implements GlobalInterF
 
     }
 
-    @Override
-    public void onResume() {
-        Log.e("OnResume", "OnResue");
-        super.onResume();
-
-        jsonRequestWithGet();
-
-    }
-
     public void fillArrayList() {
+//        arrayList.add(new FoodItem("Veg Pasta", "Order Minimum 200", R.drawable.back, R.drawable.list, "Delievered in 60min", "C-77, Noida sector 27"));
+//        arrayList.add(new FoodItem("Non Veg One", "Order Minimum 200", R.drawable.back, R.drawable.img5, "Delievered in 60min", "C-78, Noida sector 27"));
+//        arrayList.add(new FoodItem("Non Veg Veg", "Order Minimum 200", R.drawable.back, R.drawable.img2, "Delievered in 60min", "C-79, Noida sector 27"));
+//        arrayList.add(new FoodItem("Non Veg Veg", "Order Minimum 200", R.drawable.back, R.drawable.img3, "Delievered in 60min", "C-77, Noida sector 27"));
+//        arrayList.add(new FoodItem("Non Veg Veg", "Order Minimum 200", R.drawable.back, R.drawable.img4, "Delievered in 60min", "C-77, Noida sector 27"));
+//        arrayList.add(new FoodItem("Non Veg Veg", "Order Minimum 200", R.drawable.back, R.drawable.img5, "Delievered in 60min", "C-77, Noida sector 27"));
+//        arrayList.add(new FoodItem("Non Veg Veg", "Order Minimum 200", R.drawable.back, R.drawable.img1, "Delievered in 60min", "C-79, Noida sector 27"));
+//        arrayList.add(new FoodItem("Non Veg Veg", "Order Minimum 200", R.drawable.back, R.drawable.img4, "Delievered in 60min", "C-77, Noida sector 27"));
+//        arrayList.add(new FoodItem("Non Veg Veg", "Order Minimum 200", R.drawable.back, R.drawable.img3, "Delievered in 60min", "C-77, Noida sector 27"));
         listAdapter.notifyDataSetChanged();
     }
 
@@ -107,82 +80,22 @@ public class ListDetailActivityFragment extends Fragment implements GlobalInterF
                     Integer integer = Integer.parseInt(v.getTag().toString());
                     geometry foodItem = fragmentArrayList.get(integer);
                     Bundle b = new Bundle();
-                    b.putString("ItemName", foodItem.name);
-                    b.putString("ItemSubItem", foodItem.name);
-                    b.putString("ItemAddress", foodItem.vicinity);
-                    b.putString("ItemImage", foodItem.icon);
-                    b.putString("PlaceItemID", foodItem.place_id);
+                    // b.putString("");
+                    // Intent intent=new Intent(getActivity(), ListDetailActivity.class);
+//                    b.putString("ItemName", foodItem.itemName);
+//                    b.putString("ItemSubItem", foodItem.subItemName);
+//                    b.putString("ItemAddress", foodItem.delieverAddress);
+//                    b.putInt("ItemImage", foodItem.leftImage);
+
                     DetailFragment detailFragment = new DetailFragment();
                     detailFragment.setArguments(b);
                     getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.home_fragment, detailFragment).addToBackStack(null).commit();
-
+                    // startActivity(b);
                     break;
+
                 }
+
             }
         }
     }
-
-    // json request with get
-    public  void jsonRequestWithGet() {
-        progressDialog = ProgressDialog.show(this.getContext(), "Please wait", "Fetching Restaurant Data...", true);
-
-        double latitude = Double.longBitsToDouble(SharedPrefUtil.getLong("CurrentLatitude", 1L, getActivity()));
-        double longitude = Double.longBitsToDouble(SharedPrefUtil.getLong("CurrentLongitude", 1L, getActivity()));
-
-        String my_url   =   ServiceConfig.URL + "&location="+ latitude +"," +  longitude + "&type=restaurant";
-
-        JsonObjectRequest jsonObjectRequestWithGet = new JsonObjectRequest(my_url, null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                mArrayList = new ArrayList<geometry>();
-                try{
-                    JSONArray jsonArray = response.getJSONArray("results");
-                    for(int i = 0 ;i<jsonArray.length();i++){
-                        geometry geometry = new Gson().fromJson(jsonArray.getJSONObject(i).toString(),geometry.class);
-                        mArrayList.add(geometry);
-
-                    }
-                        getActivity().runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                fragmentArrayList.clear();
-                                fragmentArrayList.addAll(mArrayList);
-                                listAdapter.notifyDataSetChanged();
-
-                            }
-                        });
-
-                }catch (Exception e){
-                    Toast.makeText(getActivity(),"There is some problem while getting restarorent",Toast.LENGTH_SHORT).show();
-                    e.printStackTrace();
-                }
-                progressDialog.dismiss();
-
-                Toast.makeText( getActivity(),"Data Get-ed From Service",Toast.LENGTH_SHORT).show();
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-                Log.v(TAG, "Exception: "+error);
-            }
-        }) {
-
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                Map headerMap = new HashMap();
-                return headerMap;
-            }
-        };
-        jsonObjectRequestWithGet.setPriority(Request.Priority.IMMEDIATE);
-        jsonObjectRequestWithGet.setShouldCache(false);
-        jsonObjectRequestWithGet.setRetryPolicy(new DefaultRetryPolicy(REQUEST_TIMEOUT_MS, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        RequestQueue mRequestQueue  = Volley.newRequestQueue(getActivity().getApplicationContext());
-        mRequestQueue.add(jsonObjectRequestWithGet);
-
-
-    }
-
-
 }

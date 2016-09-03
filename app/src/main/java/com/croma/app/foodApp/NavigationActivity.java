@@ -1,11 +1,12 @@
 package com.croma.app.foodApp;
 import android.app.ProgressDialog;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -14,7 +15,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,20 +40,18 @@ import java.util.Map;
  *         Navigation drawer activity class
  */
 public class NavigationActivity extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
+
     private static final long DrawerCloseDelay = 500;
     private final Handler mDrawerActionHandler = new Handler();
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
     private NavigationView navigationView;
-
     private static final String TAG     =       NavigationActivity.class.getSimpleName();
-
-
+    public static final int REQUEST_TIMEOUT_MS = 10000;
+    public ArrayList<geometry> mArrayList;
     //----progress dialog
     private ProgressDialog progressDialog = null;
-    //private TextView NavigationName, NavigationEmail;
-    private RatingBar ratingBar;
-
+    private TextView NavigationName, NavigationEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,14 +62,15 @@ public class NavigationActivity extends AppCompatActivity implements View.OnClic
         setSupportActionBar(toolbar);
 
         navigationView = (NavigationView) findViewById(R.id.homeNavView);
-        ratingBar=(RatingBar)findViewById(R.id.ratingBar);
+        NavigationName=(TextView)findViewById(R.id.drawerhomeName);
+        NavigationEmail=(TextView)findViewById(R.id.drawerhomeEmail);
         navigationView.getMenu().getItem(1).setChecked(true);
         navigationView.setNavigationItemSelectedListener(this);
-        View headerView = navigationView.inflateHeaderView(R.layout.nav_header_navigation);
-        TextView NavigationName = (TextView)headerView.findViewById(R.id.drawerhomeName);
-        NavigationName.setText(SharedPrefUtil.getString("Reg_UserName", " ", NavigationActivity.this));
-        TextView NavigationEmail = (TextView)headerView.findViewById(R.id.drawerhomeEmail);
-        NavigationEmail.setText(SharedPrefUtil.getString("Reg_Email", " ", NavigationActivity.this));
+       // NavigationName.setText(SharedPrefUtil.getString("Reg_UserName", " ", NavigationActivity.this));
+       // NavigationEmail.setText(SharedPrefUtil.getString("Reg_Email", " ", NavigationActivity.this));
+
+
+
         mDrawerLayout = (DrawerLayout) findViewById(R.id.homeDrawer);
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
             public void onDrawerClosed(View view) {
@@ -84,6 +83,7 @@ public class NavigationActivity extends AppCompatActivity implements View.OnClic
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
                 Log.e("uname", SharedPrefUtil.getString("Reg_UserName", "SuppuPande", NavigationActivity.this));
                 Log.e("email", SharedPrefUtil.getString("Reg_Email", "suprpand91@gmail.com", NavigationActivity.this));
+
 
             }
         };
@@ -110,18 +110,15 @@ public class NavigationActivity extends AppCompatActivity implements View.OnClic
         } else {
             super.onBackPressed();
         }
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-
 
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        jsonRequestWithGet();
+
+
     }
 
 
@@ -204,4 +201,68 @@ public class NavigationActivity extends AppCompatActivity implements View.OnClic
 
     }
 
+    // json request with get
+    public  void jsonRequestWithGet() {
+        //String latitude =  SharedPrefUtil.getString("CurrentLatitude","", NavigationActivity.this);
+        //String longitude  = SharedPrefUtil.getString("CurrentLongitude","", NavigationActivity.this);
+        progressDialog = ProgressDialog.show(this, "Please wait", "Fetching Nearest Restaurant...", true);
+        double latitude = Double.longBitsToDouble(SharedPrefUtil.getLong("CurrentLatitude", 1L, NavigationActivity.this));
+        double longitude = Double.longBitsToDouble(SharedPrefUtil.getLong("CurrentLongitude", 1L, NavigationActivity.this));
+        // String my_url   =   ServiceConfig.URL + "&location= +SharedPrefUtil.getFloat("CurrentLatitude", "", NavigationActivity.this)," + "77.329119" + "&type=restaurant";
+//        String my_url   =   ServiceConfig.URL + "&location="+ latitude +"," +  longitude + "&type=restaurant";
+        String my_url   =   "https://maps.googleapis.com/maps/api/place/search/json?radius=1000&sensor=false&key=AIzaSyBj5jPKrBdVNm72tRWbWsqO4UwThdlXTAo&location=28.574489,77.329119&type=restaurant";
+        JsonObjectRequest jsonObjectRequestWithGet = new JsonObjectRequest(my_url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                mArrayList = new ArrayList<geometry>();
+                try{
+                    JSONArray jsonArray = response.getJSONArray("results");
+                    Log.v(TAG,"Json Array Size"+jsonArray.length());
+                    for(int i = 0 ;i<jsonArray.length();i++){
+                        geometry geometry = new Gson().fromJson(jsonArray.getJSONObject(i).toString(),geometry.class);
+                       // geometry geometry = new Gson().fromJson(jsonArray.getJSONObject(i).toString(), com.croma.app.foodApp.geometry.class);
+                        mArrayList.add(geometry);
+                    }
+                    Log.v(TAG,"Array List Size" + mArrayList.size());
+                    final ListDetailActivityFragment fragment = (ListDetailActivityFragment)getSupportFragmentManager().findFragmentByTag(ListDetailActivityFragment.TAG);
+                    if(fragment!=null) {
+                            runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                fragment.fragmentArrayList.clear();
+                                fragment.fragmentArrayList.addAll(mArrayList);
+                                fragment.listAdapter.notifyDataSetChanged();
+                            }
+                        });
+                    }
+                    Toast.makeText(NavigationActivity.this,"Data Get-ed From Service",Toast.LENGTH_SHORT).show();
+
+                }catch (Exception e){
+                    Toast.makeText(NavigationActivity.this,"There is some problem while getting restarorent",Toast.LENGTH_SHORT).show();
+                    e.printStackTrace();
+                }
+
+                progressDialog.dismiss();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                Log.v(TAG, "Exception: "+error);
+            }
+        }) {
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map headerMap = new HashMap();
+                return headerMap;
+            }
+        };
+        jsonObjectRequestWithGet.setPriority(Request.Priority.IMMEDIATE);
+        jsonObjectRequestWithGet.setShouldCache(false);
+        jsonObjectRequestWithGet.setRetryPolicy(new DefaultRetryPolicy(REQUEST_TIMEOUT_MS, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        RequestQueue mRequestQueue  = Volley.newRequestQueue(getApplicationContext());
+        mRequestQueue.add(jsonObjectRequestWithGet);
+
     }
+}
