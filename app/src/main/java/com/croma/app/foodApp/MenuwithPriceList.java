@@ -159,6 +159,7 @@ public class MenuwithPriceList extends AppCompatActivity implements GlobalInterF
         totalAmount = totalAmount.replaceAll("\\D+",""); //REGEX
         String paidAmount=String.valueOf(Integer.parseInt(totalAmount));
         Log.e("paidAmount", paidAmount);
+        
 
 
     }
