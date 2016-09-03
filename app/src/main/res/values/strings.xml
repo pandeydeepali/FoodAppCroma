@@ -182,6 +182,7 @@
     <string name="plus">+</string>
     <string name="Addbasket">Pay Now</string>
     <string name="title_activity_main_activitysample">MainActivitysample</string>
+    <string name="title_activity_make_payment">MakePaymentActivity</string>
 
 
 </resources>
