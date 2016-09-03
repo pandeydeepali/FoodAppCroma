@@ -143,12 +143,6 @@
             android:textStyle="bold"/>
     </LinearLayout>
 
-
-
-
-
-
-
     <com.rey.material.widget.Button
         android:id="@+id/PayBtn"
         android:layout_width="match_parent"
@@ -159,11 +153,6 @@
         android:textColor="@color/splash_color"
         android:layout_marginLeft="@dimen/universal_margin"
         android:layout_marginRight="@dimen/universal_margin"/>
-
-
-
-
-
 
 </LinearLayout>
 
