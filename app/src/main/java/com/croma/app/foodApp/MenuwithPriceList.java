@@ -1,5 +1,6 @@
 package com.croma.app.foodApp;
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,7 +16,8 @@ public class MenuwithPriceList extends AppCompatActivity implements GlobalInterF
 
     private TextView headText, horizontalFoodPrice, horizontalFoodText, QuantityText, totalquan;
     private ImageView backbtn;
-    private Button minusBtn, plusBtn, addBasketBtn, floatingCartBtn;
+    private Button minusBtn, plusBtn, addBasketBtn;
+    private FloatingActionButton floatingCartBtn;
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -47,7 +49,7 @@ public class MenuwithPriceList extends AppCompatActivity implements GlobalInterF
         plusBtn = (Button) findViewById(R.id.plusQuan);
         QuantityText = (TextView) findViewById(R.id.quantity);
         addBasketBtn=(Button)findViewById(R.id.AddBasketBtn);
-        floatingCartBtn=(Button)findViewById(R.id.floatingBtnCart);
+        floatingCartBtn=(FloatingActionButton)findViewById(R.id.floatingBtnCart);
         floatingCartBtn.setOnClickListener(this);
         addBasketBtn.setOnClickListener(this);
         minusBtn.setOnClickListener(this);
@@ -157,6 +159,7 @@ public class MenuwithPriceList extends AppCompatActivity implements GlobalInterF
 
     public void addIteminBasket(){
         String price=totalquan.getText().toString();
+        Log.e("Price", price);
 
     }
 
