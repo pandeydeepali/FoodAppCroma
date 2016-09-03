@@ -15,7 +15,7 @@ public class MenuwithPriceList extends AppCompatActivity implements GlobalInterF
 
     private TextView headText, horizontalFoodPrice, horizontalFoodText, QuantityText, totalquan;
     private ImageView backbtn;
-    private Button minusBtn, plusBtn, addBasketBtn;
+    private Button minusBtn, plusBtn, addBasketBtn, floatingCartBtn;
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -47,6 +47,8 @@ public class MenuwithPriceList extends AppCompatActivity implements GlobalInterF
         plusBtn = (Button) findViewById(R.id.plusQuan);
         QuantityText = (TextView) findViewById(R.id.quantity);
         addBasketBtn=(Button)findViewById(R.id.AddBasketBtn);
+        floatingCartBtn=(Button)findViewById(R.id.floatingBtnCart);
+        floatingCartBtn.setOnClickListener(this);
         addBasketBtn.setOnClickListener(this);
         minusBtn.setOnClickListener(this);
         plusBtn.setOnClickListener(this);
@@ -105,6 +107,13 @@ public class MenuwithPriceList extends AppCompatActivity implements GlobalInterF
                 break;
             }
 
+            case R.id.floatingBtnCart: {
+                switchtoPaymentActivity();
+                break;
+            }
+
+
+
 
         }
     }
@@ -149,7 +158,9 @@ public class MenuwithPriceList extends AppCompatActivity implements GlobalInterF
     public void addIteminBasket(){
         String price=totalquan.getText().toString();
 
+    }
 
+    public void switchtoPaymentActivity(){
 
 
 
