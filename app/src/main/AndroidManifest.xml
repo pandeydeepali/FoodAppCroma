@@ -119,7 +119,8 @@
         <activity
             android:name=".MakePaymentActivity"
             android:label="@string/title_activity_make_payment"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar"
+            ></activity>
     </application>
 
 </manifest>
