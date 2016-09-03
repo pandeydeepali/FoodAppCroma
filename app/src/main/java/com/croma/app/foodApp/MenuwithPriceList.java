@@ -12,9 +12,10 @@ import com.google.android.gms.common.api.GoogleApiClient;
 
 public class MenuwithPriceList extends AppCompatActivity implements GlobalInterFace, View.OnClickListener {
     public int quantity = 1;
+
     private TextView headText, horizontalFoodPrice, horizontalFoodText, QuantityText, totalquan;
     private ImageView backbtn;
-    private Button minusBtn, plusBtn;
+    private Button minusBtn, plusBtn, addBasketBtn;
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -45,7 +46,8 @@ public class MenuwithPriceList extends AppCompatActivity implements GlobalInterF
         minusBtn = (Button) findViewById(R.id.minusQuan);
         plusBtn = (Button) findViewById(R.id.plusQuan);
         QuantityText = (TextView) findViewById(R.id.quantity);
-
+        addBasketBtn=(Button)findViewById(R.id.AddBasketBtn);
+        addBasketBtn.setOnClickListener(this);
         minusBtn.setOnClickListener(this);
         plusBtn.setOnClickListener(this);
         backbtn.setOnClickListener(this);
@@ -98,18 +100,31 @@ public class MenuwithPriceList extends AppCompatActivity implements GlobalInterF
                 break;
             }
 
+            case R.id.AddBasketBtn: {
+                addIteminBasket();
+                break;
+            }
+
 
         }
     }
 
 
     public void increaseQuan() {
+
         quantity++;
         if (quantity <= 0) {
 
         } else {
             QuantityText.setText("" + quantity);
            // String.valueOf(horizontalFoodPrice) * String.valueOf(quantity)=totalquan;
+            String value = horizontalFoodPrice.getText().toString();
+            value = value.replaceAll("\\D+",""); //REGEX
+            String multiple = String.valueOf( Integer.parseInt(value)* quantity);
+            totalquan.setText(multiple);
+            totalquan.append(" Rs.");
+
+
         }
 
     }
@@ -121,9 +136,25 @@ public class MenuwithPriceList extends AppCompatActivity implements GlobalInterF
 
         } else {
             QuantityText.setText("" + quantity);
-           // String.valueOf(horizontalFoodPrice) * Integer.parseInt(""quantity)=totalquan;
+            String value = horizontalFoodPrice.getText().toString();
+            value = value.replaceAll("\\D+",""); //REGEX
+            String multiple = String.valueOf( Integer.parseInt(value)* quantity);
+            totalquan.setText(multiple);
+            totalquan.append(" Rs.");
 
         }
+    }
+
+
+    public void addIteminBasket(){
+        String price=totalquan.getText().toString();
+
+
+
+
+
+
+
     }
 
 
