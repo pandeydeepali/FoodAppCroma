@@ -60,15 +60,15 @@
         />
 
 
-    <!--<TextView-->
-    <!--android:id="@+id/homeRestAddress"-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:text="@string/AddressNoida"-->
-    <!--android:layout_below="@id/listTitle"-->
-    <!--android:layout_toRightOf="@+id/homeleftlogoImage"-->
-    <!--android:layout_marginLeft="@dimen/login"-->
-    <!--android:layout_alignParentRight="true"/>-->
+    <TextView
+    android:id="@+id/homeRestAddress"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/AddressNoida"
+    android:layout_below="@id/listTitle"
+    android:layout_toRightOf="@+id/homeleftlogoImage"
+    android:layout_marginLeft="@dimen/login"
+    android:layout_alignParentRight="true"/>
 
 
     <ImageView
