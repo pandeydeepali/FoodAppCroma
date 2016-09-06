@@ -79,8 +79,10 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
         Log.e("Click", "click");
 
         final Bundle b=getArguments();
+
         final String placeId=b.getString("PlaceItemID");
-        String PlaceDetailUrl   =   ServiceConfig.URL + "&placeid="+ placeId;
+       // String PlaceDetailUrl   =   ServiceConfig.URL + "&placeid="+ placeId;
+        String PlaceDetailUrl="https://maps.googleapis.com/maps/api/place/details/json?placeid=ChIJN1t_tDeuEmsRUsoyG83frY4&key=AIzaSyBj5jPKrBdVNm72tRWbWsqO4UwThdlXTAo";
         Log.e("placesDetailUrl", PlaceDetailUrl);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, PlaceDetailUrl,
                 new Response.Listener<String>() {
