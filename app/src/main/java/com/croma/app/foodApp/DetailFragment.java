@@ -76,10 +76,12 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
 
 
     public void getRestaurantDetails(){
+        Log.e("Click", "click");
 
         final Bundle b=getArguments();
         final String placeId=b.getString("PlaceItemID");
         String PlaceDetailUrl   =   ServiceConfig.URL + "&placeid="+ placeId;
+        Log.e("placesDetailUrl", PlaceDetailUrl);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, PlaceDetailUrl,
                 new Response.Listener<String>() {
                     @Override
@@ -108,7 +110,7 @@ public class DetailFragment extends Fragment implements GlobalInterFace {
                                 }
                             });
                              }catch (Exception e){
-                            Log.e("Exception", "Exception");
+                           // Log.e("Exception", e.printStackTrace());
                         }
                     }
                 },
